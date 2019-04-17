@@ -13,8 +13,10 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.1.3",
-        "laravel/framework": "^5.8.*",
+        "fideloper/proxy": "^4.0",
+        "laravel/framework": "5.8.*",
         "laravel/passport": "^7.2",
+        "laravel/tinker": "^1.0",
         "laravel/telescope": "^2.0"
     },
     "autoload": {
@@ -26,6 +28,13 @@
         ],
         "psr-4": {
             "Nitseditor\\Framework\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nitseditor\\Framework\\ServiceProviders\\FrameworkServiceProvider"
+            ]
         }
     },
     "config": {
