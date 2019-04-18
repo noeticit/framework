@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(__DIR__ . 'Routes/web.php');
+            ->group(__DIR__ . '/../Routes/web.php');
     }
 
     /**
@@ -69,7 +69,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('nits-system-api')
             ->middleware('api')
             ->namespace($this->namespace)
-            ->group(__DIR__ .'Routes/api.php');
+            ->group(__DIR__ .'/../Routes/api.php');
 
         //Plugin route loader
         foreach (nits_plugins() as $package){

@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Auth::routes(['verify' => true]);
+//Auth::routes(['verify' => true]);

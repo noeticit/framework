@@ -4,8 +4,8 @@ let appMenu = [];
 
 const getPluginAppRouting = () => appRoutes;
 
-const configRequire = require.context('./../../../plugins', true, /\.\/[^/]+\/[Frontend]+\/config\.js$/);
-const routesRequire = require.context('./../../../plugins', true, /\.\/[^/]+\/[Frontend]+\/routes\.js$/);
+const configRequire = require.context('./../../../../../../../plugins', true, /\.\/[^/]+\/[Frontend]+\/config\.js$/);
+const routesRequire = require.context('./../../../../../../../plugins', true, /\.\/[^/]+\/[Frontend]+\/routes\.js$/);
 
 
 configRequire.keys().forEach((configPath) => {

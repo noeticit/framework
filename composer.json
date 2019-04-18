@@ -31,13 +31,6 @@
             "Nitseditor\\Framework\\": "src/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Nitseditor\\Framework\\ServiceProviders\\FrameworkServiceProvider"
-            ]
-        }
-    },
     "config": {
         "sort-packages": true
     }
