@@ -24,7 +24,8 @@
             "src/Helpers/helpers.php"
         ],
         "classmap": [
-            "src/Database"
+            "src/Database/seeds",
+            "src/Database/factories"
         ],
         "psr-4": {
             "Nitseditor\\Framework\\": "src/"
