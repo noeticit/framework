@@ -73,13 +73,14 @@ class RouteServiceProvider extends ServiceProvider
 
         //Plugin route loader
         foreach (nits_plugins() as $package){
+
             $namespace = nits_get_plugin_config($package.'.namespace');
 
             if($namespace)
             {
                 if(File::exists(base_path('/plugins/'). $namespace .'/Routes/api.php', $namespace))
                 {
-                    Route::prefix('nits-plugins-api/'.nits_get_plugin_config($package.'name') )
+                    Route::prefix('nits-plugins-api/'.nits_get_plugin_config($package.'.name') )
                         ->middleware('api')
                         ->namespace('Nitseditor\Plugins\\'. $namespace .'\Controllers')
                         ->group(base_path('plugins/') . $namespace . '/Routes/api.php');

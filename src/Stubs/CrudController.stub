@@ -1,14 +1,14 @@
 <?php
 
-namespace Noetic\Plugins\{{pluginName}}\Controllers;
+namespace Nitseditor\Plugins\{{pluginName}}\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Noetic\Plugins\{{pluginName}}\Models\{{model}};
-use Noetic\Plugins\{{pluginName}}\Resources\{{resource}};
-use Noetic\Plugins\{{pluginName}}\Requests\{{storeRequestName}};
-use Noetic\Plugins\{{pluginName}}\Requests\{{updateRequestName}};
+use Nitseditor\Plugins\{{pluginName}}\Models\{{model}};
+use Nitseditor\Plugins\{{pluginName}}\Resources\{{resource}};
+use Nitseditor\Plugins\{{pluginName}}\Requests\{{storeRequestName}};
+use Nitseditor\Plugins\{{pluginName}}\Requests\{{updateRequestName}};
 
 class {{$controllerName}} extends Controller
 {

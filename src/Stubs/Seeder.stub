@@ -1,5 +1,5 @@
 <?php
-namespace Noetic\Plugins\{{pluginName}}\Databases\seeds;
+namespace Nitseditor\Plugins\{{pluginName}}\Databases\seeds;
 
 use Illuminate\Database\Seeder;
 

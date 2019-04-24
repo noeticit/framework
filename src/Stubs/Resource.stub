@@ -1,5 +1,5 @@
 <?php
-namespace Noetic\Plugins\{{pluginName}}\Resources;
+namespace Nitseditor\Plugins\{{pluginName}}\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

@@ -23,7 +23,7 @@ class FrameworkServiceProvider extends ServiceProvider
     public function boot()
     {
         //Load NitsEditor Views.
-        $this->loadViewsFrom(__DIR__ . '/../Frontend', 'NitsEditor');
+        $this->loadViewsFrom(__DIR__ . '/../Frontend', 'nitseditor');
 
 
     }

@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Nits Editor: Admin</title>
+        <meta name="description" content="Login Page">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!--begin::Web font -->
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
@@ -18,8 +19,8 @@
         </script>
 
     </head>
-    <body>
-        <div id="admin">
+    <body style="background-image: url(/nits-assets/media/demo4/bg/header.jpg); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+        <div id="admin" style="height: 100%;">
             <admin></admin>
         </div>
 

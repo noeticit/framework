@@ -1,129 +1,88 @@
 <template>
     <!-- begin:: Page -->
-    <div class="m-grid m-grid--hor m-grid--root m-page">
-        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-1" id="m_login" style="background-image: url(/nits-assets/images/bg-2.jpg);">
-            <div class="m-grid__item m-grid__item--fluid m-login__wrapper">
-                <div class="m-login__container">
-                    <div class="m-login__logo">
-                        <a href="#">
-                            <img src="/nits-assets/images/logo.png">
+    <div class="kt-grid kt-grid--ver kt-grid--root nits-login">
+        <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+
+                <!--begin::Aside-->
+                <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(nits-assets/images/bg/bg-4.jpg);">
+                    <div class="kt-grid__item">
+                        <a href="#" class="kt-login__logo">
+                            <img src="/nits-assets/media/logos/logo-4.png" alt="logo here">
                         </a>
                     </div>
-                    <div class="m-login__signin">
-                        <div class="m-login__head">
-                            <h3 class="m-login__title">
-                                Sign In To Admin
-                            </h3>
+                    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
+                        <div class="kt-grid__item kt-grid__item--middle">
+                            <h3 class="kt-login__title">Welcome to Biltrax!</h3>
+                            <h4 class="kt-login__subtitle">A leading provider of Business Intelligence & Lead Generation Services for Indian Building Industry.</h4>
                         </div>
-                        <form class="m-login__form m-form" action="">
-                            <div class="form-group m-form__group">
-                                <input class="form-control m-input"   type="text" placeholder="Email" name="email" autocomplete="off">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
-                            </div>
-                            <div class="row m-login__form-sub">
-                                <div class="col m--align-left m-login__form-left">
-                                    <label class="m-checkbox  m-checkbox--light">
-                                        <input type="checkbox" name="remember">
-                                        Remember me
-                                        <span></span>
-                                    </label>
-                                </div>
-                                <div class="col m--align-right m-login__form-right">
-                                    <a href="javascript:;" id="m_login_forget_password" class="m-link">
-                                        Forget Password ?n
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="m-login__form-action">
-                                <button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air  m-login__btn m-login__btn--primary" @click.prevent="login">
-                                    Sign In
-                                </button>
-                            </div>
-                        </form>
                     </div>
-                    <div class="m-login__signup">
-                        <div class="m-login__head">
-                            <h3 class="m-login__title">
-                                Sign Up
-                            </h3>
-                            <div class="m-login__desc">
-                                Enter your details to create your account:
+                    <div class="kt-grid__item">
+                        <div class="kt-login__info">
+                            <div class="kt-login__copyright">
+                                &copy 2019 Biltrax
+                            </div>
+                            <div class="kt-login__menu">
+                                <a href="#" class="kt-link">Privacy</a>
+                                <a href="#" class="kt-link">Legal</a>
+                                <a href="#" class="kt-link">Contact</a>
                             </div>
                         </div>
-                        <form class="m-login__form m-form" action="">
-                            <div class="form-group m-form__group">
-                                <input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <input class="form-control m-input" type="password" placeholder="Password" name="password">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
-                            </div>
-                            <div class="row form-group m-form__group m-login__form-sub">
-                                <div class="col m--align-left">
-                                    <label class="m-checkbox m-checkbox--light">
-                                        <input type="checkbox" name="agree">
-                                        I Agree the
-                                        <a href="#" class="m-link m-link--focus">
-                                            terms and conditions
-                                        </a>
-                                        .
-                                        <span></span>
-                                    </label>
-                                    <span class="m-form__help"></span>
-                                </div>
-                            </div>
-                            <div class="m-login__form-action">
-                                <button id="m_login_signup_submit" class="btn m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">
-                                    Sign Up
-                                </button>
-                                &nbsp;&nbsp;
-                                <button id="m_login_signup_cancel" class="btn m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="m-login__forget-password">
-                        <div class="m-login__head">
-                            <h3 class="m-login__title">
-                                Forgotten Password ?
-                            </h3>
-                            <div class="m-login__desc">
-                                Enter your email to reset your password:
-                            </div>
-                        </div>
-                        <form class="m-login__form m-form" action="">
-                            <div class="form-group m-form__group">
-                                <input class="form-control m-input" type="text" placeholder="Email" name="email" id="m_email" autocomplete="off">
-                            </div>
-                            <div class="m-login__form-action">
-                                <button id="m_login_forget_password_submit" class="btn m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">
-                                    Request
-                                </button>
-                                &nbsp;&nbsp;
-                                <button id="m_login_forget_password_cancel" class="btn m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="m-login__account">
-							<span class="m-login__account-msg">
-								Don't have an account yet ?
-							</span>
-                        &nbsp;&nbsp;
-                        <a href="javascript:;" id="m_login_signup" class="m-link m-link--light m-login__account-link">
-                            Sign Up
-                        </a>
                     </div>
                 </div>
+
+                <!--begin::Aside-->
+
+                <!--begin::Content-->
+                <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+
+                    <!--begin::Head-->
+                    <div class="kt-login__head">
+                        <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
+                        <a href="#" class="kt-link kt-login__signup-link">Sign Up!</a>
+                    </div>
+
+                    <!--end::Head-->
+
+                    <!--begin::Body-->
+                    <div class="kt-login__body">
+
+                        <!--begin::Signin-->
+                        <div class="kt-login__form">
+                            <div class="kt-login__title">
+                                <h3>Sign In</h3>
+                            </div>
+
+                            <!--begin::Form-->
+                            <form class="kt-form" action="" novalidate="novalidate">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="password" placeholder="Password" name="password">
+                                </div>
+
+                                <!--begin::Action-->
+                                <div class="kt-login__actions">
+                                    <a href="#" class="kt-link kt-login__link-forgot">
+                                        Forgot Password ?
+                                    </a>
+                                    <button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" @click.prevent="login()">Sign In</button>
+                                </div>
+
+                                <!--end::Action-->
+                            </form>
+
+                            <!--end::Form-->
+                        </div>
+
+                        <!--end::Signin-->
+                    </div>
+
+                    <!--end::Body-->
+                </div>
+
+                <!--end::Content-->
             </div>
         </div>
     </div>
@@ -134,11 +93,14 @@
     export default {
         name: "login",
         methods: {
-
+            login() {
+                window.sessionStorage.setItem('logged', true)
+                this.$router.push('/dashboard')
+            }
         }
     }
 </script>
 
 <style lang="css" scoped>
-
+    @import "../../theme/css/login.css";
 </style>

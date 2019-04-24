@@ -1,5 +1,5 @@
 <?php
-namespace Noetic\Plugins\{{pluginName}}\Models;
+namespace Nitseditor\Plugins\{{pluginName}}\Models;
 
 use Nitseditor\System\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
