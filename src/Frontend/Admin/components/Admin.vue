@@ -17,6 +17,9 @@
                 logged: false,
             }
         },
+        created() {
+           console.log(process.env)
+        },
         watch: {
             '$route' (to, from) {
                 // react to route changes...

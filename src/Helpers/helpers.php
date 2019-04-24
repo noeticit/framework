@@ -62,3 +62,17 @@ if (! function_exists('nits_get_plugin_config')) {
         return $config;
     }
 }
+
+if(!function_exists('nits_config')) {
+
+    /**
+     * App settings/config
+     */
+
+    function nits_config($key)
+    {
+        $data = DB::table('app_settings')->where('key', $key)->first();
+
+        return $data->value;
+    }
+}

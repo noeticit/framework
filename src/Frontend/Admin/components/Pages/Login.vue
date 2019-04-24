@@ -56,10 +56,12 @@
                             <!--begin::Form-->
                             <form class="kt-form" action="" novalidate="novalidate">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+                                    <input class="form-control" v-model="email" type="text" placeholder="Email" name="email" autocomplete="off">
+                                    <span v-show="errors['email']" class="text-danger">{{ errors['email'] }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="password" placeholder="Password" name="password">
+                                    <input class="form-control" v-model="password" type="password" placeholder="Password" name="password">
+                                    <span v-show="errors['password']" class="text-danger">{{ errors['password'] }}</span>
                                 </div>
 
                                 <!--begin::Action-->
@@ -92,10 +94,38 @@
 <script>
     export default {
         name: "login",
+        data() {
+            return {
+                email: '',
+                password: '',
+                errors: ''
+            }
+        },
         methods: {
             login() {
-                window.sessionStorage.setItem('logged', true)
-                this.$router.push('/dashboard')
+                const postData = {
+                    grant_type: 'password',
+                    username: this.email,
+                    password: this.password,
+                    client_id: process.env.FRONT_END_CLIENT_ID,
+                    client_secret: process.env.FRONT_END_CLIENT_SECRET,
+                    scope: ''
+                }
+                const authUser = {}
+                axios.post('oauth/token', postData).then(response => {
+                    if (response.status === 200) {
+                        console.log(response)
+                        // window.sessionStorage.setItem('logged', true)
+                        // this.$router.push('/dashboard')
+                    }
+                }).catch((err) => {
+                    if(err.response.status === 401){
+                        //console.log(err.response.data)
+                        this.errors = err.response.data.message
+                        //console.log(this.error)
+                    }
+                });
+
             }
         }
     }

@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Nits Editor: Admin</title>
+        <title>NitsEditor: A produuct of Noetic IT Services Pvt. Ltd.</title>
         <meta name="description" content="Login Page">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -20,9 +20,15 @@
 
     </head>
     <body style="background-image: url(/nits-assets/media/demo4/bg/header.jpg); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+
         <div id="admin" style="height: 100%;">
             <admin></admin>
         </div>
+
+        <!-- Global User data object -->
+        <script>
+            window.nitseditor = @json($nitseditor);
+        </script>
 
         <script src="{{ mix('nits-assets/js/admin/admin.js') }}"></script>
     </body>
