@@ -123,27 +123,21 @@
                     if (response.status === 200) {
                         authUser.access_token = encrypt(response.data.access_token);
                         authUser.refesh_token = encrypt(response.data.refresh_token);
-
                         window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-                        const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
-                        const headers = {
-                            'Accept': 'application/json',
-                            'Authorization': tokenData ? 'Bearer ' + decrypt(tokenData.access_token) : null
-                        };
                         axios.get('nits-system-api/user', {headers: getHeader()}).then(response => {
                             if(response.status === 200)
                             {
                                 authUser.name = encrypt(response.data.name)
                                 authUser.email = encrypt(response.data.email)
                                 authUser.email_verified_at = encrypt(response.data.email_verified_at)
-
                                 window.localStorage.setItem('authUser', JSON.stringify(authUser));
+
+                                this.loading = false
+                                // window.sessionStorage.setItem('logged', true)
+                                this.$router.push('/dashboard')
                             }
                         })
-                        this.loading = false
-                        // window.sessionStorage.setItem('logged', true)
-                        // this.$router.push('/dashboard')
                     }
                 }).catch((err) => {
                     console.log(err)
