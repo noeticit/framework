@@ -57,11 +57,12 @@
                             <form class="kt-form" action="" novalidate="novalidate">
                                 <div class="form-group">
                                     <input class="form-control" v-model="email" type="text" placeholder="Email" name="email" autocomplete="off">
-                                    <span v-show="errors['email']" class="text-danger">{{ errors['email'] }}</span>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" v-model="password" type="password" placeholder="Password" name="password">
-                                    <span v-show="errors['password']" class="text-danger">{{ errors['password'] }}</span>
+                                </div>
+                                <div class="form-group" v-if="error">
+                                    <span class="text-center text-danger">{{ error }}</span>
                                 </div>
 
                                 <!--begin::Action-->
@@ -69,7 +70,7 @@
                                     <a href="#" class="kt-link kt-login__link-forgot">
                                         Forgot Password ?
                                     </a>
-                                    <button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" @click.prevent="login()">Sign In</button>
+                                    <button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="login()">Sign In</button>
                                 </div>
 
                                 <!--end::Action-->
@@ -92,37 +93,71 @@
 </template>
 
 <script>
+    import {getHeader} from "../../Models/_config";
+    import {encrypt, decrypt} from "../../Models/_encrypt";
+
     export default {
         name: "login",
         data() {
             return {
                 email: '',
                 password: '',
-                errors: ''
+                error: '',
+                loading: false
             }
         },
         methods: {
             login() {
+                this.loading = true
+                this.error = ""
                 const postData = {
                     grant_type: 'password',
                     username: this.email,
                     password: this.password,
-                    client_id: process.env.FRONT_END_CLIENT_ID,
-                    client_secret: process.env.FRONT_END_CLIENT_SECRET,
+                    client_id: process.env.MIX_CLIENT_ID,
+                    client_secret: process.env.MIX_CLIENT_SECRET,
                     scope: ''
                 }
                 const authUser = {}
                 axios.post('oauth/token', postData).then(response => {
                     if (response.status === 200) {
-                        console.log(response)
+                        authUser.access_token = encrypt(response.data.access_token);
+                        authUser.refesh_token = encrypt(response.data.refresh_token);
+
+                        window.localStorage.setItem('authUser', JSON.stringify(authUser));
+
+                        const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
+                        const headers = {
+                            'Accept': 'application/json',
+                            'Authorization': tokenData ? 'Bearer ' + decrypt(tokenData.access_token) : null
+                        };
+                        axios.get('nits-system-api/user', {headers: getHeader()}).then(response => {
+                            if(response.status === 200)
+                            {
+                                authUser.name = encrypt(response.data.name)
+                                authUser.email = encrypt(response.data.email)
+                                authUser.email_verified_at = encrypt(response.data.email_verified_at)
+
+                                window.localStorage.setItem('authUser', JSON.stringify(authUser));
+                            }
+                        })
+                        this.loading = false
                         // window.sessionStorage.setItem('logged', true)
                         // this.$router.push('/dashboard')
                     }
                 }).catch((err) => {
+                    console.log(err)
                     if(err.response.status === 401){
-                        //console.log(err.response.data)
-                        this.errors = err.response.data.message
-                        //console.log(this.error)
+                        this.error = err.response.data.message
+                        this.loading = false
+                    }
+                    if(err.response.status === 500) {
+                        this.error = 'Server error, please try after sometime.'
+                        this.loading = false
+                    }
+                    if(err.response.status === 400) {
+                        this.error = 'Environment variable missing. Check and retry.'
+                        this.loading = false
                     }
                 });
 

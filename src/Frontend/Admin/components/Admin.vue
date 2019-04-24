@@ -18,7 +18,7 @@
             }
         },
         created() {
-           console.log(process.env)
+            //Testing apps
         },
         watch: {
             '$route' (to, from) {

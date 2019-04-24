@@ -1,8 +1,10 @@
+import {decrypt} from './_encrypt.js'
+
 export const getHeader = function () {
     const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
     const headers = {
         'Accept': 'application/json',
-        'Authorization': tokenData ? 'Bearer ' + tokenData.access_token : null
+        'Authorization': tokenData ? 'Bearer ' + decrypt(tokenData.access_token) : null
     };
     return headers
 };
