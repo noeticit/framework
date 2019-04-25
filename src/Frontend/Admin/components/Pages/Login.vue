@@ -93,9 +93,6 @@
 </template>
 
 <script>
-    import {getHeader} from "../../Models/_config";
-    import {encrypt, decrypt} from "../../Models/_encrypt";
-
     export default {
         name: "login",
         data() {
@@ -110,37 +107,15 @@
             login() {
                 this.loading = true
                 this.error = ""
-                const postData = {
-                    grant_type: 'password',
-                    username: this.email,
-                    password: this.password,
-                    client_id: process.env.MIX_CLIENT_ID,
-                    client_secret: process.env.MIX_CLIENT_SECRET,
-                    scope: ''
+                const user = {
+                    email: this.email,
+                    password: this.password
                 }
-                const authUser = {}
-                axios.post('oauth/token', postData).then(response => {
-                    if (response.status === 200) {
-                        authUser.access_token = encrypt(response.data.access_token);
-                        authUser.refesh_token = encrypt(response.data.refresh_token);
-                        window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-                        axios.get('nits-system-api/user', {headers: getHeader()}).then(response => {
-                            if(response.status === 200)
-                            {
-                                authUser.name = encrypt(response.data.name)
-                                authUser.email = encrypt(response.data.email)
-                                authUser.email_verified_at = encrypt(response.data.email_verified_at)
-                                window.localStorage.setItem('authUser', JSON.stringify(authUser));
-
-                                this.loading = false
-                                // window.sessionStorage.setItem('logged', true)
-                                this.$router.push('/dashboard')
-                            }
-                        })
-                    }
-                }).catch((err) => {
-                    console.log(err)
+                this.$auth.login(user).then(response => {
+                    this.loading = false
+                    this.$router.push('/dashboard')
+                }).catch( err => {
                     if(err.response.status === 401){
                         this.error = err.response.data.message
                         this.loading = false
@@ -153,7 +128,7 @@
                         this.error = 'Environment variable missing. Check and retry.'
                         this.loading = false
                     }
-                });
+                })
 
             }
         }

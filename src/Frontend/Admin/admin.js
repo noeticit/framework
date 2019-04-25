@@ -10,12 +10,14 @@ require('./bootstrap');
 import VueRouter from 'vue-router';
 import {router} from "./routes";
 import VueSpinners from 'vue-spinners'
-
+import authorization from "./Models/_auth";
+const auth = new authorization();
 
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
 Vue.use(VueSpinners);
+Vue.prototype.$auth = auth;
 
 require('./components');
 
