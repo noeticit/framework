@@ -572,8 +572,8 @@
                 <div class="kt-header__topbar-item kt-header__topbar-item--user">
                     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                         <span class="kt-header__topbar-welcome">Hi,</span>
-                        <span class="kt-header__topbar-username">Sean</span>
-                        <span class="kt-header__topbar-icon"><b>S</b></span>
+                        <span class="kt-header__topbar-username">{{ user.name.split(" ")[0] }}</span>
+                        <span class="kt-header__topbar-icon"><b>{{ user.name.charAt(0) }}</b></span>
                         <img alt="Pic" src="nits-assets/media/media/users/300_21.jpg" class="kt-hidden" />
                     </div>
                     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
@@ -587,7 +587,7 @@
                                 <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">N</span>
                             </div>
                             <div class="kt-user-card__name">
-                                Navin Rajpal
+                                {{ user.name }}
                             </div>
                             <div class="kt-user-card__badge">
                                 <span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
@@ -651,7 +651,7 @@
                                 </div>
                             </a>
                             <div class="kt-notification__custom">
-                                <a href="custom_user_login-v2.html" target="_blank" class="btn btn-label-brand btn-sm btn-bold">Sign Out</a>
+                                <button class="btn btn-label-brand btn-sm btn-bold" @click.prevent="logout">Sign Out</button>
                             </div>
                         </div>
 
@@ -670,8 +670,21 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
+
     export default {
-        name: "base-layout-four-header"
+        name: "base-layout-four-header",
+        methods: {
+            logout() {
+                this.$auth.logout()
+                this.$router.push('/');
+            }
+        },
+        computed: {
+            ...mapState({
+                user: state => state.user
+            })
+        }
     }
 </script>
 

@@ -1,12 +1,13 @@
-import {encrypt} from "./_encrypt"
-import {getHeader} from "./_config"
+import {encrypt} from "./_encrypt";
+import {getHeader} from "./_config";
+import store from "./../store/_store";
 
 export default class auth {
 
     //Finding logged-in user.
     isLoggedIn() {
-        tokenData = JSON.parse(window.localStorage.getItem('authUser'))
-        return tokenData.access_token ? true : false;
+        const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
+        return tokenData && tokenData.access_token ? true : false;
     }
     
     //Login
@@ -22,19 +23,22 @@ export default class auth {
                 client_secret: process.env.MIX_CLIENT_SECRET,
                 scope: ''
             }
-            axios.post('oauth/token', postData).then(response => {
+            axios.post('/oauth/token', postData).then(response => {
                 if (response.status === 200) {
                     authUser.access_token = encrypt(response.data.access_token);
                     authUser.refesh_token = encrypt(response.data.refresh_token);
                     window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-                    axios.get('nits-system-api/user', {headers: getHeader()}).then(response => {
+                    axios.get('/nits-system-api/user', {headers: getHeader()}).then(response => {
                         if(response.status === 200)
                         {
                             authUser.name = encrypt(response.data.name)
                             authUser.email = encrypt(response.data.email)
                             authUser.email_verified_at = encrypt(response.data.email_verified_at)
+                            //Storing into local storage.
                             window.localStorage.setItem('authUser', JSON.stringify(authUser));
+                            //Storing to state.
+                            store.commit("STORE_USER_DATA", authUser);
 
                             return resolve('Login Successfull');
                         }

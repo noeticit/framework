@@ -5,7 +5,7 @@
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
                 <!--begin::Aside-->
-                <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(nits-assets/images/bg/bg-4.jpg);">
+                <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside nits-login_aside">
                     <div class="kt-grid__item">
                         <a href="#" class="kt-login__logo">
                             <img src="/nits-assets/media/logos/logo-4.png" alt="logo here">
@@ -137,4 +137,7 @@
 
 <style lang="css" scoped>
     @import "../../theme/css/login.css";
+    .nits-login_aside {
+        background-image: url("/nits-assets/images/bg/bg-4.jpg");
+    }
 </style>

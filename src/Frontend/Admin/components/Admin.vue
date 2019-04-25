@@ -18,7 +18,7 @@
             }
         },
         created() {
-            //Testing apps
+           //Testing apps.
         },
         watch: {
             '$route' (to, from) {
