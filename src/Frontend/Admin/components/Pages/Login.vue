@@ -103,6 +103,9 @@
                 loading: false
             }
         },
+        beforeCreate() {
+            this.$auth.logout();
+        },
         methods: {
             login() {
                 this.loading = true

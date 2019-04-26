@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
     if(to.meta.requiresAuth && auth.isLoggedIn())
         next()
     if(!to.meta.requiresAuth && auth.isLoggedIn())
-        next({path: '/dashboard'})
+        next()
     if(to.meta.requiresAuth && !auth.isLoggedIn())
         next({path: '/'})
     if(!to.meta.requiresAuth && !auth.isLoggedIn())
