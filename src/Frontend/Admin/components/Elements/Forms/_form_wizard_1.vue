@@ -339,6 +339,7 @@
 
 <script>
     import swal from 'sweetalert';
+    import {KTUtil} from './../../../theme/framework/lib/util';
     import {KTWizard} from './../../../theme/framework/components/foundation/wizard/wizard'
 
     export default {
@@ -346,10 +347,7 @@
         created() {
            // Class definition
             var KTWizard1 = function () {
-                // Base elements
-                // var wizardEl;
-                var formEl;
-                var validator;
+
                 var wizard;
 
                 // Private functions
@@ -381,9 +379,6 @@
                 return {
                     // public functions
                     init: function() {
-                        // wizardEl = KTUtil.get('kt_wizard_v1');
-                        formEl = $('#kt_form');
-
                         initWizard();
                     }
                 };
