@@ -4,53 +4,53 @@
  */
 // Polyfill
 // matches polyfill
-this.Element && function(ElementPrototype) {
-    ElementPrototype.matches = ElementPrototype.matches ||
-        ElementPrototype.matchesSelector ||
-        ElementPrototype.webkitMatchesSelector ||
-        ElementPrototype.msMatchesSelector ||
-        function(selector) {
-            var node = this,
-                nodes = (node.parentNode || node.document).querySelectorAll(selector),
-                i = -1;
-            while (nodes[++i] && nodes[i] != node);
-            return !!nodes[i];
-        }
-}(Element.prototype);
-
-// closest polyfill
-this.Element && function(ElementPrototype) {
-    ElementPrototype.closest = ElementPrototype.closest ||
-        function(selector) {
-            var el = this;
-            while (el.matches && !el.matches(selector)) el = el.parentNode;
-            return el.matches ? el : null;
-        }
-}(Element.prototype);
-
-// remove polyfill
-if (!('remove' in Element.prototype)) {
-    Element.prototype.remove = function() {
-        if (this.parentNode) {
-            this.parentNode.removeChild(this);
-        }
-    };
-}
-
-// matches polyfill
-this.Element && function(ElementPrototype) {
-    ElementPrototype.matches = ElementPrototype.matches ||
-        ElementPrototype.matchesSelector ||
-        ElementPrototype.webkitMatchesSelector ||
-        ElementPrototype.msMatchesSelector ||
-        function(selector) {
-            var node = this,
-                nodes = (node.parentNode || node.document).querySelectorAll(selector),
-                i = -1;
-            while (nodes[++i] && nodes[i] != node);
-            return !!nodes[i];
-        }
-}(Element.prototype);
+// this.Element && function(ElementPrototype) {
+//     ElementPrototype.matches = ElementPrototype.matches ||
+//         ElementPrototype.matchesSelector ||
+//         ElementPrototype.webkitMatchesSelector ||
+//         ElementPrototype.msMatchesSelector ||
+//         function(selector) {
+//             var node = this,
+//                 nodes = (node.parentNode || node.document).querySelectorAll(selector),
+//                 i = -1;
+//             while (nodes[++i] && nodes[i] != node);
+//             return !!nodes[i];
+//         }
+// }(Element.prototype);
+//
+// // closest polyfill
+// this.Element && function(ElementPrototype) {
+//     ElementPrototype.closest = ElementPrototype.closest ||
+//         function(selector) {
+//             var el = this;
+//             while (el.matches && !el.matches(selector)) el = el.parentNode;
+//             return el.matches ? el : null;
+//         }
+// }(Element.prototype);
+//
+// // remove polyfill
+// if (!('remove' in Element.prototype)) {
+//     Element.prototype.remove = function() {
+//         if (this.parentNode) {
+//             this.parentNode.removeChild(this);
+//         }
+//     };
+// }
+//
+// // matches polyfill
+// this.Element && function(ElementPrototype) {
+//     ElementPrototype.matches = ElementPrototype.matches ||
+//         ElementPrototype.matchesSelector ||
+//         ElementPrototype.webkitMatchesSelector ||
+//         ElementPrototype.msMatchesSelector ||
+//         function(selector) {
+//             var node = this,
+//                 nodes = (node.parentNode || node.document).querySelectorAll(selector),
+//                 i = -1;
+//             while (nodes[++i] && nodes[i] != node);
+//             return !!nodes[i];
+//         }
+// }(Element.prototype);
 
 //
 // requestAnimationFrame polyfill by Erik Möller.
@@ -117,7 +117,7 @@ window.KTUtilElementDataStore = {};
 window.KTUtilElementDataStoreID = 0;
 window.KTUtilDelegatedEventHandlers = {};
 
-var KTUtil = function() {
+export var KTUtil = function() {
 
     var resizeHandlers = [];
 

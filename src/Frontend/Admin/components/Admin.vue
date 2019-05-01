@@ -35,7 +35,7 @@
 <style lang="scss">
     //Import scss...
     // 1: Demo Config
-    @import "../theme/demo/demo4/sass/config";;  // demo level framework config override
+    @import "../theme/demo/demo4/sass/config";  // demo level framework config override
 
     // 2: Framework Config
     @import "../theme/framework/config"; // framework config

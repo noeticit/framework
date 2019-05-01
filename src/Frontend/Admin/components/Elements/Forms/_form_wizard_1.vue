@@ -338,21 +338,68 @@
 </template>
 
 <script>
+    import swal from 'sweetalert';
+    import {KTWizard} from './../../../theme/framework/components/foundation/wizard/wizard'
+
     export default {
         name: "form-wizard-1",
         created() {
+           // Class definition
+            var KTWizard1 = function () {
+                // Base elements
+                // var wizardEl;
+                var formEl;
+                var validator;
+                var wizard;
 
-            var options = {
-                startStep: 1,
-                manualStepForward: false
-            };
+                // Private functions
+                var initWizard = function () {
+                    // Initialize form wizard
+                    wizard = new KTWizard('kt_wizard_v1', {
+                        startStep: 1
+                    });
 
-            var wizard = KTWizard('kt_wizard_v1',options);
+                    // Validation before going to next page
+                    wizard.on('beforeNext', function(wizardObj) {
+                        // wizardObj.stop();
+                        // swal({
+                        //     "title": "",
+                        //     "text": "There are some errors in your submission. Please correct them.",
+                        //     "type": "error",
+                        //     "confirmButtonClass": "btn btn-secondary"
+                        // });
+                    })
+
+                    // Change event
+                    wizard.on('change', function(wizard) {
+                        setTimeout(function() {
+                            KTUtil.scrollTop();
+                        }, 500);
+                    });
+                }
+
+                return {
+                    // public functions
+                    init: function() {
+                        // wizardEl = KTUtil.get('kt_wizard_v1');
+                        formEl = $('#kt_form');
+
+                        initWizard();
+                    }
+                };
+            }();
+
+            jQuery(document).ready(function() {
+                KTWizard1.init();
+            });
 
         }
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    @import "./../../../theme/app/custom/wizard/wizard-v1";
+    @import "./../../../theme/framework/vendors/fontawesome5/css/all.min.css";
+    @import "./../../../theme/framework/vendors/flaticon/flaticon.css";
+    @import "./../../../theme/framework/vendors/flaticon2/flaticon.css";
 </style>
