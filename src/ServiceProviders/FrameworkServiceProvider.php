@@ -42,6 +42,20 @@ class FrameworkServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
 
             $this->registerCommands();
+
+//            $this->app->make(Factory::class)->load(__DIR__.'/../Database/factories');
+
+            if(File::exists(base_path().'/vendor/nitseditor/framework/src/Database/factories'))
+            {
+//                $this->app->singleton(Factory::class, function (){
+//                    $faker = $this->app->make(Faker::class);
+//                    return Factory::construct($faker,base_path().'/vendor/nitseditor/framework/src/Database/factories');
+//                });
+                $this->app->singleton(Factory::class, function (){
+                    $faker = $this->app->make(Faker::class);
+                    return Factory::construct($faker,__DIR__.'/../Database/factories');
+                });
+            }
         }
 
         // Load the helpers in NitsEditor

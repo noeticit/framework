@@ -10,6 +10,7 @@ class HomeController extends Controller
     {
         $nitseditor = array(
             "app_name" => nits_config('app_name'),
+            "layout" => nits_config('layout'),
             "domain_name" => nits_config('domain_name'),
             "language" => nits_config('language'),
             "timezone" => nits_config('timezone'),

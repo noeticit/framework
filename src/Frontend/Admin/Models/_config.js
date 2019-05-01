@@ -9,8 +9,8 @@ export const getHeader = function () {
     return headers
 };
 
-export const clientId = process.env.CLIENT_ID;
+export const clientId = process.env.MIX_CLIENT_ID;
 
-export const clientSecret = process.env.CLIENT_SECRET;
+export const clientSecret = process.env.MIX_CLIENT_SECRET;
 
-export const appUrl = process.env.APP_URL
+export const appUrl = process.env.MIX_APP_URL
