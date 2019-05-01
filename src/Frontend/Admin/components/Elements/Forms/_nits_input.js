@@ -18,11 +18,11 @@ export default {
     render (createElement) {
 
         //Help action text
-        let helpText = this.hint ? createElement('span', { class: 'm-form__help' }, this.hint) : ''
+        let helpText = this.hint ? createElement('span', { class: 'form-text text-muted kt-font-info' }, this.hint) : ''
         let lineBreak = this.hint ? createElement('br') : ''
 
         //Error Text
-        let errorText = this.error ? createElement('span', { class: 'm-form__help m--font-danger' }, this.error) : ''
+        let errorText = this.error ? createElement('span', { class: 'form-text kt-font-danger' }, this.error) : ''
 
 
         //Addons for text, icons and internal-icons
@@ -93,8 +93,10 @@ export default {
                             this.$emit('input', event.target.value)
                         }
                     }
-                }), rightAddon, this.inputStyle != 'pill' ? helpText : '', this.inputStyle != 'pill' ? lineBreak : '', this.inputStyle != 'pill' ? errorText : ''
-            ]),  this.inputStyle === 'pill' ? helpText : '', this.inputStyle === 'pill' ? lineBreak : '', this.inputStyle === 'pill' ? errorText : ''
+                // }), rightAddon, this.inputStyle != 'pill' ? helpText : '', this.inputStyle != 'pill' ? lineBreak : '', this.inputStyle != 'pill' ? errorText : ''
+                }), rightAddon, this.inputStyle != 'pill' ? helpText : '', this.inputStyle != 'pill' ? errorText : ''
+            // ]),  this.inputStyle === 'pill' ? helpText : '', this.inputStyle === 'pill' ? lineBreak : '', this.inputStyle === 'pill' ? errorText : ''
+            ]),  this.inputStyle === 'pill' ? helpText : '', this.inputStyle === 'pill' ? errorText : ''
         ])
     }
 }
