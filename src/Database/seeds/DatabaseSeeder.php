@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 //         $this->call(UsersTableSeeder::class);
-         $this->call(AppSettingsTableSeeder::class);
+//         $this->call(AppSettingsTableSeeder::class);
+        $this->call(\Nitseditor\Plugins\Confidence\Databases\seeds\InstallSeeder::class);
     }
 }

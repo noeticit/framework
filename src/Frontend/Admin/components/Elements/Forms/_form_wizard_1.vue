@@ -163,6 +163,14 @@
                         type: "error",
                     })
                 })
+            },
+        },
+        watch: {
+            form: {
+                handler: function (val, oldVal) {
+                    this.$emit('inputChangeFromFormWizard', this.form)
+                },
+                deep: true
             }
         }
     }

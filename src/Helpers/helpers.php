@@ -73,6 +73,6 @@ if(!function_exists('nits_config')) {
     {
         $data = DB::table('app_settings')->where('key', $key)->first();
 
-        return $data->value;
+        return $data ? $data->value: null;
     }
 }
