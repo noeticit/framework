@@ -29,76 +29,31 @@
                     <div class="kt-heading kt-heading--md">{{ item.subtitle }}</div>
                     <div class="kt-form__section kt-form__section--first">
                         <div class="kt-wizard-v1__form">
-                            <div v-for="element in item.forms">
-                                <div class="row" v-if="element.newRow">
-                                    <div v-if="element.column" :class="'col-xl-'+element.column">
-                                        <div v-if="element.input_widget === 'nits-input'">
-                                            <nits-input
-                                                :label="element.label"
-                                                :type="element.type"
-                                                :placeholder="element.placeholder"
-                                                v-model="element.value"
-                                                :hint="element.hint"
-                                                :error="element.error"
-                                            >
-                                            </nits-input>
-                                        </div>
-                                        <div v-if="element.input_widget === 'nits-select'">
-                                            <nits-select
-                                                :label="element.label"
-                                                :options="element.options"
-                                                v-model="element.value"
-                                                error="Invalid Input"
-                                            >
-                                            </nits-select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div v-else-if="element.column" :class="'col-xl-'+element.column">
-                                    <div v-if="element.input_widget === 'nits-input'">
+                            <div v-for="element in item.layouts" :class="element.type === 'row' ? 'row' : ''">
+                                <div v-for="col in element.columns" :class="col.column ? 'col-xl-'+col.column: ''">
+                                    <div v-if="col.form_type === 'nits-input'">
                                         <nits-input
-                                            :label="element.label"
-                                            :type="element.type"
-                                            :placeholder="element.placeholder"
-                                            v-model="element.value"
-                                            :hint="element.hint"
-                                            :error="element.error"
+                                            :label="col.config_elements.label"
+                                            :type="col.config_elements.type"
+                                            :placeholder="col.config_elements.placeholder"
+                                            :value="col.value"
+                                            :hint="col.config_elements.hint"
+                                            :error="col.config_elements.error"
+                                            v-model="form[col.field_name]"
                                         >
                                         </nits-input>
                                     </div>
-                                    <div v-if="element.input_widget === 'nits-select'">
+                                    <div v-else-if="col.form_type === 'nits-select'">
                                         <nits-select
-                                            :label="element.label"
-                                            :options="element.options"
-                                            v-model="element.value"
-                                            error="Invalid Input"
+                                            :label="col.config_elements.label"
+                                            :options="col.config_elements.options"
+                                            :value="col.value"
+                                            :error="col.config_elements.error"
+                                            v-model="form[col.field_name]"
                                         >
                                         </nits-select>
                                     </div>
                                 </div>
-                                <div v-else>
-                                    <div v-if="element.input_widget === 'nits-input'">
-                                        <nits-input
-                                            :label="element.label"
-                                            :type="element.type"
-                                            :placeholder="element.placeholder"
-                                            v-model="element.value"
-                                            :hint="element.hint"
-                                            :error="element.error"
-                                        >
-                                        </nits-input>
-                                    </div>
-                                    <div v-if="element.input_widget === 'nits-select'">
-                                        <nits-select
-                                            :label="element.label"
-                                            :options="element.options"
-                                            v-model="element.value"
-                                            error="Invalid Input"
-                                        >
-                                        </nits-select>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -126,16 +81,18 @@
 </template>
 
 <script>
-    import swal from 'sweetalert';
+    import Swal from 'sweetalert2';
     import {KTUtil} from './../../../theme/framework/lib/util';
-    import {KTWizard} from './../../../theme/framework/components/foundation/wizard/wizard'
+    import {KTWizard} from './../../../theme/framework/components/foundation/wizard/wizard';
+    import api from './../../../models/_api'
 
     export default {
         name: "form-wizard-1",
-        props: ['wizardData', 'api'],
+        props: ['wizardData', 'apiUrl'],
         data() {
             return {
-
+                form: {},
+                errors: []
             }
         },
         created() {
@@ -154,7 +111,7 @@
                     // Validation before going to next page
                     wizard.on('beforeNext', function(wizardObj) {
                         // wizardObj.stop();
-                        // swal({
+                        // Swal.fire({
                         //     "title": "",
                         //     "text": "There are some errors in your submission. Please correct them.",
                         //     "type": "error",
@@ -185,7 +142,27 @@
         },
         methods: {
             submit() {
-                console.log('Submitted')
+                new api().create(this.apiUrl, this.form).then(response => {
+                    this.loading = false
+                    Swal.fire({
+                        title: "Holla!",
+                        text: "Saved successfully",
+                        type: "success"
+                    }).then((a) => {
+                        console.log('check');
+                        // if(a){
+                        //     this.$router.push({ name: this.backUrl })
+                        // }
+                    })
+                }).catch((error) => {
+                    this.errors = error
+                    this.loading = false
+                    Swal.fire({
+                        title: "Oops!",
+                        text: "Mistake in input",
+                        type: "error",
+                    })
+                })
             }
         }
     }
