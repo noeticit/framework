@@ -167,11 +167,12 @@ class CreateCrudCommand extends Command
             $controllerName = ucfirst(strtolower($name)).'Controller';
             $resourceName = ucfirst(strtolower($name)).'Resource';
             $modelName = ucfirst(strtolower($name));
+            $variableName = strtolower($name);
             $storeRequestName = ucfirst(strtolower($name)).'StoreRequest';
             $updateRequestName = ucfirst(strtolower($name)).'UpdateRequest';
             $controllerTemplate = str_replace(
-                ['{{pluginName}}', '{{model}}', '{{resource}}', '{{$controllerName}}', '{{storeRequestName}}', '{{updateRequestName}}' ],
-                [$pluginName, $modelName, $resourceName, $controllerName, $storeRequestName, $updateRequestName],
+                ['{{pluginName}}', '{{model}}', '{{variable}}', '{{resource}}', '{{$controllerName}}', '{{storeRequestName}}', '{{updateRequestName}}' ],
+                [$pluginName, $modelName, $variableName, $resourceName, $controllerName, $storeRequestName, $updateRequestName],
                 get_plugin_stub('CrudController')
             );
 

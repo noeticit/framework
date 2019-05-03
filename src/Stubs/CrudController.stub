@@ -38,33 +38,33 @@ class {{$controllerName}} extends Controller
     }
 
     /**
-     * @param {{model}} $model
+     * @param {{model}} ${{variable}}
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show({{model}} $model)
+    public function show({{model}} ${{variable}})
     {
-        return response()->json(['data' => $model], 200);
+        return response()->json(['data' => ${{variable}}], 200);
     }
 
     /**
      * @param {{updateRequestName}} $request
-     * @param {{model}} $model
+     * @param {{model}} ${{variable}}
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
-    public function update({{updateRequestName}} $request, {{model}} $model)
+    public function update({{updateRequestName}} $request, {{model}} ${{variable}})
     {
-        $model->update($request->all());
+        ${{variable}}->update($request->all());
         return response('Updated', Response::HTTP_ACCEPTED);
     }
 
     /**
-     * @param {{model}} $model
+     * @param {{model}} ${{variable}}
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function destroy({{model}} $model)
+    public function destroy({{model}} ${{variable}})
     {
-        $model->delete();
+        ${{variable}}->delete();
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
