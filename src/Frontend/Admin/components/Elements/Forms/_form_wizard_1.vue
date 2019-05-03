@@ -73,6 +73,14 @@
                                         >
                                         </nits-checkbox>
                                     </div>
+                                    <div v-else-if="col.form_type === 'nits-date'">
+                                        <nits-date-picker
+                                            :label="col.config_elements.label"
+                                            :placeholder="col.config_elements.placeholder"
+                                            v-model="form[col.field_name]"
+                                        >
+                                        </nits-date-picker>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +111,10 @@
 <script>
     import Swal from 'sweetalert2';
     import api from 'NitsModels/_api'
-    import {KTUtil} from './../../../theme/framework/lib/util';
-    import {KTWizard} from './../../../theme/framework/components/foundation/wizard/wizard';
+    import {KTUtil} from 'NitsTheme/framework/lib/util';
+    import {KTWizard} from 'NitsTheme/framework/components/foundation/wizard/wizard';
+
+
 
     export default {
         name: "form-wizard-1",
@@ -115,6 +125,7 @@
             }
         },
         mounted() {
+            //Wizard Code..
            // Class definition
             var KTWizard1 = function () {
 
@@ -157,7 +168,6 @@
             jQuery(document).ready(function() {
                 KTWizard1.init();
             });
-
         },
         methods: {
             inputChanged(event , field) {
