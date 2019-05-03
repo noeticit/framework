@@ -64,6 +64,9 @@ export default {
                         on: {
                             input: (event) => {
                                 this.$emit('input', event.target.value)
+                            },
+                            change: (event) => {
+                                this.$emit('change', event.target.value)
                             }
                         }},
                     this.selectOptions.map(a => createElement('option', {attrs: { value: a.value, selected: a.value === this.value }}, a.option))

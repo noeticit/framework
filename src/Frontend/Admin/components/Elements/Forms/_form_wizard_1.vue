@@ -4,17 +4,11 @@
 
             <!--begin: Form Wizard Nav -->
             <div class="kt-wizard-v1__nav">
+
                 <div class="kt-wizard-v1__nav-items">
-                    <a class="kt-wizard-v1__nav-item" href="#" data-ktwizard-type="step" v-for="(item, index) in wizardData" :data-ktwizard-state="index === 0 ? 'current' : null">
-                        <div class="kt-wizard-v1__nav-body">
-                            <div class="kt-wizard-v1__nav-icon">
-                                <i :class="item.icon"></i>
-                            </div>
-                            <div class="kt-wizard-v1__nav-label">
-                                {{ item.title }}
-                            </div>
-                        </div>
-                    </a>
+
+                    <slot name="title"></slot>
+
                 </div>
             </div>
 
@@ -25,39 +19,7 @@
             <!--begin: Form Wizard Form-->
             <form class="kt-form" id="kt_form">
 
-                <div class="kt-wizard-v1__content" data-ktwizard-type="step-content" v-for="(item, index) in wizardData" :data-ktwizard-state="index === 0 ? 'current' : null">
-                    <div class="kt-heading kt-heading--md">{{ item.subtitle }}</div>
-                    <div class="kt-form__section kt-form__section--first">
-                        <div class="kt-wizard-v1__form">
-                            <div v-for="element in item.layouts" :class="element.type === 'row' ? 'row' : ''">
-                                <div v-for="col in element.columns" :class="col.column ? 'col-xl-'+col.column: ''">
-                                    <div v-if="col.form_type === 'nits-input'">
-                                        <nits-input
-                                            :label="col.config_elements.label"
-                                            :type="col.config_elements.type"
-                                            :placeholder="col.config_elements.placeholder"
-                                            :value="col.value"
-                                            :hint="col.config_elements.hint"
-                                            :error="col.config_elements.error"
-                                            v-model="form[col.field_name]"
-                                        >
-                                        </nits-input>
-                                    </div>
-                                    <div v-else-if="col.form_type === 'nits-select'">
-                                        <nits-select
-                                            :label="col.config_elements.label"
-                                            :options="col.config_elements.options"
-                                            :value="col.value"
-                                            :error="col.config_elements.error"
-                                            v-model="form[col.field_name]"
-                                        >
-                                        </nits-select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <slot name="wizard_fields"></slot>
 
                 <!--begin: Form Actions -->
                 <div class="kt-form__actions">
@@ -81,17 +43,14 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
     import {KTUtil} from './../../../theme/framework/lib/util';
     import {KTWizard} from './../../../theme/framework/components/foundation/wizard/wizard';
-    import api from './../../../models/_api'
 
     export default {
         name: "form-wizard-1",
         props: ['wizardData', 'apiUrl'],
         data() {
             return {
-                form: {},
                 errors: []
             }
         },
@@ -142,36 +101,16 @@
         },
         methods: {
             submit() {
-                new api().create(this.apiUrl, this.form).then(response => {
-                    this.loading = false
-                    Swal.fire({
-                        title: "Holla!",
-                        text: "Saved successfully",
-                        type: "success"
-                    }).then((a) => {
-                        console.log('check');
-                        // if(a){
-                        //     this.$router.push({ name: this.backUrl })
-                        // }
-                    })
-                }).catch((error) => {
-                    this.errors = error
-                    this.loading = false
-                    Swal.fire({
-                        title: "Oops!",
-                        text: "Mistake in input",
-                        type: "error",
-                    })
-                })
+                this.$emit('formWizardSubmit')
             },
         },
         watch: {
-            form: {
-                handler: function (val, oldVal) {
-                    this.$emit('inputChangeFromFormWizard', this.form)
-                },
-                deep: true
-            }
+            // form: {
+            //     handler: function (val, oldVal) {
+            //         this.$emit('inputChangeFromFormWizard', this.form)
+            //     },
+            //     deep: true
+            // }
         }
     }
 </script>

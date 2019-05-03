@@ -5,10 +5,11 @@ namespace Nitseditor\Framework\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Crypt;
+use Nitseditor\Framework\Traits\NitsSearch;
 
 class AbstractModel extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, NitsSearch;
 
     protected $nits_encryption = [];
 
@@ -35,4 +36,5 @@ class AbstractModel extends Model
             });
         }
     }
+
 }
