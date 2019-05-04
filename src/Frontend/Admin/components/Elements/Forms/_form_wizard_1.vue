@@ -73,13 +73,23 @@
                                         >
                                         </nits-checkbox>
                                     </div>
-                                    <div v-else-if="col.form_type === 'nits-date'">
+                                    <div v-else-if="col.form_type === 'nits-date-picker'">
                                         <nits-date-picker
                                             :label="col.config_elements.label"
                                             :placeholder="col.config_elements.placeholder"
+                                            :hint="col.config_elements.hint"
                                             v-model="form[col.field_name]"
                                         >
                                         </nits-date-picker>
+                                    </div>
+                                    <div v-else-if="col.form_type === 'nits-date-time-picker'">
+                                        <nits-date-time-picker
+                                            :label="col.config_elements.label"
+                                            :placeholder="col.config_elements.placeholder"
+                                            :hint="col.config_elements.hint"
+                                            v-model="form[col.field_name]"
+                                        >
+                                        </nits-date-time-picker>
                                     </div>
                                 </div>
                             </div>

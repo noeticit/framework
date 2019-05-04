@@ -1,10 +1,10 @@
 <script>
     import {KTUtil} from 'NitsTheme/framework/lib/util';
 
-    require('bootstrap-datepicker')
+    require('bootstrap-datetime-picker')
 
     export default {
-        name: "nits-date-picker",
+        name: "nits-date-time-picker",
         props: {
             label: String,
             placeholder: String,
@@ -13,35 +13,37 @@
         },
         mounted() {
             const self = this;
-            //Date range picker.
-            var KTBootstrapDatepicker = function () {
+            var moment = require('moment');
 
-                var arrows;
-                if (KTUtil.isRTL()) {
-                    arrows = {
-                        leftArrow: '<i class="la la-angle-right"></i>',
-                        rightArrow: '<i class="la la-angle-left"></i>'
-                    }
-                } else {
-                    arrows = {
-                        leftArrow: '<i class="la la-angle-left"></i>',
-                        rightArrow: '<i class="la la-angle-right"></i>'
-                    }
-                }
+            // Class definition
+            var KTBootstrapDatetimepicker = function () {
 
                 // Private functions
                 var demos = function () {
-                    // input group layout
-                    $('#kt_datepicker_2, #kt_datepicker_2_validate').datepicker({
-                        rtl: KTUtil.isRTL(),
-                        format: 'mm/dd/yyyy',
+
+                    var arrows;
+                    if (KTUtil.isRTL()) {
+                        arrows = {
+                            leftArrow: '<i class="la la-angle-right"></i>',
+                            rightArrow: '<i class="la la-angle-left"></i>'
+                        }
+                    } else {
+                        arrows = {
+                            leftArrow: '<i class="la la-angle-left"></i>',
+                            rightArrow: '<i class="la la-angle-right"></i>'
+                        }
+                    }
+
+                    // today button
+                    $('#kt_datetimepicker_3').datetimepicker({
                         todayHighlight: true,
-                        orientation: "bottom left",
-                        templates: arrows,
-                        clearBtn: true
+                        autoclose: true,
+                        pickerPosition: 'bottom-left',
+                        todayBtn: true,
+                        format: 'dd/mm/yyyy hh:ii'
                     }).on('changeDate', function(e) {
-                        self.$emit('input', e.format('dd/mm/yyyy'));
-                        self.$emit('change', e.format('dd/mm/yyyy'));
+                        self.$emit('input', moment(e.date).format('DD/MM/YYYY h:mm'));
+                        self.$emit('change', moment(e.date).format('DD/MM/YYYY h:mm'));
                     });
                 }
 
@@ -54,7 +56,7 @@
             }();
 
             jQuery(document).ready(function() {
-                KTBootstrapDatepicker.init();
+                KTBootstrapDatetimepicker.init();
             });
         },
         render(createElement) {
@@ -64,7 +66,7 @@
                 createElement('div', {class: 'input-group date'}, [
                     createElement('input', {
                         class: 'form-control',
-                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: "kt_datepicker_2"},
+                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: "kt_datetimepicker_3"},
                         on: {
                             change: (event) => {
                                 this.$emit('change', event.target.value)
@@ -85,8 +87,8 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "./../../../../../../../../../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
+    @import "./../../../../../../../../../node_modules/bootstrap-datetime-picker/css/bootstrap-datetimepicker.min.css";
     @import "./../../../theme/framework/config";
-    @import "./../../../theme/framework/components/vendors/bootstrap-datepicker/bootstrap-datepicker";
+    @import "./../../../theme/framework/components/vendors/bootstrap-timepicker/bootstrap-timepicker";
     @import "./../../../theme/framework/vendors/line-awesome/css/line-awesome.css";
 </style>
