@@ -79,6 +79,7 @@
                                             :placeholder="col.config_elements.placeholder"
                                             :hint="col.config_elements.hint"
                                             v-model="form[col.field_name]"
+                                            @change="changeDatePicker($event, col.field_name)"
                                         >
                                         </nits-date-picker>
                                     </div>
@@ -88,8 +89,22 @@
                                             :placeholder="col.config_elements.placeholder"
                                             :hint="col.config_elements.hint"
                                             v-model="form[col.field_name]"
+                                            @change="changeDateTimePicker($event, col.field_name)"
                                         >
                                         </nits-date-time-picker>
+                                    </div>
+                                    <div v-else-if="col.form_type === 'nits-dropzone'">
+                                        <nits-dropzone
+                                            :label="col.config_elements.label"
+                                            :hint="col.config_elements.hint"
+                                            :maxFile="col.config_elements.maxFile"
+                                            :maxFileSize="col.config_elements.maxFileSize"
+                                            :uploadApi="col.config_elements.uploadApi"
+                                            :acceptedFiles="col.config_elements.acceptedFiles"
+                                            v-model="form[col.field_name]"
+                                            @change="changeDateTimePicker($event, col.field_name)"
+                                        >
+                                        </nits-dropzone>
                                     </div>
                                 </div>
                             </div>
@@ -188,6 +203,12 @@
             },
             changeCheckbox(event, field) {
                 this.$emit('changeCheckbox', event, field)
+            },
+            changeDatePicker(event, field) {
+                this.$emit('changeDatePicker', event, field)
+            },
+            changeDateTimePicker(event, field) {
+                this.$emit('changeDateTimePicker', event, field)
             },
             submit() {
                 this.$emit('formWizardSubmit')
