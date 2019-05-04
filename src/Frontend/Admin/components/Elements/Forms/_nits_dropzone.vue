@@ -2,7 +2,7 @@
     <div class="form-group">
         <label class="col-form-label">{{ label }}</label>
         <div class="">
-            <div class="kt-dropzone dropzone" :action="uploadApi" id="m-dropzone-one">
+            <div class="kt-dropzone dropzone" :action="uploadApi" ref="dropzoneElement" id="m-dropzone-one">
                 <div class="kt-dropzone__msg dz-message needsclick">
                     <h3 class="kt-dropzone__msg-title">Drop files here or click to upload.</h3>
                     <span class="kt-dropzone__msg-desc">{{ hint }}</span>
@@ -13,6 +13,10 @@
 </template>
 
 <script>
+    import Dropzone from 'dropzone';
+
+    Dropzone.autoDiscover = false;
+
     export default {
         name: "nits-dropzone",
         props: {
@@ -26,68 +30,34 @@
         mounted() {
             const self = this;
 
-            var Dropzone = require('dropzone');
-
-            var KTDropzoneDemo = function () {
-                // Private functions
-                var demos = function () {
-                    // single file upload
-                    Dropzone.options.kDropzoneOne = {
-                        paramName: "file", // The name that will be used to transfer the file
-                        maxFiles: self.maxFile,
-                        maxFilesize: self.maxFileSize, // MB
-                        acceptedFiles: self.acceptedFiles,
-                        addRemoveLinks: true,
-                        accept: function(file, done) {
-                            if (file.name == "output.json") {
-                                done("Naha, you don't.");
-                            } else {
-                                done();
-                            }
-                        }
-                    };
-
-                    // // multiple file upload
-                    // Dropzone.options.kDropzoneTwo = {
-                    //     paramName: "file", // The name that will be used to transfer the file
-                    //     maxFiles: 10,
-                    //     maxFilesize: self.maxFileSize, // MB
-                    //     addRemoveLinks: true,
-                    //     accept: function(file, done) {
-                    //         if (file.name == "justinbieber.jpg") {
-                    //             done("Naha, you don't.");
-                    //         } else {
-                    //             done();
-                    //         }
-                    //     }
-                    // };
-                    //
-                    // // file type validation
-                    // Dropzone.options.kDropzoneThree = {
-                    //     paramName: "file", // The name that will be used to transfer the file
-                    //     maxFiles: 10,
-                    //     maxFilesize: 10, // MB
-                    //     addRemoveLinks: true,
-                    //     acceptedFiles: "image/*,application/pdf,.psd",
-                    //     accept: function(file, done) {
-                    //         if (file.name == "justinbieber.jpg") {
-                    //             done("Naha, you don't.");
-                    //         } else {
-                    //             done();
-                    //         }
-                    //     }
-                    // };
-                }
-
-                return {
-                    // public functions
-                    init: function() {
-                        demos();
+            const settings = {
+                paramName: "file", // The name that will be used to transfer the file
+                maxFiles: self.maxFile,
+                maxFilesize: self.maxFileSize, // MB
+                acceptedFiles: self.acceptedFiles,
+                addRemoveLinks: true,
+                accept: function(file, done) {
+                    if (file.name == "output.json") {
+                        done("Naha, you don't.");
+                    } else {
+                        done();
                     }
-                };
-            }();
+                }
+            }
 
-            KTDropzoneDemo.init();
+            this.dropzone = new Dropzone(this.$refs.dropzoneElement, settings)
+
+            this.dropzone.on('complete', function(file) {
+                self.$emit('vdropzone-complete', file)
+            })
+
+            this.dropzone.on('processing', function(file) {
+                self.$emit('vdropzone-processing', file)
+            })
+
+            this.dropzone.on('drop', function(event) {
+                self.$emit('vdropzone-drop', event)
+            })
         }
     }
 </script>
