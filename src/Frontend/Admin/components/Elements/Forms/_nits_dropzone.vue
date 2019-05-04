@@ -36,6 +36,7 @@
                         paramName: "file", // The name that will be used to transfer the file
                         maxFiles: self.maxFile,
                         maxFilesize: self.maxFileSize, // MB
+                        acceptedFiles: self.acceptedFiles,
                         addRemoveLinks: true,
                         accept: function(file, done) {
                             if (file.name == "output.json") {
@@ -46,36 +47,36 @@
                         }
                     };
 
-                    // multiple file upload
-                    Dropzone.options.kDropzoneTwo = {
-                        paramName: "file", // The name that will be used to transfer the file
-                        maxFiles: 10,
-                        maxFilesize: self.maxFileSize, // MB
-                        addRemoveLinks: true,
-                        accept: function(file, done) {
-                            if (file.name == "justinbieber.jpg") {
-                                done("Naha, you don't.");
-                            } else {
-                                done();
-                            }
-                        }
-                    };
-
-                    // file type validation
-                    Dropzone.options.kDropzoneThree = {
-                        paramName: "file", // The name that will be used to transfer the file
-                        maxFiles: 10,
-                        maxFilesize: 10, // MB
-                        addRemoveLinks: true,
-                        acceptedFiles: "image/*,application/pdf,.psd",
-                        accept: function(file, done) {
-                            if (file.name == "justinbieber.jpg") {
-                                done("Naha, you don't.");
-                            } else {
-                                done();
-                            }
-                        }
-                    };
+                    // // multiple file upload
+                    // Dropzone.options.kDropzoneTwo = {
+                    //     paramName: "file", // The name that will be used to transfer the file
+                    //     maxFiles: 10,
+                    //     maxFilesize: self.maxFileSize, // MB
+                    //     addRemoveLinks: true,
+                    //     accept: function(file, done) {
+                    //         if (file.name == "justinbieber.jpg") {
+                    //             done("Naha, you don't.");
+                    //         } else {
+                    //             done();
+                    //         }
+                    //     }
+                    // };
+                    //
+                    // // file type validation
+                    // Dropzone.options.kDropzoneThree = {
+                    //     paramName: "file", // The name that will be used to transfer the file
+                    //     maxFiles: 10,
+                    //     maxFilesize: 10, // MB
+                    //     addRemoveLinks: true,
+                    //     acceptedFiles: "image/*,application/pdf,.psd",
+                    //     accept: function(file, done) {
+                    //         if (file.name == "justinbieber.jpg") {
+                    //             done("Naha, you don't.");
+                    //         } else {
+                    //             done();
+                    //         }
+                    //     }
+                    // };
                 }
 
                 return {
