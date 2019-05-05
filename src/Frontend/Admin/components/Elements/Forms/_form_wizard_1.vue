@@ -106,6 +106,29 @@
                                         >
                                         </nits-dropzone>
                                     </div>
+                                    <div v-else-if="col.form_type === 'nits-multiselect'">
+                                        <nits-multiselect
+                                            v-model="form[col.field_name]"
+                                            :label="col.config_elements.label"
+                                            :placeholder="col.config_elements.placeholder"
+                                            :options="options[col.field_name]"
+                                            :live_search="col.config_elements.live_search"
+                                            :live_search_placeholder="col.config_elements.live_search_placeholder"
+                                            @change="changeMultiSelect($event, col.field_name)"
+                                        >
+                                        </nits-multiselect>
+                                    </div>
+                                    <div v-else-if="col.form_type === 'nits-multiselect-2'">
+                                        <nits-multiselect-2
+                                            v-model="form[col.field_name]"
+                                            :label="col.config_elements.label"
+                                            :api="col.config_elements.api"
+                                            :placeholder="col.config_elements.placeholder"
+                                            :minimumInputLength="col.config_elements.minimumInputLength"
+                                            @change="changeMultiSelect2($event, col.field_name)"
+                                        >
+                                        </nits-multiselect-2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -209,6 +232,12 @@
             },
             changeDateTimePicker(event, field) {
                 this.$emit('changeDateTimePicker', event, field)
+            },
+            changeMultiSelect(event, field) {
+                this.$emit('changeMultiSelect', event, field)
+            },
+            changeMultiSelect2(event, field) {
+                this.$emit('changeMultiSelect2', event, field)
             },
             submit() {
                 this.$emit('formWizardSubmit')
