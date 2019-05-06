@@ -15,4 +15,3 @@ export const decrypt = function (text) {
     dec += decipher.final('utf8');
     return dec;
 }
-

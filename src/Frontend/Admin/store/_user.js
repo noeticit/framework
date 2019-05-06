@@ -1,4 +1,4 @@
-import {decrypt} from "NitsModels/_encrypt.js";
+import {decrypt} from "./../models/encrypt.js";
 
 const state =  {
     name: '',
