@@ -8,7 +8,7 @@ export default {
     props: {
         label: String,
         hint: String,
-        error: String,
+        error: Array,
         type: String,
         placeholder: String,
         addonType: String,
@@ -22,7 +22,7 @@ export default {
         let lineBreak = this.hint ? createElement('br') : ''
 
         //Error Text
-        let errorText = this.error ? createElement('span', { class: 'form-text kt-font-danger' }, this.error) : ''
+        let errorText = this.error ? this.error.map(a => createElement('div', { class: 'invalid-feedback' }, a)) : ''
 
 
         //Addons for text, icons and internal-icons
@@ -86,7 +86,7 @@ export default {
             createElement('label', { class: this.labelClasses() }, this.label),
             createElement('div', { class: this.inputClasses() }, [ leftAddon,
                 createElement('input', {
-                    class: 'form-control '+this.inputSizes()+' m-input '+this.inputStyles(),
+                    class: 'form-control '+this.inputSizes()+' m-input '+this.inputStyles()+ (this.error ? ' is-invalid ' : ''),
                     attrs: { type: this.type, placeholder: this.placeholder, disabled: this.isDisabled(), value: this.value },
                     on: {
                         input: (event) => {

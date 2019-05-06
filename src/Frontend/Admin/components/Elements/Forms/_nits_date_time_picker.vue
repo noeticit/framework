@@ -10,6 +10,7 @@
             placeholder: String,
             value: String,
             hint: String,
+            error: String
         },
         mounted() {
             const self = this;
@@ -65,7 +66,7 @@
                 createElement('label', {class: 'col-form-label'}, this.label),
                 createElement('div', {class: 'input-group date'}, [
                     createElement('input', {
-                        class: 'form-control',
+                        class: 'form-control'+ (this.error ? ' is-invalid ' : ''),
                         attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: "kt_datetimepicker_3"},
                         on: {
                             change: (event) => {

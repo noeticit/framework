@@ -2,9 +2,15 @@
     <div class="form-group row">
         <label class="col-form-label col-lg-3 col-sm-12">{{ label }}</label>
         <div class=" col-lg-4 col-md-9 col-sm-12">
-            <select class="form-control m-select2" id="kt_select2_6" name="param" multiple="multiple">
+            <select
+                :class="'form-control m-select2' + (this.error ? ' is-invalid ' : '')"
+                id="kt_select2_6"
+                name="param"
+                multiple="multiple"
+            >
                 <option></option>
             </select>
+            <div v-if="error" class="invalid-feedback">{{ this.error }}</div>
         </div>
     </div>
 </template>
@@ -19,7 +25,8 @@
             label: String,
             api: String,
             placeholder: String,
-            minimumInputLength: Number
+            minimumInputLength: Number,
+            error: String
         },
         mounted() {
             const self = this;

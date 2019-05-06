@@ -2,9 +2,23 @@
     <div class="form-group row">
         <label class="col-form-label col-lg-3 col-sm-12">{{ label }}</label>
         <div class="col-lg-4 col-md-9 col-sm-12">
-            <select class="form-control kt-selectpicker" multiple data-actions-box="true" v-model="multiselect" :title="placeholder" :data-live-search="live_search" :data-live-search-placeholder="live_search_placeholder">
-                <option v-for="item in options" :value="item.value" :data-icon="'la '+ item.icon" :data-subtext="item.subtext">{{ item.name }}</option>
+            <select
+                :class="'form-control kt-selectpicker' + (this.error ? ' is-invalid ' : '')"
+                multiple data-actions-box="true"
+                v-model="multiselect"
+                :title="placeholder"
+                :data-live-search="live_search"
+                :data-live-search-placeholder="live_search_placeholder"
+            >
+                <option
+                    v-for="item in options"
+                    :value="item.value"
+                    :data-icon="'la '+ item.icon" :data-subtext="item.subtext"
+                >
+                    {{ item.name }}
+                </option>
             </select>
+            <div v-if="error" class="invalid-feedback">{{ this.error }}</div>
         </div>
     </div>
 </template>
@@ -19,7 +33,8 @@
             label: String,
             placeholder: String,
             live_search: Boolean,
-            live_search_placeholder: String
+            live_search_placeholder: String,
+            error: String
         },
         data() {
             return {

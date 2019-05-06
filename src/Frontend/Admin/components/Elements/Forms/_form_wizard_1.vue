@@ -43,8 +43,8 @@
                                             :type="col.config_elements.type"
                                             :placeholder="col.config_elements.placeholder"
                                             :hint="col.config_elements.hint"
-                                            :error="col.config_elements.error"
                                             v-model="form[col.field_name]"
+                                            :error="errors[col.field_name]"
                                             @change="inputChanged($event, col.field_name)"
                                         >
                                         </nits-input>
@@ -53,8 +53,9 @@
                                         <nits-select
                                             :label="col.config_elements.label"
                                             :options="options[col.field_name]"
-                                            :error="col.config_elements.error"
                                             v-model="form[col.field_name]"
+                                            hint="Checing message"
+                                            :error="errors[col.field_name]"
                                             @change="selectChange($event, col.field_name)"
                                         >
                                         </nits-select>
@@ -64,6 +65,7 @@
                                             :label="col.config_elements.label"
                                             :options="options[col.field_name]"
                                             v-model="form[col.field_name]"
+                                            :error="errors[col.field_name]"
                                             :type="col.config_elements.type"
                                             :orientation="col.config_elements.orientation"
                                             :color="col.config_elements.color"
@@ -77,6 +79,7 @@
                                         <nits-date-picker
                                             :label="col.config_elements.label"
                                             :placeholder="col.config_elements.placeholder"
+                                            :error="errors[col.field_name]"
                                             :hint="col.config_elements.hint"
                                             v-model="form[col.field_name]"
                                             @change="changeDatePicker($event, col.field_name)"
@@ -86,6 +89,7 @@
                                     <div v-else-if="col.form_type === 'nits-date-time-picker'">
                                         <nits-date-time-picker
                                             :label="col.config_elements.label"
+                                            :error="errors[col.field_name]"
                                             :placeholder="col.config_elements.placeholder"
                                             :hint="col.config_elements.hint"
                                             v-model="form[col.field_name]"
@@ -102,6 +106,7 @@
                                             :uploadApi="col.config_elements.uploadApi"
                                             :acceptedFiles="col.config_elements.acceptedFiles"
                                             v-model="form[col.field_name]"
+                                            :error="errors[col.field_name]"
                                             @change="changeDateTimePicker($event, col.field_name)"
                                         >
                                         </nits-dropzone>
@@ -109,12 +114,14 @@
                                     <div v-else-if="col.form_type === 'nits-multiselect'">
                                         <nits-multiselect
                                             v-model="form[col.field_name]"
+
                                             :label="col.config_elements.label"
                                             :placeholder="col.config_elements.placeholder"
                                             :options="options[col.field_name]"
                                             :live_search="col.config_elements.live_search"
                                             :live_search_placeholder="col.config_elements.live_search_placeholder"
                                             @change="changeMultiSelect($event, col.field_name)"
+                                            :error="errors[col.field_name]"
                                         >
                                         </nits-multiselect>
                                     </div>
@@ -126,6 +133,7 @@
                                             :placeholder="col.config_elements.placeholder"
                                             :minimumInputLength="col.config_elements.minimumInputLength"
                                             @change="changeMultiSelect2($event, col.field_name)"
+                                            :error="errors[col.field_name]"
                                         >
                                         </nits-multiselect-2>
                                     </div>
@@ -169,7 +177,8 @@
         props: ['wizardData', 'options', 'form', 'api_url'],
         data() {
             return {
-                errors: []
+                errors: [],
+                loading: false
             }
         },
         mounted() {
@@ -240,27 +249,33 @@
                 this.$emit('changeMultiSelect2', event, field)
             },
             submit() {
-                this.$emit('formWizardSubmit')
+                this.loading = true
                 new api().create(this.api_url, this.form).then(response => {
-                    this.loading = false
-                    Swal.fire({
-                        title: "Holla!",
-                        text: "Saved successfully",
-                        type: "success"
-                    }).then((a) => {
-                        console.log('check');
-                        // if(a){
-                        //     this.$router.push({ name: this.backUrl })
-                        // }
-                    })
+                    if(response.status === 200)
+                    {
+                        this.loading = false
+                        Swal.fire({
+                            title: "Holla!",
+                            text: "Saved successfully",
+                            type: "success"
+                        }).then((a) => {
+                            console.log('check');
+                            this.$emit('formWizardSubmit')
+                            // if(a){
+                            //     this.$router.push({ name: this.backUrl })
+                            // }
+                        })
+                    }
                 }).catch((error) => {
-                    this.errors = error
-                    this.loading = false
                     Swal.fire({
                         title: "Oops!",
-                        text: "Mistake in input",
+                        text: error.response.data.message,
                         type: "error",
                     })
+                    this.errors = error.response.data.errors
+                    console.log(error.response.data)
+                    this.loading = false
+
                 })
             },
         },

@@ -13,7 +13,7 @@ export default {
         label: String,
         options: Array,
         multiple: Boolean,
-        error: String,
+        error: Array,
         hint: String,
         value: String
     },
@@ -33,11 +33,11 @@ export default {
     render (createElement) {
 
         //Help action text
-        let helpText = this.hint ? createElement('span', { class: 'm-form__help' }, this.hint) : ''
+        let helpText = this.hint ? createElement('span', { class: 'm-form__help kt-font-info' }, this.hint) : ''
         let lineBreak = this.hint ? createElement('br') : ''
 
         //Error Text
-        let errorText = this.error ? createElement('span', { class: 'm-form__help m--font-danger' }, this.error) : ''
+        let errorText = this.error ? this.error.map(a => createElement('div', { class: 'invalid-feedback' }, a)) : ''
 
         //For multi select
         let element =''
@@ -45,7 +45,7 @@ export default {
         {
             element = createElement('div', { class: this.inputClasses() }, [
                 createElement('select', {
-                        class: 'form-control '+this.inputSizes()+' m-input '+this.inputStyles(),
+                        class: 'form-control '+this.inputSizes()+' m-input '+this.inputStyles()+ (this.error ? ' is-invalid ' : ''),
                         attrs: { multiple: '' },
                         on: {
                             input: (event) => {
@@ -60,7 +60,7 @@ export default {
         {
             element = createElement('div', { class: this.inputClasses() }, [
                 createElement('select', {
-                        class: 'form-control m-input',
+                        class: 'form-control m-input'+ (this.error ? ' is-invalid ' : ''),
                         on: {
                             input: (event) => {
                                 this.$emit('input', event.target.value)
@@ -70,14 +70,14 @@ export default {
                             }
                         }},
                     this.selectOptions.map(a => createElement('option', {attrs: { value: a.value, selected: a.value === this.value }}, a.option))
-                )
+                ), errorText
             ])
         }
 
         //Final render
         return createElement('div', { class: this.formClasses() }, [
             createElement('label', { class: this.labelClasses() }, this.label),
-            element, helpText, lineBreak, errorText
+            element, helpText,
         ])
     }
 }
