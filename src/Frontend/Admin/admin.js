@@ -11,11 +11,11 @@ require('./bootstrap');
 
 import VueRouter from 'vue-router';
 import {router} from "./routes";
-import authorization from "./models/_auth";
+import auth from "./models/auth";
 import store from "./store/_store";
 import adminLayout from './components/Admin';
 
-const auth = new authorization();
+const auth = new auth();
 
 window.Vue = require('vue');
 
