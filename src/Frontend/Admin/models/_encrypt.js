@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const algorithm = 'aes-256-ctr';
 const password = process.env.MIX_APP_KEY;
 
-export const encrypt = function (text) {
+export const _encrypt = function (text) {
     var cipher = crypto.createCipher(algorithm,password)
     var crypted = cipher.update(text,'utf8','hex')
     crypted += cipher.final('hex');
