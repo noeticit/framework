@@ -1,4 +1,4 @@
-import api from 'NitsModels/_api'
+import api from 'NitsModels/_api.js'
 import swal from 'sweetalert';
 
 export default {

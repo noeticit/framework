@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import {getHeader} from 'NitsModels/_config'
+    import {getHeader} from 'NitsModels/_config.js'
     require('select2')
 
     export default {
