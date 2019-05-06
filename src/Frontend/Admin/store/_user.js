@@ -1,4 +1,4 @@
-import {decrypt} from "./../models/_encrypt";
+import {decrypt} from "./../models/encrypt";
 
 const state =  {
     name: '',
