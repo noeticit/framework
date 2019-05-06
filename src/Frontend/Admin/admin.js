@@ -11,7 +11,7 @@ require('./bootstrap');
 
 import VueRouter from 'vue-router';
 import {router} from "./routes";
-import authorization from "./models/_auth";
+import authorization from "NitsModels/_auth.js";
 import store from "./store/_store";
 import adminLayout from './components/Admin';
 
