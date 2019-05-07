@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+//Forms
+
 Vue.component('nits-input', () => import('./_nits_input.js'))
 Vue.component('nits-select', () => import('./_nits_select.js'))
 Vue.component('nits-textarea', () => import('./_nits_textarea.js'))
@@ -12,3 +14,10 @@ Vue.component('nits-date-time-picker', () => import('./_nits_date_time_picker.vu
 Vue.component('nits-dropzone', () => import('./_nits_dropzone.vue'))
 Vue.component('nits-multiselect', () => import('./_nits_multiselect.vue'))
 Vue.component('nits-multiselect-2', () => import('./_nits_multiselect_2.vue'))
+Vue.component('nits-form-repeater', () => import('./_nits_form_repeater.vue'))
+
+
+
+//Base components
+
+Vue.component('nits-button', () => import('./../Base/_nits_button.vue'))

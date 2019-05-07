@@ -137,6 +137,12 @@
                                         >
                                         </nits-multiselect-2>
                                     </div>
+                                    <div v-else-if="col.form_type === 'nits-form-repeater'">
+                                        <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                                        <nits-form-repeater>
+
+                                        </nits-form-repeater>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -227,6 +233,10 @@
             });
         },
         methods: {
+            buttonClickEvent(e, child, parent) {
+                console.log("clicked event")
+                console.log(child + ' ' + parent)
+            },
             inputChanged(event , field) {
                 this.$emit('inputChanged', event, field)
             },
