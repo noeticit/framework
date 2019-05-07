@@ -3,8 +3,8 @@
         <div class="form-group  row" id="kt_repeater_1">
             <label class="col-lg-2 col-form-label">Contacts:</label>
             <div data-repeater-list="" class="col-lg-10">
-                <div data-repeater-item class="form-group row align-items-center">
-                    <div v-for="(item, index) in elements" :class="item.column ? 'col-md-'+item.column : 'col-md-3'">
+                <div data-repeater-item class="form-group row align-items-center" v-for="(form, index) in elements">
+                    <div v-for="item in form.form" :class="item.column ? 'col-md-'+item.column : 'col-md-3'">
                         <div class="kt-form__group--inline">
                             <div v-if="item.form_type === 'nits-input'">
                                 <nits-input
@@ -90,47 +90,12 @@
                                 >
                                 </nits-multiselect-2>
                             </div>
-<!--                            <div class="kt-form__label">-->
-<!--                                <label>Name:</label>-->
-<!--                            </div>-->
-<!--                            <div class="kt-form__control">-->
-<!--                                <input type="email" class="form-control" placeholder="Enter full name">-->
-<!--                            </div>-->
                         </div>
                         <div class="d-md-none kt-margin-b-10"></div>
                     </div>
-<!--                    <div class="col-md-3">-->
-<!--                        <div class="kt-form__group&#45;&#45;inline">-->
-<!--                            <div class="kt-form__label">-->
-<!--                                <label>Name:</label>-->
-<!--                            </div>-->
-<!--                            <div class="kt-form__control">-->
-<!--                                <input type="email" class="form-control" placeholder="Enter full name">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="d-md-none kt-margin-b-10"></div>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-3">-->
-<!--                        <div class="kt-form__group&#45;&#45;inline">-->
-<!--                            <div class="kt-form__label">-->
-<!--                                <label class="kt-label m-label&#45;&#45;single">Number:</label>-->
-<!--                            </div>-->
-<!--                            <div class="kt-form__control">-->
-<!--                                <input type="email" class="form-control" placeholder="Enter contact number">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="d-md-none kt-margin-b-10"></div>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-2">-->
-<!--                        <div class="kt-radio-inline">-->
-<!--                            <label class="kt-checkbox kt-checkbox&#45;&#45;state-success">-->
-<!--                                <input type="checkbox"> Primary-->
-<!--                                <span></span>-->
-<!--                            </label>-->
-<!--                        </div>-->
-<!--                    </div>-->
+
                     <div class="col-md-4">
-                        <div data-repeater-delete="" class="btn-sm btn btn-danger btn-pill">
+                        <div data-repeater-delete="" class="btn-sm btn btn-danger btn-pill" @click.prevent="deleteRow(index)">
                             <span>
                                 <i class="la la-trash-o"></i>
                                 <span>Delete</span>
@@ -143,7 +108,7 @@
         <div class="form-group row">
             <label class="col-lg-2 col-form-label"></label>
             <div class="col-lg-4">
-                <div data-repeater-create="" class="btn btn btn-sm btn-brand btn-pill">
+                <div data-repeater-create="" class="btn btn btn-sm btn-brand btn-pill" @click.prevent="addRow">
                     <span>
                         <i class="la la-plus"></i>
                         <span>Add</span>
@@ -157,52 +122,26 @@
 <script>
     export default {
         name: "nits-form-repeater",
+        data() {
+            return {
+                errors: {},
+                form: {},
+                pushObjects: []
+            }
+        },
         props: {
             elements: Array,
-            errors: {},
-            form: {}
         },
         created() {
-            this.elements.forEach(function(element) {
-                var key = element.field_name
-                // Object.assign(this.errors, {key3: "value3"});
-            })
+            this.pushObjects = this.elements[0]
         },
-        mounted() {
-
-            require('jquery.repeater');
-
-            var KTFormRepeater = function() {
-
-                // Private functions
-                var demo1 = function () {
-                    $('#kt_repeater_1').repeater({
-                        initEmpty: false,
-
-                        defaultValues: {
-                            'text-input': 'foo'
-                        },
-
-                        show: function () {
-                            $(this).slideDown();
-                        },
-
-                        hide: function (deleteElement) {
-                            $(this).slideUp(deleteElement);
-                        }
-                    });
-                }
-                return {
-                    // public functions
-                    init: function () {
-                        demo1();
-                    }
-                };
-            }();
-
-            jQuery(document).ready(function() {
-                KTFormRepeater.init();
-            });
+        methods: {
+            addRow() {
+                this.elements.push(this.pushObjects)
+            },
+            deleteRow(index) {
+                this.elements.splice(index, 1);
+            }
         }
     }
 </script>

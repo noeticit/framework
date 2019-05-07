@@ -141,7 +141,7 @@
                                     <div v-else-if="col.form_type === 'nits-form-repeater'">
                                         <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
                                         <nits-form-repeater
-                                            :elements="elements"
+                                            :elements="col.elements"
                                         >
 
                                         </nits-form-repeater>
@@ -188,47 +188,7 @@
             return {
                 errors: [],
                 loading: false,
-                elements: [
-                    {
-                        column: 3,
-                        field_name: 'address',
-                        config_elements: {
-                            label: 'Address Line',
-                            hint: 'Please enter your Address.',
-                            error: '',
-                            type: 'text',
-                            placeholder: 'Address Line'
-                        },
-                        form_type: 'nits-input',
-                        value: ''
-                    },
-                    {
-                        column: 3,
-                        field_name: 'postcode',
-                        config_elements: {
-                            label: 'Postcode',
-                            hint: 'Please enter your Postcode.',
-                            error: '',
-                            type: 'text',
-                            placeholder: 'Postcode',
-                        },
-                        form_type: 'nits-input',
-                        value: ''
-                    },
-                    {
-                        column: 3,
-                        field_name: 'city',
-                        config_elements: {
-                            label: 'City',
-                            hint: 'Please enter your City.',
-                            error: '',
-                            type: 'text',
-                            placeholder: 'City',
-                        },
-                        form_type: 'nits-input',
-                        value: ''
-                    }
-                ]
+
             }
         },
         mounted() {
@@ -327,9 +287,6 @@
 
                 })
             },
-        },
-        watch: {
-
         }
     }
 </script>
