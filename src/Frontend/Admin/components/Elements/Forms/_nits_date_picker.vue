@@ -89,5 +89,4 @@
     @import "./../../../../../../../../../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
     @import "./../../../theme/framework/config";
     @import "./../../../theme/framework/components/vendors/bootstrap-datepicker/bootstrap-datepicker";
-    @import "./../../../theme/framework/vendors/line-awesome/css/line-awesome.css";
 </style>
