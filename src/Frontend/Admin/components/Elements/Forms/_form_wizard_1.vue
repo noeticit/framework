@@ -66,6 +66,7 @@
                                             :options="options[col.field_name]"
                                             v-model="form[col.field_name]"
                                             :error="errors[col.field_name]"
+                                            :multiple="col.config_elements.multiple"
                                             :type="col.config_elements.type"
                                             :orientation="col.config_elements.orientation"
                                             :color="col.config_elements.color"
@@ -297,7 +298,4 @@
 
 <style lang="scss" scoped>
     @import "./../../../theme/app/custom/wizard/wizard-v1";
-    @import "./../../../theme/framework/vendors/fontawesome5/css/all.min.css";
-    @import "./../../../theme/framework/vendors/flaticon/flaticon.css";
-    @import "./../../../theme/framework/vendors/flaticon2/flaticon.css";
 </style>
