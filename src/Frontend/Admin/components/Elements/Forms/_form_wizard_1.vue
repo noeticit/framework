@@ -139,7 +139,9 @@
                                     </div>
                                     <div v-else-if="col.form_type === 'nits-form-repeater'">
                                         <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
-                                        <nits-form-repeater>
+                                        <nits-form-repeater
+                                            :elements="elements"
+                                        >
 
                                         </nits-form-repeater>
                                     </div>
@@ -154,7 +156,7 @@
                     <div class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-prev">
                         Previous
                     </div>
-                    <div class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit" @click.prevent="submit">
+                    <div class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" data-ktwizard-type="action-submit" @click.prevent="submit">
                         Submit
                     </div>
                     <div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-next">
@@ -184,7 +186,48 @@
         data() {
             return {
                 errors: [],
-                loading: false
+                loading: false,
+                elements: [
+                    {
+                        column: 3,
+                        field_name: 'address',
+                        config_elements: {
+                            label: 'Address Line',
+                            hint: 'Please enter your Address.',
+                            error: '',
+                            type: 'text',
+                            placeholder: 'Address Line'
+                        },
+                        form_type: 'nits-input',
+                        value: ''
+                    },
+                    {
+                        column: 3,
+                        field_name: 'postcode',
+                        config_elements: {
+                            label: 'Postcode',
+                            hint: 'Please enter your Postcode.',
+                            error: '',
+                            type: 'text',
+                            placeholder: 'Postcode',
+                        },
+                        form_type: 'nits-input',
+                        value: ''
+                    },
+                    {
+                        column: 3,
+                        field_name: 'city',
+                        config_elements: {
+                            label: 'City',
+                            hint: 'Please enter your City.',
+                            error: '',
+                            type: 'text',
+                            placeholder: 'City',
+                        },
+                        form_type: 'nits-input',
+                        value: ''
+                    }
+                ]
             }
         },
         mounted() {
@@ -269,11 +312,7 @@
                             text: "Saved successfully",
                             type: "success"
                         }).then((a) => {
-                            console.log('check');
                             this.$emit('formWizardSubmit')
-                            // if(a){
-                            //     this.$router.push({ name: this.backUrl })
-                            // }
                         })
                     }
                 }).catch((error) => {
@@ -283,7 +322,6 @@
                         type: "error",
                     })
                     this.errors = error.response.data.errors
-                    console.log(error.response.data)
                     this.loading = false
 
                 })
