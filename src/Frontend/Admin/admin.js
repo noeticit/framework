@@ -17,6 +17,8 @@ import adminLayout from './components/Admin';
 
 const auth = new authorization();
 
+const aquire = 'Test';
+
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
