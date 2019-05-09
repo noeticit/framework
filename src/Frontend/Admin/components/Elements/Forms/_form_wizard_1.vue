@@ -141,6 +141,7 @@
                                     <div v-else-if="col.form_type === 'nits-form-repeater'">
                                         <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
                                         <nits-form-repeater
+                                            :label="col.label"
                                             :elements="col.elements"
                                             :options="options"
                                         >
@@ -179,8 +180,6 @@
     import api from 'NitsModels/_api'
     import {KTUtil} from 'NitsTheme/framework/lib/util';
     import {KTWizard} from 'NitsTheme/framework/components/foundation/wizard/wizard';
-
-
 
     export default {
         name: "form-wizard-1",

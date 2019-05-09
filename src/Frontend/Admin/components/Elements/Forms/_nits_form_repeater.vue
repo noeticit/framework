@@ -1,10 +1,10 @@
 <template>
     <div id="kt_repeater_1">
         <div class="form-group  row" id="kt_repeater_1">
-            <label class="col-lg-2 col-form-label">Contacts:</label>
+            <label class="col-lg-2 col-form-label">{{ label }}</label>
             <div data-repeater-list="" class="col-lg-10">
                 <div data-repeater-item class="form-group row align-items-center" v-for="(form, index) in elements">
-                    <div v-for="item in form.form" :class="item.column ? 'col-md-'+item.column : 'col-md-3'">
+                    <div v-for="item in form.form" :class="item.column ? 'col-md-'+item.column : ''">
                         <div class="kt-form__group--inline">
                             <div v-if="item.form_type === 'nits-input'">
                                 <nits-input
@@ -130,6 +130,7 @@
             }
         },
         props: {
+            label: String,
             elements: Array,
             options: Object
         },
