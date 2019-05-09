@@ -38,7 +38,7 @@ class {{$controllerName}} extends Controller
     }
 
     /**
-     * @param {{model}} ${{variable}}
+     * @param {{model}}  ${{variable}}
      * @return \Illuminate\Http\JsonResponse
      */
     public function show({{model}} ${{variable}})

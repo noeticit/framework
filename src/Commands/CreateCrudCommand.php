@@ -38,52 +38,38 @@ class CreateCrudCommand extends Command
     public function handle()
     {
         $crudName = $this->argument('name');
-
-        if(! $this->option('plugin'))
-        {
+        if(! $this->option('plugin')) {
             if(count(nits_plugins()) > 1)
             {
                 $this->info('You have multiple plugins installed');
                 $pluginName = $this->ask('Enter the plugin name');
-                if(!File::exists(base_path('/plugins/') . $pluginName)) {
+                if(!File::exists(base_path('/plugins/') . $pluginName))
                     $this->info('Plugin does not exists');
-                }
-                else {
-                    $this->makeModelContent($crudName, nits_get_plugin_config($pluginName.'.namespace'));
-                    $this->makeDatabaseContent($crudName , nits_get_plugin_config($pluginName.'.namespace'));
-                    $this->makeControllerContent($crudName, nits_get_plugin_config($pluginName.'.namespace'));
-                    $this->makeRequestContent($crudName, nits_get_plugin_config($pluginName.'.namespace'));
-                    $this->makeResourcesContent($crudName, nits_get_plugin_config($pluginName.'.namespace'));
-                    $this->makeRouteContent($crudName, nits_get_plugin_config($pluginName.'.namespace'));
-                }
+                else
+                    $this->makeFiles($crudName, nits_get_plugin_config($pluginName.'.namespace'));
             }
             else
             {
                 foreach(nits_plugins() as $plugin)
-                {
-                    $this->makeModelContent($crudName, nits_get_plugin_config($plugin.'.namespace'));
-                    $this->makeDatabaseContent($crudName , nits_get_plugin_config($plugin.'.namespace'));
-                    $this->makeControllerContent($crudName, nits_get_plugin_config($plugin.'.namespace'));
-                    $this->makeRequestContent($crudName, nits_get_plugin_config($plugin.'.namespace'));
-                    $this->makeResourcesContent($crudName, nits_get_plugin_config($plugin.'.namespace'));
-                    $this->makeRouteContent($crudName, nits_get_plugin_config($plugin.'.namespace'));
-                }
+                    $this->makeFiles($crudName, nits_get_plugin_config($plugin.'.namespace'));
             }
         }
-        else
-        {
+        else {
             if(File::exists(base_path('/plugins/') . $this->option('plugin')))
-            {
-                $this->makeModelContent($crudName, nits_get_plugin_config($this->option('plugin').'.namespace'));
-                $this->makeDatabaseContent($crudName , nits_get_plugin_config($this->option('plugin').'.namespace'));
-                $this->makeControllerContent($crudName, nits_get_plugin_config($this->option('plugin').'.namespace'));
-                $this->makeRequestContent($crudName, nits_get_plugin_config($this->option('plugin').'.namespace'));
-                $this->makeResourcesContent($crudName, nits_get_plugin_config($this->option('plugin').'.namespace'));
-                $this->makeRouteContent($crudName, nits_get_plugin_config($this->option('plugin').'.namespace'));
-            }
+                $this->makeFiles($crudName, nits_get_plugin_config($this->option('plugin').'.namespace'));
             else
                 $this->info('Plugin name mentioned doesn\'t exist');
         }
+    }
+
+    protected function makeFiles($name, $pluginName)
+    {
+        $this->makeModelContent($name, $pluginName);
+        $this->makeDatabaseContent($name , $pluginName);
+        $this->makeControllerContent($name, $pluginName);
+        $this->makeRequestContent($name, $pluginName);
+        $this->makeResourcesContent($name, $pluginName);
+        $this->makeRouteContent($name, $pluginName);
     }
 
     /**

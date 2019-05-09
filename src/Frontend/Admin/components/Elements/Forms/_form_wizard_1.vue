@@ -142,6 +142,7 @@
                                         <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
                                         <nits-form-repeater
                                             :elements="col.elements"
+                                            :options="options"
                                         >
 
                                         </nits-form-repeater>

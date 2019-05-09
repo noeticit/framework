@@ -91,6 +91,7 @@ class FrameworkServiceProvider extends ServiceProvider
      */
     public function registerCommands()
     {
+
         $this->commands([
             CreatePluginCommand::class,
             MakeModelCommand::class,

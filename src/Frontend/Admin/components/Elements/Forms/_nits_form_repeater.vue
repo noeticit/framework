@@ -131,6 +131,7 @@
         },
         props: {
             elements: Array,
+            options: Object
         },
         created() {
             this.pushObjects = this.elements[0]
