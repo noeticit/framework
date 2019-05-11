@@ -32,7 +32,8 @@ export default class auth {
                     axios.get('/nits-system-api/user', {headers: getHeader()}).then(response => {
                         if(response.status === 200)
                         {
-                            authUser.name = encrypt(response.data.name)
+                            authUser.first_name = encrypt(response.data.first_name)
+                            authUser.last_name = encrypt(response.data.last_name)
                             authUser.email = encrypt(response.data.email)
                             authUser.email_verified_at = encrypt(response.data.email_verified_at)
                             //Storing into local storage.
