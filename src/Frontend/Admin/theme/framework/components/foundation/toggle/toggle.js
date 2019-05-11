@@ -1,7 +1,7 @@
-"use strict";
+import {KTUtil} from './../../../lib/util';
 
 // plugin setup
-var KTToggle = function(elementId, options) {
+export var KTToggle = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;

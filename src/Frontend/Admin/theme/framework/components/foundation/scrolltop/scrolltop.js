@@ -1,5 +1,6 @@
-"use strict";
-var KTScrolltop = function(elementId, options) {
+import {KTUtil} from './../../../lib/util';
+
+export var KTScrolltop = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;

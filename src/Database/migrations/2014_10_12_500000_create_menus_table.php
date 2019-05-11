@@ -17,6 +17,8 @@ class CreateMenusTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('parent_id')->nullable()->unsigned();
             $table->string('name');
+            $table->string('link')->nullable();
+            $table->string('icon')->nullable();
             $table->integer('order');
             $table->timestamps();
             $table->softDeletes();
