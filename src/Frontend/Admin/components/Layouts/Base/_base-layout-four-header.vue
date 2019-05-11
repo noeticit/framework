@@ -17,13 +17,38 @@
             <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
             <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
                 <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile ">
-                    <ul class="kt-menu__nav" v-for="item in menu">
-<!--                        <li class="kt-menu__item  kt-menu__item&#45;&#45;open kt-menu__item&#45;&#45;here kt-menu__item&#45;&#45;submenu kt-menu__item&#45;&#45;rel kt-menu__item&#45;&#45;open kt-menu__item&#45;&#45;here" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">{{item.name}}</span></a></li>-->
-                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">{{item.name}}</span></a>
-                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                <ul class="kt-menu__subnav" v-for="element in item.child">
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">{{element.name}}</span></a></li>
-<!--                                    <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet&#45;&#45;dot"><span></span></i><span class="kt-menu__link-text">Directory</span><span class="kt-menu__link-badge"><span class="kt-badge kt-badge&#45;&#45;success">2</span></span></a></li>-->
+                    <ul class="kt-menu__nav ">
+                        <li v-for="item in menu" class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle" v-if="!item.link">
+                                <span class="kt-menu__link-text">{{ item.name }}</span>
+                            </a>
+                            <router-link v-else :to="item.link" class="kt-menu__link kt-menu__toggle">
+                                <span class="kt-menu__link-text">{{ item.name }}</span>
+                            </router-link>
+                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left" v-if="typeof item.sub_menu !== 'undefined' && item.sub_menu.length">
+                                <ul class="kt-menu__subnav" >
+                                    <li v-for="element in item.sub_menu" class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="#" class="kt-menu__link kt-menu__toggle" v-if="!element.link">
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                            <span class="kt-menu__link-text">{{ element.name }}</span>
+                                            <i class="kt-menu__hor-arrow la la-angle-right" v-if="typeof element.sub_menu !== 'undefined' && element.sub_menu.length"></i>
+                                        </a>
+                                        <router-link :to="element.link" class="kt-menu__link" v-else>
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                            <span class="kt-menu__link-text">{{ element.name }}</span>
+                                            <i class="kt-menu__hor-arrow la la-angle-right" v-if="typeof element.sub_menu !== 'undefined' && element.sub_menu.length"></i>
+                                        </router-link>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right" v-if="typeof element.sub_menu !== 'undefined' && element.sub_menu.length">
+                                            <ul class="kt-menu__subnav">
+                                                <li v-for="ele in element.sub_menu" class="kt-menu__item " aria-haspopup="true">
+                                                    <router-link :to="ele.link" class="kt-menu__link ">
+                                                        <i class="kt-menu__link-icon flaticon-users"></i>
+                                                        <span class="kt-menu__link-text">{{ ele.name }}</span>
+                                                    </router-link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -311,38 +336,22 @@
         name: "base-layout-four-header",
         data() {
             return {
-                menu: [
-                    { name: 'Dashboard', link: '',  icon: '',child:[]},
-                    { name: 'Projects', link: '',  icon: '', child: [
-                            { name: 'Type-1', link: '', icon: '', child: []}
-                        ]
-                    }
-                ],
-                userNotifications: '50 New',
-                topbar_notifications_events:[
-                    {message:'New report has been received',time:' 23 hrs ago',icon:'flaticon2-psd kt-font-success'},
-                    {message:'Finance report has been generated',time:' 2 hrs ago',icon:'flaticon-download-1 kt-font-danger'},
-                    {message:'New report has been received',time:' 23 hrs ago',icon:'flaticon2-psd kt-font-success'},
-                    {message:'Finance report has been generated',time:' 2 hrs ago',icon:'flaticon-download-1 kt-font-danger'},
-                ],
-                topbar_notifications_notifications:[
-                    {message:'New User feddback recieved',time:' 10 hrs ago',icon:'flaticon2-psd kt-font-success'},
-                    {message:'Finance report has been generated',time:' 2 hrs ago',icon:'flaticon-download-1 kt-font-danger'},
-                    {message:'New report has been received',time:' 23 hrs ago',icon:'flaticon2-psd kt-font-success'},
-                    {message:'Finance report has been generated',time:' 2 hrs ago',icon:'flaticon-download-1 kt-font-danger'},
-                ],
-                UserQuickActions: '50 Tasks Pending',
-                User_Quick_Actions:[
-                    {link:'http://www.w3.org/2000/svg',title:'Accounting',desc:'eCommerce'},
-                    {link:'http://www.w3.org/2000/svg',title:'Administration',desc:'Console'},
-                ],
-                profileSection:[
-                    {icon:'flaticon2-calendar-3 kt-font-success',title:'My Profile',desc:'Account settings and more',link:''},
-                    {icon:'flaticon2-mail kt-font-warning',title:'My Messages',desc:'Inbox and tasks',link:''},
-                    {icon:'flaticon2-rocket-1 kt-font-danger',title:'My Activities',desc:' Logs and notifications',link:''},
-                    {icon:'flaticon2-hourglass kt-font-brand',title:' My Tasks',desc:'latest tasks and projects',link:''},
-                ]
+                menu: []
             }
+        },
+        created() {
+            this.menu = JSON.parse(nitseditor).menu.map(a => ({
+                name: a.name,
+                link: a.link,
+                sub_menu: a.children.length ? a.children.map(b => ({
+                    name: b.name,
+                    link: b.link,
+                    sub_menu: b.children.length ? b.children.map(c => ({
+                        name: c.name,
+                        link: c.link
+                    })) : []
+                })) : []
+            }))
         },
         methods: {
             logout() {

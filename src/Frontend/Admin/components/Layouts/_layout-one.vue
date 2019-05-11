@@ -24,8 +24,8 @@
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper " id="kt_wrapper">
 
-<!--                    <base-layout-four-header></base-layout-four-header>-->
-                    <base-header></base-header>
+                    <base-layout-four-header></base-layout-four-header>
+<!--                    <base-header></base-header>-->
 
                     <router-view></router-view>
 
