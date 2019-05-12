@@ -8,8 +8,7 @@
                         <div class="kt-footer__section">
                             <h3 class="kt-footer__title">About</h3>
                             <div class="kt-footer__content">
-                                Biltrax is a leading provider of Business Intelligence & Lead Generation Services for Indian Building Industry.
-                                We help you identify new prospects, reach out to them & generate new opportunities for your Services & Products
+
                             </div>
                         </div>
                     </div>
@@ -59,13 +58,13 @@
                         </a>
                         <div class="kt-footer__copyright">
                             2019&nbsp;&copy;&nbsp;
-                            <a href="http://keenthemes.com/metronic" target="_blank">Keenthemes</a>
+                            <a href="http://www.noeticitservices.com" target="_blank">Noetic IT Services Pvt. Ltd.</a>
                         </div>
                     </div>
                     <div class="kt-footer__menu">
-                        <a href="http://keenthemes.com/metronic" target="_blank">Purchase Lisence</a>
-                        <a href="http://keenthemes.com/metronic" target="_blank">Team</a>
-                        <a href="http://keenthemes.com/metronic" target="_blank">Contact</a>
+                        <a href="http://www.noeticitservices.com" target="_blank">Leave Feedback</a>
+                        <a href="http://www.noeticitservices.com" target="_blank">Team</a>
+                        <a href="http://www.noeticitservices.com" target="_blank">Contact</a>
                     </div>
                 </div>
             </div>
