@@ -33,7 +33,7 @@ window.axios.interceptors.response.use(
         // Un-authorised
         if (error.response.status === 401) {
             window.localStorage.removeItem('authUser');
-            window.location = "/";
+            window.location = "/admin";
         }
         return Promise.reject(error)
     }
