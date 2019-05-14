@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 if (! function_exists('nits_plugins')) {
     /**
@@ -74,5 +75,32 @@ if(!function_exists('nits_config')) {
         $data = DB::table('app_settings')->where('key', $key)->first();
 
         return $data ? $data->value: null;
+    }
+}
+
+if(! function_exists('document_s3_upload')) {
+
+    function document_s3_upload($dir, $data, $file_name)
+    {
+        $pos = strpos($data, ';');
+        $type = explode(':', substr($data, 0, $pos))[1];
+        $format = explode('/', $type);
+
+        $exploded = explode(',', $data);
+
+        $decoded = base64_decode($exploded[1]);
+
+        if (str_contains($exploded[0], $format[1])) {
+            $extension = $format[1];
+        }
+
+        $fileName = $file_name ? $file_name : str_random() . '.' . $extension;
+
+        $path = Storage::disk('s3')->put(env('APP_NAME').'/'.$dir.'/'.$fileName, $decoded, 'public'); // only  for decoded file.
+
+        if (env('AWS_CLOUD_FRONT'))
+            return env('AWS_CLOUD_FRONT') . '/'. env('APP_NAME').'/'.$dir.'/'.$fileName;
+        else
+            return env('AWS_URL') . '/' . env('AWS_BUCKET') . '/' . env('APP_NAME').'/'.$dir.'/'.$fileName;
     }
 }

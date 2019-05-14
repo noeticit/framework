@@ -39,6 +39,10 @@ router.beforeEach((to, from, next) => {
         next()
 })
 
+
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
+Vue.use(CKEditor);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
