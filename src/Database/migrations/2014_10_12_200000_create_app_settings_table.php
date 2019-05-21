@@ -16,7 +16,7 @@ class CreateAppSettingsTable extends Migration
         Schema::create('app_settings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('key')->unique();
-            $table->string('value');
+            $table->longText('value');
             $table->timestamps();
             $table->softDeletes();
         });

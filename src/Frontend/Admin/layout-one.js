@@ -4,16 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-
 require('./bootstrap');
-
-
 
 import VueRouter from 'vue-router';
 import {router} from "./routes";
 import authorization from "NitsModels/_auth";
 import store from "./store/_store";
-import adminLayout from './components/Admin';
+import adminLayout from './components/LayoutOne';
 
 const auth = new authorization();
 
@@ -49,8 +46,8 @@ Vue.use(CKEditor);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const admin = new Vue({
-    el: '#admin',
+const layoutOne = new Vue({
+    el: '#layout-one',
     router: router,
     store,
     render:h=>h(adminLayout)

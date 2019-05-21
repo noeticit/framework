@@ -19,9 +19,9 @@
         </script>
 
     </head>
-    <body style="background-image: url(/nits-assets/media/demo4/bg/header.jpg); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+    <body style="background-image: url(/nits-assets/media/demo4/bg/header.jpg); background-position: center top; background-size: 100% 350px;" class="kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-aside--minimize kt-page--loading">
 
-        <div id="admin" style="height: 100%;">
+        <div id="layout-two" style="height: 100%;">
 
         </div>
 
@@ -30,6 +30,6 @@
             window.nitseditor = @json($nitseditor);
         </script>
 
-        <script src="{{ mix('nits-assets/js/admin/admin.js') }}"></script>
+        <script src="{{ mix('nits-assets/js/admin/layout-two.js') }}"></script>
     </body>
 </html>

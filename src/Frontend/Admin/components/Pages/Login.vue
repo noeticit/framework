@@ -13,14 +13,14 @@
                     </div>
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
                         <div class="kt-grid__item kt-grid__item--middle">
-                            <h3 class="kt-login__title">Welcome to {{ title }}!</h3>
-                            <h4 class="kt-login__subtitle">{{ subtitle }}</h4>
+                            <h3 class="kt-login__title">{{ nitseditor.login_title }}!</h3>
+                            <h4 class="kt-login__subtitle">{{ nitseditor.login_subtitle }}</h4>
                         </div>
                     </div>
                     <div class="kt-grid__item">
                         <div class="kt-login__info">
                             <div class="kt-login__copyright">
-                                {{ copyright }}
+                                {{ nitseditor.copyright }}
                             </div>
                             <div class="kt-login__menu">
                                 <a href="#" class="kt-link">Privacy</a>
@@ -120,8 +120,8 @@
                                     <a href="#" class="kt-link kt-login__link-forgot">
                                         Forgot Password
                                     </a>
-                                    <button id="kt_login_signup_cancel" class="btn btn-secondary btn-elevate kt-login__btn-secondary"  @click.prevent="BacktoLogin()">Back</button>
-                                    <button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="Register()">Submit</button>
+                                    <button id="kt_login_back_cancel" class="btn btn-secondary btn-elevate kt-login__btn-secondary"  @click.prevent="BacktoLogin()">Back</button>
+                                    <button id="kt_login_signup_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="Register()">Submit</button>
                                 </div>
 
                                 <!--end::Action-->
@@ -153,15 +153,16 @@
                 password: '',
                 error: '',
                 loading: false,
-                title: 'Confidence',
-                subtitle: 'Best app to cover your exams!',
-                copyright: ' @ 2019 Confidence',
                 loginIn: true,
                 SignUpIn: false,
+                nitseditor: JSON.parse(nitseditor)
             }
         },
         beforeCreate() {
             this.$auth.logout();
+        },
+        created() {
+
         },
         methods: {
             login() {
