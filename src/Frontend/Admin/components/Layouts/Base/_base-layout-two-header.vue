@@ -6,7 +6,7 @@
         <div class="kt-header__brand kt-grid__item  " id="kt_header_brand">
             <div class="kt-header__brand-logo">
                 <a href="index.html">
-                    <img alt="Logo" src="../assets/media/logos/logo-6.png" />
+                    <img alt="Logo" src="/nits-assets/media/logos/logo-6.png" />
                 </a>
             </div>
         </div>
@@ -180,7 +180,7 @@
                     <form>
 
                         <!--begin: Head -->
-                        <div class="kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b" style="background-image: url(../assets/media/misc/bg-1.jpg)">
+                        <div class="kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b" style="background-image: url(/nits-assets/media/misc/bg-1.jpg)">
                             <h3 class="kt-head__title">
                                 User Notifications
                                 &nbsp;
@@ -573,7 +573,7 @@
                     <form>
 
                         <!--begin: Head -->
-                        <div class="kt-head kt-head--skin-dark" style="background-image: url(../assets/media/misc/bg-1.jpg)">
+                        <div class="kt-head kt-head--skin-dark" style="background-image: url(/nits-assets/media/misc/bg-1.jpg)">
                             <h3 class="kt-head__title">
                                 User Quick Actions
                                 <span class="kt-space-15"></span>
@@ -656,7 +656,7 @@
 
                         <!-- begin:: Mycart -->
                         <div class="kt-mycart">
-                            <div class="kt-mycart__head kt-head" style="background-image: url(../assets/media/misc/bg-1.jpg);">
+                            <div class="kt-mycart__head kt-head" style="background-image: url(/nits-assets/media/misc/bg-1.jpg);">
                                 <div class="kt-mycart__info">
                                     <span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
                                     <h3 class="kt-mycart__title">My Cart</h3>
@@ -684,7 +684,7 @@
                                             </div>
                                         </div>
                                         <a href="#" class="kt-mycart__pic">
-                                            <img src="../assets/media/products/product9.jpg" title="">
+                                            <img src="/nits-assets/media/products/product9.jpg" title="">
                                         </a>
                                     </div>
                                 </div>
@@ -706,7 +706,7 @@
                                             </div>
                                         </div>
                                         <a href="#" class="kt-mycart__pic">
-                                            <img src="../assets/media/products/product13.jpg" title="">
+                                            <img src="/nits-assets/media/products/product13.jpg" title="">
                                         </a>
                                     </div>
                                 </div>
@@ -728,7 +728,7 @@
                                             </div>
                                         </div>
                                         <a href="#" class="kt-mycart__pic">
-                                            <img src="../assets/media/products/product16.jpg" title="">
+                                            <img src="/nits-assets/media/products/product16.jpg" title="">
                                         </a>
                                     </div>
                                 </div>
@@ -750,7 +750,7 @@
                                             </div>
                                         </div>
                                         <a href="#" class="kt-mycart__pic">
-                                            <img src="../assets/media/products/product15.jpg" title="" alt="">
+                                            <img src="/nits-assets/media/products/product15.jpg" title="" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -785,26 +785,26 @@
             <div class="kt-header__topbar-item kt-header__topbar-item--langs">
                 <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
 									<span class="kt-header__topbar-icon kt-header__topbar-icon--brand">
-										<img class="" src="../assets/media/flags/012-uk.svg" alt="" />
+										<img class="" src="/nits-assets/media/flags/012-uk.svg" alt="" />
 									</span>
                 </div>
                 <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim">
                     <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
                         <li class="kt-nav__item kt-nav__item--active">
                             <a href="#" class="kt-nav__link">
-                                <span class="kt-nav__link-icon"><img src="../assets/media/flags/020-flag.svg" alt="" /></span>
+                                <span class="kt-nav__link-icon"><img src="/nits-assets/media/flags/020-flag.svg" alt="" /></span>
                                 <span class="kt-nav__link-text">English</span>
                             </a>
                         </li>
                         <li class="kt-nav__item">
                             <a href="#" class="kt-nav__link">
-                                <span class="kt-nav__link-icon"><img src="../assets/media/flags/016-spain.svg" alt="" /></span>
+                                <span class="kt-nav__link-icon"><img src="/nits-assets/media/flags/016-spain.svg" alt="" /></span>
                                 <span class="kt-nav__link-text">Spanish</span>
                             </a>
                         </li>
                         <li class="kt-nav__item">
                             <a href="#" class="kt-nav__link">
-                                <span class="kt-nav__link-icon"><img src="../assets/media/flags/017-germany.svg" alt="" /></span>
+                                <span class="kt-nav__link-icon"><img src="/nits-assets/media/flags/017-germany.svg" alt="" /></span>
                                 <span class="kt-nav__link-text">German</span>
                             </a>
                         </li>
@@ -819,15 +819,15 @@
                 <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                     <span class="kt-hidden kt-header__topbar-welcome">Hi,</span>
                     <span class="kt-hidden kt-header__topbar-username">Nick</span>
-                    <img class="kt-hidden" alt="Pic" src="../assets/media/users/300_21.jpg" />
+                    <img class="kt-hidden" alt="Pic" src="/nits-assets/media/users/300_21.jpg" />
                     <span class="kt-header__topbar-icon kt-hidden-"><i class="flaticon2-user-outline-symbol"></i></span>
                 </div>
                 <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
 
                     <!--begin: Head -->
-                    <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(../assets/media/misc/bg-1.jpg)">
+                    <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(/nits-assets/media/misc/bg-1.jpg)">
                         <div class="kt-user-card__avatar">
-                            <img class="kt-hidden" alt="Pic" src="../assets/media/users/300_25.jpg" />
+                            <img class="kt-hidden" alt="Pic" src="/nits-assets/media/users/300_25.jpg" />
 
                             <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                             <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>

@@ -34,7 +34,7 @@
 
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
-                        <base-layout-two-subheader></base-layout-two-subheader>
+<!--                        <base-layout-two-subheader></base-layout-two-subheader>-->
 
                         <!-- begin:: Content -->
 
@@ -81,6 +81,7 @@
 </template>
 
 <script>
+    require('perfect-scrollbar');
     import {KTUtil} from 'NitsTheme/framework/lib/util';
     import {KTHeader} from 'NitsTheme/framework/components/foundation/header/header';
     import {KTOffcanvas} from 'NitsTheme/framework/components/foundation/offcanvas/offcanvas';

@@ -54,6 +54,7 @@
 
     // 6: Demo Includes
     @import "../theme/demo/demo6/sass/base/base";
+    @import "../theme/demo/demo6/sass/header/base";
     @import "../theme/demo/demo6/sass/header/base-mobile";
     @import "../theme/demo/demo6/sass/header/menu";
     @import "../theme/demo/demo6/sass/header/topbar";
