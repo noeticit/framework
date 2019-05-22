@@ -6,7 +6,7 @@
         <div class="kt-header__brand kt-grid__item  " id="kt_header_brand">
             <div class="kt-header__brand-logo">
                 <a href="index.html">
-                    <img alt="Logo" src="/nits-assets/media/logos/logo-6.png" />
+                    <img alt="Logo" src="/nits-assets/media/media/logos/logo-6.png" />
                 </a>
             </div>
         </div>
@@ -23,123 +23,99 @@
         <!-- begin: Header Menu -->
         <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
         <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
-            <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
-                <ul class="kt-menu__nav ">
-                    <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="index.html" class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a></li>
-                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Pages</span><i class="kt-menu__hor-arrow la la-angle-down"></i></a>
-                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                            <ul class="kt-menu__subnav">
-                                <li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Create New Post</span></a></li>
-                                <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Generate Reports</span><span class="kt-menu__link-badge"><span class="kt-badge kt-badge--success">2</span></span></a></li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true"><a href="#" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Manage Orders</span><i class="kt-menu__hor-arrow la la-angle-right"></i></a>
-                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
-                                        <ul class="kt-menu__subnav">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Latest Orders</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Pending Orders</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Processed Orders</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Delivery Reports</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Payments</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Customers</span></a></li>
-                                        </ul>
+            <form v-if="menuType === 'search'" class="kt-form" style="padding: 20px;">
+                <div class="form-group row">
+                    <div class="col-lg-10">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Find In
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-fit dropdown-menu-xl" aria-labelledby="dropdownMenuButton">
+                                    <div class="kt-notification">
+                                        <a href="#" class="kt-notification__item">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-line-chart kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Entire Projects
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    search from name, description, location, specs etc
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="kt-notification__item">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-box-1 kt-font-brand"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Projects by location
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    search by location, region, state or country
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="kt-notification__item">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-chart2 kt-font-danger"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Projects by specs
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    search by construction area, floors
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="kt-notification__item">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-image-file kt-font-warning"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Projects by contracts
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    search by contracts/tenders, awards
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="kt-notification__item">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-bar-chart kt-font-info"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Entire companies
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    search from name, description, location, specs etc
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true"><a href="#" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Customer Feedbacks</span><i class="kt-menu__hor-arrow la la-angle-right"></i></a>
-                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
-                                        <ul class="kt-menu__subnav">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Customer Feedbacks</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Supplier Feedbacks</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Reviewed Feedbacks</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Resolved Feedbacks</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Feedback Reports</span></a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Register Member</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Reports</span><i class="kt-menu__hor-arrow la la-angle-down"></i></a>
-                        <div class="kt-menu__submenu  kt-menu__submenu--fixed kt-menu__submenu--left" style="width:1000px">
-                            <div class="kt-menu__subnav">
-                                <ul class="kt-menu__content">
-                                    <li class="kt-menu__item ">
-                                        <h3 class="kt-menu__heading kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Finance Reports</span><i class="kt-menu__ver-arrow la la-angle-right"></i></h3>
-                                        <ul class="kt-menu__inner">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Annual Reports</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-user"></i><span class="kt-menu__link-text">HR Reports</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-clipboard"></i><span class="kt-menu__link-text">IPO Reports</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-graphic-1"></i><span class="kt-menu__link-text">Finance Margins</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-graphic-2"></i><span class="kt-menu__link-text">Revenue Reports</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="kt-menu__item ">
-                                        <h3 class="kt-menu__heading kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Project Reports</span><i class="kt-menu__ver-arrow la la-angle-right"></i></h3>
-                                        <ul class="kt-menu__inner">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Coca Cola CRM</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Delta Airlines Booking Site</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Malibu Accounting</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Vineseed Website Rewamp</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Zircon Mobile App</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Mercury CMS</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="kt-menu__item ">
-                                        <h3 class="kt-menu__heading kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">HR Reports</span><i class="kt-menu__ver-arrow la la-angle-right"></i></h3>
-                                        <ul class="kt-menu__inner">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Staff Directory</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Client Directory</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Salary Reports</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Staff Payslips</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Corporate Expenses</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Project Expenses</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="kt-menu__item ">
-                                        <h3 class="kt-menu__heading kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Reporting Apps</span><i class="kt-menu__ver-arrow la la-angle-right"></i></h3>
-                                        <ul class="kt-menu__inner">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Report Adjusments</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Sources & Mediums</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Reporting Settings</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Conversions</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Report Flows</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><span class="kt-menu__link-text">Audit & Logs</span></a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Find.." aria-label="Text input with dropdown button">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button">Go!</button>
                             </div>
                         </div>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Apps</span><i class="kt-menu__hor-arrow la la-angle-down"></i></a>
-                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                            <ul class="kt-menu__subnav">
-                                <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">eCommerce</span></a></li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true"><a href="#" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Audience</span><i class="kt-menu__hor-arrow la la-angle-right"></i></a>
-                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
-                                        <ul class="kt-menu__subnav">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">Active Users</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-1"></i><span class="kt-menu__link-text">User Explorer</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-lifebuoy"></i><span class="kt-menu__link-text">Users Flows</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-graphic-1"></i><span class="kt-menu__link-text">Market Segments</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-graphic"></i><span class="kt-menu__link-text">User Reports</span></a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Marketing</span></a></li>
-                                <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Campaigns</span><span class="kt-menu__link-badge"><span class="kt-badge kt-badge--success">3</span></span></a></li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true"><a href="#" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Cloud Manager</span><i class="kt-menu__hor-arrow la la-angle-right"></i></a>
-                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
-                                        <ul class="kt-menu__subnav">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add"></i><span class="kt-menu__link-text">File Upload</span><span class="kt-menu__link-badge"><span class="kt-badge kt-badge--danger">3</span></span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-signs-1"></i><span class="kt-menu__link-text">File Attributes</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-folder"></i><span class="kt-menu__link-text">Folders</span></a></li>
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text">System Settings</span></a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <button type="reset" class="btn btn-primary">Save search</button>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+            </form>
+            <div v-else id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
+                <base-menu-top-one></base-menu-top-one>
             </div>
         </div>
 
@@ -147,28 +123,6 @@
 
         <!-- begin:: Header Topbar -->
         <div class="kt-header__topbar">
-
-            <!--begin: Search -->
-            <div class="kt-header__topbar-item kt-header__topbar-item--search dropdown" id="kt_quick_search_toggle">
-                <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-                    <span class="kt-header__topbar-icon"><i class="flaticon2-search-1"></i></span>
-                </div>
-                <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-lg">
-                    <div class="kt-quick-search kt-quick-search--inline" id="kt_quick_search_inline">
-                        <form method="get" class="kt-quick-search__form">
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="flaticon2-search-1"></i></span></div>
-                                <input type="text" class="form-control kt-quick-search__input" placeholder="Search...">
-                                <div class="input-group-append"><span class="input-group-text"><i class="la la-close kt-quick-search__close"></i></span></div>
-                            </div>
-                        </form>
-                        <div class="kt-quick-search__wrapper kt-scroll" data-scroll="true" data-height="300" data-mobile-height="200">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--end: Search -->
 
             <!--begin: Notifications -->
             <div class="kt-header__topbar-item dropdown">
@@ -180,7 +134,7 @@
                     <form>
 
                         <!--begin: Head -->
-                        <div class="kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b" style="background-image: url(/nits-assets/media/misc/bg-1.jpg)">
+                        <div class="kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b" style="background-image: url(/nits-assets/media/media/misc/bg-1.jpg)">
                             <h3 class="kt-head__title">
                                 User Notifications
                                 &nbsp;
@@ -573,7 +527,7 @@
                     <form>
 
                         <!--begin: Head -->
-                        <div class="kt-head kt-head--skin-dark" style="background-image: url(/nits-assets/media/misc/bg-1.jpg)">
+                        <div class="kt-head kt-head--skin-dark" style="background-image: url(/nits-assets/media/media/misc/bg-1.jpg)">
                             <h3 class="kt-head__title">
                                 User Quick Actions
                                 <span class="kt-space-15"></span>
@@ -646,188 +600,20 @@
 
             <!--end: Quick actions -->
 
-            <!--begin: Cart -->
-            <div class="kt-header__topbar-item dropdown">
-                <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-                    <span class="kt-header__topbar-icon"><i class="flaticon2-shopping-cart-1"></i></span>
-                </div>
-                <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
-                    <form>
-
-                        <!-- begin:: Mycart -->
-                        <div class="kt-mycart">
-                            <div class="kt-mycart__head kt-head" style="background-image: url(/nits-assets/media/misc/bg-1.jpg);">
-                                <div class="kt-mycart__info">
-                                    <span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
-                                    <h3 class="kt-mycart__title">My Cart</h3>
-                                </div>
-                                <div class="kt-mycart__button">
-                                    <button type="button" class="btn btn-success btn-sm" style=" ">2 Items</button>
-                                </div>
-                            </div>
-                            <div class="kt-mycart__body kt-scroll" data-scroll="true" data-height="245" data-mobile-height="200">
-                                <div class="kt-mycart__item">
-                                    <div class="kt-mycart__container">
-                                        <div class="kt-mycart__info">
-                                            <a href="#" class="kt-mycart__title">
-                                                Samsung
-                                            </a>
-                                            <span class="kt-mycart__desc">
-																Profile info, Timeline etc
-															</span>
-                                            <div class="kt-mycart__action">
-                                                <span class="kt-mycart__price">$ 450</span>
-                                                <span class="kt-mycart__text">for</span>
-                                                <span class="kt-mycart__quantity">7</span>
-                                                <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
-                                                <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="kt-mycart__pic">
-                                            <img src="/nits-assets/media/products/product9.jpg" title="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="kt-mycart__item">
-                                    <div class="kt-mycart__container">
-                                        <div class="kt-mycart__info">
-                                            <a href="#" class="kt-mycart__title">
-                                                Panasonic
-                                            </a>
-                                            <span class="kt-mycart__desc">
-																For PHoto & Others
-															</span>
-                                            <div class="kt-mycart__action">
-                                                <span class="kt-mycart__price">$ 329</span>
-                                                <span class="kt-mycart__text">for</span>
-                                                <span class="kt-mycart__quantity">1</span>
-                                                <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
-                                                <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="kt-mycart__pic">
-                                            <img src="/nits-assets/media/products/product13.jpg" title="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="kt-mycart__item">
-                                    <div class="kt-mycart__container">
-                                        <div class="kt-mycart__info">
-                                            <a href="#" class="kt-mycart__title">
-                                                Fujifilm
-                                            </a>
-                                            <span class="kt-mycart__desc">
-																Profile info, Timeline etc
-															</span>
-                                            <div class="kt-mycart__action">
-                                                <span class="kt-mycart__price">$ 520</span>
-                                                <span class="kt-mycart__text">for</span>
-                                                <span class="kt-mycart__quantity">6</span>
-                                                <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
-                                                <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="kt-mycart__pic">
-                                            <img src="/nits-assets/media/products/product16.jpg" title="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="kt-mycart__item">
-                                    <div class="kt-mycart__container">
-                                        <div class="kt-mycart__info">
-                                            <a href="#" class="kt-mycart__title">
-                                                Candy Machine
-                                            </a>
-                                            <span class="kt-mycart__desc">
-																For PHoto & Others
-															</span>
-                                            <div class="kt-mycart__action">
-                                                <span class="kt-mycart__price">$ 784</span>
-                                                <span class="kt-mycart__text">for</span>
-                                                <span class="kt-mycart__quantity">4</span>
-                                                <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
-                                                <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="kt-mycart__pic">
-                                            <img src="/nits-assets/media/products/product15.jpg" title="" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="kt-mycart__footer">
-                                <div class="kt-mycart__section">
-                                    <div class="kt-mycart__subtitel">
-                                        <span>Sub Total</span>
-                                        <span>Taxes</span>
-                                        <span>Total</span>
-                                    </div>
-                                    <div class="kt-mycart__prices">
-                                        <span>$ 840.00</span>
-                                        <span>$ 72.00</span>
-                                        <span class="kt-font-brand">$ 912.00</span>
-                                    </div>
-                                </div>
-                                <div class="kt-mycart__button kt-align-right">
-                                    <button type="button" class="btn btn-primary btn-sm">Place Order</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- end:: Mycart -->
-                    </form>
-                </div>
-            </div>
-
-            <!--end: Cart-->
-
-            <!--begin: Language bar -->
-            <div class="kt-header__topbar-item kt-header__topbar-item--langs">
-                <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-									<span class="kt-header__topbar-icon kt-header__topbar-icon--brand">
-										<img class="" src="/nits-assets/media/flags/012-uk.svg" alt="" />
-									</span>
-                </div>
-                <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim">
-                    <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
-                        <li class="kt-nav__item kt-nav__item--active">
-                            <a href="#" class="kt-nav__link">
-                                <span class="kt-nav__link-icon"><img src="/nits-assets/media/flags/020-flag.svg" alt="" /></span>
-                                <span class="kt-nav__link-text">English</span>
-                            </a>
-                        </li>
-                        <li class="kt-nav__item">
-                            <a href="#" class="kt-nav__link">
-                                <span class="kt-nav__link-icon"><img src="/nits-assets/media/flags/016-spain.svg" alt="" /></span>
-                                <span class="kt-nav__link-text">Spanish</span>
-                            </a>
-                        </li>
-                        <li class="kt-nav__item">
-                            <a href="#" class="kt-nav__link">
-                                <span class="kt-nav__link-icon"><img src="/nits-assets/media/flags/017-germany.svg" alt="" /></span>
-                                <span class="kt-nav__link-text">German</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!--end: Language bar -->
-
             <!--begin: User bar -->
             <div class="kt-header__topbar-item kt-header__topbar-item--user">
                 <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                     <span class="kt-hidden kt-header__topbar-welcome">Hi,</span>
                     <span class="kt-hidden kt-header__topbar-username">Nick</span>
-                    <img class="kt-hidden" alt="Pic" src="/nits-assets/media/users/300_21.jpg" />
+                    <img class="kt-hidden" alt="Pic" src="/nits-assets/media/media/users/300_21.jpg" />
                     <span class="kt-header__topbar-icon kt-hidden-"><i class="flaticon2-user-outline-symbol"></i></span>
                 </div>
                 <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
 
                     <!--begin: Head -->
-                    <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(/nits-assets/media/misc/bg-1.jpg)">
+                    <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(/nits-assets/media/media/misc/bg-1.jpg)">
                         <div class="kt-user-card__avatar">
-                            <img class="kt-hidden" alt="Pic" src="/nits-assets/media/users/300_25.jpg" />
+                            <img class="kt-hidden" alt="Pic" src="/nits-assets/media/media/users/300_25.jpg" />
 
                             <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                             <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
@@ -907,14 +693,6 @@
 
             <!--end: User bar -->
 
-            <!--begin: Quick panel toggler -->
-            <div class="kt-header__topbar-item kt-header__topbar-item--quickpanel" data-toggle="kt-tooltip" title="Quick panel" data-placement="top">
-                <div class="kt-header__topbar-wrapper">
-                    <span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn"><i class="flaticon2-cube-1"></i></span>
-                </div>
-            </div>
-
-            <!--end: Quick panel toggler -->
         </div>
 
         <!-- end:: Header Topbar -->
@@ -924,8 +702,26 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
+
     export default {
-        name: "base-layout-two-header"
+        name: "base-layout-two-header",
+        data() {
+            return {
+                menuType: 'search'
+            }
+        },
+        methods: {
+            logout() {
+                this.$auth.logout()
+                this.$router.push('/');
+            }
+        },
+        computed: {
+            ...mapState({
+                user: state => state.user
+            })
+        }
     }
 </script>
 
