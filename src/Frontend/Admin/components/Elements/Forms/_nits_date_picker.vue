@@ -35,14 +35,14 @@
                     // input group layout
                     $('#kt_datepicker_2, #kt_datepicker_2_validate').datepicker({
                         rtl: KTUtil.isRTL(),
-                        format: 'mm/dd/yyyy',
+                        format: 'mm-dd-yyyy',
                         todayHighlight: true,
                         orientation: "bottom left",
                         templates: arrows,
                         clearBtn: true
                     }).on('changeDate', function(e) {
-                        self.$emit('input', e.format('dd/mm/yyyy'));
-                        self.$emit('change', e.format('dd/mm/yyyy'));
+                        self.$emit('input', e.format('dd-mm-yyyy'));
+                        self.$emit('change', e.format('dd-mm-yyyy'));
                     });
                 }
 
