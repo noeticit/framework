@@ -4,7 +4,7 @@
  * @class KApp
  */
 
-var KTApp = function() {
+export var KTApp = function() {
     /** @type {object} colors State colors **/
     var colors = {};
 

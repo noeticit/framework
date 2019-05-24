@@ -1,4 +1,7 @@
 'use strict';
+import {KTUtil} from './../../../lib/util';
+import {KTApp} from './../../../lib/app';
+
 (function($) {
 
 	var pluginName = 'KTDatatable';
