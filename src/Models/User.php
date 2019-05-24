@@ -38,8 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany('Nitseditor\Framework\Models\Role', 'user_roles', 'user_id', 'role_id');
+        return $this->belongsTo('Nitseditor\Framework\Models\Role', 'role_id', 'id');
     }
 }
