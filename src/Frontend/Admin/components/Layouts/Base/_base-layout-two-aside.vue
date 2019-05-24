@@ -18,7 +18,7 @@
                         <div class="kt-menu__submenu " v-if="typeof item.sub_menu !== 'undefined' && item.sub_menu.length"><span class="kt-menu__arrow"></span>
                             <ul class="kt-menu__subnav">
                                 <li v-for="element in item.sub_menu" :class=" item.link ? 'kt-menu__item  kt-menu__item--parent' : 'kt-menu__item  kt-menu__item--submenu'" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                                    <router-link v-if="item.link" class="kt-menu__link">
+                                    <router-link v-if="element.link" class="kt-menu__link">
                                         <span class="kt-menu__link-text">{{ element.name }}</span>
                                     </router-link>
                                     <a v-else href="javascript:;" class="kt-menu__link kt-menu__toggle">
