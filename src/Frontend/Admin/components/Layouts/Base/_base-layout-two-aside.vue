@@ -11,14 +11,15 @@
                             <span class="kt-menu__link-text">{{ item.name }}</span>
                         </router-link>
                         <a v-else href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                            <i class="kt-menu__link-icon flaticon2-list-3"></i>
+                            <i :class="'kt-menu__link-icon '+item.icon"></i>
                             <span class="kt-menu__link-text">{{ item.name }}</span>
                             <i class="kt-menu__ver-arrow la la-angle-right"></i>
                         </a>
                         <div class="kt-menu__submenu " v-if="typeof item.sub_menu !== 'undefined' && item.sub_menu.length"><span class="kt-menu__arrow"></span>
                             <ul class="kt-menu__subnav">
                                 <li v-for="element in item.sub_menu" :class=" item.link ? 'kt-menu__item  kt-menu__item--parent' : 'kt-menu__item  kt-menu__item--submenu'" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                                    <router-link v-if="element.link" class="kt-menu__link">
+                                    <router-link v-if="element.link" :to="element.link" class="kt-menu__link">
+                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                                         <span class="kt-menu__link-text">{{ element.name }}</span>
                                     </router-link>
                                     <a v-else href="javascript:;" class="kt-menu__link kt-menu__toggle">
@@ -60,12 +61,15 @@
             this.menu = JSON.parse(nitseditor).menu.map(a => ({
                 name: a.name,
                 link: a.link,
+                icon: a.icon,
                 sub_menu: a.children.length ? a.children.map(b => ({
                     name: b.name,
                     link: b.link,
+                    icon: b.icon,
                     sub_menu: b.children.length ? b.children.map(c => ({
                         name: c.name,
-                        link: c.link
+                        link: c.link,
+                        icon: c.icon
                     })) : []
                 })) : []
             }))
