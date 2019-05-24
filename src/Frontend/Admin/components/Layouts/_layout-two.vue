@@ -6,9 +6,9 @@
         <!-- begin:: Header Mobile -->
         <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
             <div class="kt-header-mobile__logo">
-                <a href="index.html">
+                <router-link to="/dashboard">
                     <img alt="Logo" src="/nits-assets/media/media/logos/logo-4.png" />
-                </a>
+                </router-link>
             </div>
             <div class="kt-header-mobile__toolbar">
                 <div class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></div>
