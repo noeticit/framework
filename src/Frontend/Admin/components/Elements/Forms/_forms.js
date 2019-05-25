@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue from 'vue/types';
 
 //Forms
 
@@ -22,4 +22,4 @@ Vue.component('nits-basic-form-layout', () => import('./_nits_basic_form_layout.
 
 //Base components
 
-Vue.component('nits-button', () => import('./../Base/_nits_button.vue'))
+Vue.component('nits-button', () => import('../Base/_nits_button.vue'))

@@ -1,5 +1,5 @@
 import api from 'NitsModels/_api.js'
-import swal from 'sweetalert';
+import swal from 'sweetalert/typings/sweetalert';
 
 export default {
     name: 'nits-form-portlet',

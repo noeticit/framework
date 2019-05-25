@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue/types'
 
 export default Vue.extend({
     name: 'nits-form-classes',

@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue/types';
+import VueRouter from 'vue-router/types';
 import {getAppRouting} from './apps/imports';
 import {getPluginAppRouting} from './apps/plugin-app-imports';
 

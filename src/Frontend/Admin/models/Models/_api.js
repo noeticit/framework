@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios/index'
 import {getHeader} from './_config.js';
 
 export default class {

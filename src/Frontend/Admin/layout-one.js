@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-import VueRouter from 'vue-router';
+import VueRouter from 'vue-router/types';
 import {router} from "./routes";
 import authorization from "NitsModels/_auth";
 import store from "./store/_store";
@@ -14,7 +14,7 @@ import adminLayout from './components/LayoutOne';
 
 const auth = new authorization();
 
-window.Vue = require('vue');
+window.Vue = require('vue/types');
 
 Vue.use(VueRouter);
 Vue.prototype.$auth = auth;
