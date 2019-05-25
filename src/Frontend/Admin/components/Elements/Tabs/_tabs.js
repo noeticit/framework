@@ -1,4 +1,4 @@
-import Vue from 'vue/types';
+import Vue from 'vue';
 
 Vue.component('TabType1', () => import('./_tab-type-1.vue'))
 Vue.component('TabType2', () => import('./_tab-type-2.vue'))

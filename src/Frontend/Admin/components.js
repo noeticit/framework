@@ -1,4 +1,4 @@
-import Vue from 'vue/types'
+import Vue from 'vue'
 
 require('./components/Layouts/Base/_globals')
 require('./components/Elements/Portlets/_portlets')

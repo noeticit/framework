@@ -1,4 +1,4 @@
-import Vue from 'vue/types';
+import Vue from 'vue';
 
 Vue.component('NitsPortlet', () => import('./_nits_portlet.js'))
 Vue.component('NitsFormPortlet', () => import('./_nits_form_portlet.js'))
