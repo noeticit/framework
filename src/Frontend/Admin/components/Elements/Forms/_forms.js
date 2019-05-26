@@ -23,4 +23,4 @@ Vue.component('nits-ckeditor', () => import('./CKEditor/_nits_ckeditor.vue'))
 
 //Base components
 
-Vue.component('nits-button', () => import('./../Base/_nits_button.vue'))
+Vue.component('nits-button', () => import('../Base/_nits_button.vue'))

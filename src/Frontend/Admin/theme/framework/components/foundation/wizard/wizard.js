@@ -1,4 +1,4 @@
-import {KTUtil} from './../../../lib/util';
+import {KTUtil} from '../../../lib/util';
 
 // plugin setup
 export var KTWizard = function(elementId, options) {

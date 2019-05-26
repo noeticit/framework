@@ -1,6 +1,6 @@
 'use strict';
-import {KTUtil} from './../../../lib/util';
-import {KTApp} from './../../../lib/app';
+import {KTUtil} from '../../../lib/util';
+import {KTApp} from '../../../lib/app';
 
 (function($) {
 

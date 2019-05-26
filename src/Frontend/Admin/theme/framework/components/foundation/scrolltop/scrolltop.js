@@ -1,4 +1,4 @@
-import {KTUtil} from './../../../lib/util';
+import {KTUtil} from '../../../lib/util';
 
 export var KTScrolltop = function(elementId, options) {
     // Main object

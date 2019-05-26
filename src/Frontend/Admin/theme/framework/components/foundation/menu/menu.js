@@ -1,4 +1,4 @@
-import {KTUtil} from './../../../lib/util';
+import {KTUtil} from '../../../lib/util';
 
 export var KTMenu = function(elementId, options) {
     // Main object

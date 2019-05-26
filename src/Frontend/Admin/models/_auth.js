@@ -1,6 +1,6 @@
 import {encrypt} from "./_encrypt";
 import {getHeader} from "./_config";
-import store from "./../store/_store";
+import store from "../store/_store";
 
 export default class auth {
 
