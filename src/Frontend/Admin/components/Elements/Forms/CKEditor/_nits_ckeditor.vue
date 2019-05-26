@@ -34,9 +34,9 @@
                 return Toolbar[this.config.toolbar || 'full'];
             },
             makeEditor() {
-                CKEDITOR.plugins.addExternal( 'pastefromword', './pastefromword/', 'plugin.js' );
-                this.editor = CKEDITOR.replace(this.$refs[this.identity], Object.assign({}, this.default, this.config))
-                    // .plugins.addExternal( 'pastefromword', './pastefromword/', 'plugin.js' );
+                this.editor = CKEDITOR.replace(this.$refs[this.identity])
+                console.log(CKEDITOR.plugins.loaded)
+                // this.editor = CKEDITOR.replace(this.$refs[this.identity], Object.assign({}, this.default, this.config))
                 this.editor.on('change', this.emitEvent)
                 this.editor.setData(this.currentBody)
             },

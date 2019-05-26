@@ -10,7 +10,8 @@
             placeholder: String,
             value: String,
             hint: String,
-            error: String
+            error: String,
+            identity: String
         },
         mounted() {
             const self = this;
@@ -33,9 +34,9 @@
                 // Private functions
                 var demos = function () {
                     // input group layout
-                    $('#kt_datepicker_2, #kt_datepicker_2_validate').datepicker({
+                    $('#'+self.identity).datepicker({
                         rtl: KTUtil.isRTL(),
-                        format: 'mm-dd-yyyy',
+                        format: 'dd-mm-yyyy',
                         todayHighlight: true,
                         orientation: "bottom left",
                         templates: arrows,
@@ -60,24 +61,25 @@
         },
         render(createElement) {
             let hintElement = this.hint ? createElement('span', { class: 'form-text text-muted'}, this.hint) : null;
+            let errorElement = this.error ? createElement('div', { class: 'invalid-feedback'}, this.error) : null;
             return createElement('div', { class: 'form-group' }, [
                 createElement('label', {class: 'col-form-label'}, this.label),
                 createElement('div', {class: 'input-group date'}, [
                     createElement('input', {
                         class: 'form-control'+ (this.error ? ' is-invalid ' : ''),
-                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: "kt_datepicker_2"},
+                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: this.identity},
                         on: {
                             change: (event) => {
                                 this.$emit('change', event.target.value)
                             }
                         }
-
                     }),
                     createElement('div', {class: 'input-group-append'}, [
                         createElement('span', {class: 'input-group-text'}, [
                             createElement('i', { class: 'la la-calendar-check-o'})
                         ])
-                    ])
+                    ]),
+                    errorElement
                 ]),
                 hintElement
             ])

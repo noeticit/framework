@@ -10,7 +10,8 @@
             placeholder: String,
             value: String,
             hint: String,
-            error: String
+            error: String,
+            identity: String
         },
         mounted() {
             const self = this;
@@ -36,7 +37,7 @@
                     }
 
                     // today button
-                    $('#kt_datetimepicker_3').datetimepicker({
+                    $('#'+self.identity).datetimepicker({
                         todayHighlight: true,
                         autoclose: true,
                         pickerPosition: 'bottom-left',
@@ -62,6 +63,7 @@
         },
         render(createElement) {
             let hintElement = this.hint ? createElement('span', { class: 'form-text text-muted'}, this.hint) : null;
+            let errorElement = this.error ? createElement('div', { class: 'invalid-feedback'}, this.error) : null;
             return createElement('div', { class: 'form-group' }, [
                 createElement('label', {class: 'col-form-label'}, this.label),
                 createElement('div', {class: 'input-group date'}, [
@@ -79,7 +81,8 @@
                         createElement('span', {class: 'input-group-text'}, [
                             createElement('i', { class: 'la la-calendar-check-o'})
                         ])
-                    ])
+                    ]),
+                    errorElement
                 ]),
                 hintElement
             ])
