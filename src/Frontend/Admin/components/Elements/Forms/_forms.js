@@ -17,6 +17,7 @@ Vue.component('nits-multiselect', () => import('./_nits_multiselect.vue'))
 Vue.component('nits-multiselect-2', () => import('./_nits_multiselect_2.vue'))
 Vue.component('nits-form-repeater', () => import('./_nits_form_repeater.vue'))
 Vue.component('nits-basic-form-layout', () => import('./_nits_basic_form_layout.vue'))
+Vue.component('nits-ckeditor', () => import('./CKEditor/_nits_ckeditor.vue'))
 
 
 
