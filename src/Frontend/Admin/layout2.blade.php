@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
+{{--        <link href="/nits-assets/maps-india/jsmaps/jsmaps.css" rel="stylesheet" type="text/css" />--}}
         <!--begin::Web font -->
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script>
@@ -31,5 +32,10 @@
         </script>
 
         <script src="{{ mix('nits-assets/js/admin/layout-two.js') }}"></script>
+
+        <!-- Map scripts  -->
+        <script src="/nits-assets/maps-india/jsmaps/jsmaps-libs.js" type="text/javascript"></script>
+        <!-- End Map scripts -->
+
     </body>
 </html>
