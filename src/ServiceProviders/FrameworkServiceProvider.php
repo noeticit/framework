@@ -10,6 +10,7 @@ use Nitseditor\Framework\Commands\CreateCrudCommand;
 use Nitseditor\Framework\Commands\CreateDatabaseCommand;
 use Nitseditor\Framework\Commands\CreatePluginCommand;
 use Nitseditor\Framework\Commands\CreateRequestCommand;
+use Nitseditor\Framework\Commands\InstallNitsCommand;
 use Nitseditor\Framework\Commands\MakeControllerCommand;
 use Nitseditor\Framework\Commands\MakeModelCommand;
 use Nitseditor\Framework\Commands\SeedingCommand;
@@ -100,6 +101,7 @@ class FrameworkServiceProvider extends ServiceProvider
             CreateRequestCommand::class,
             CreateCrudCommand::class,
             SeedingCommand::class,
+            InstallNitsCommand::class,
         ]);
     }
 }
