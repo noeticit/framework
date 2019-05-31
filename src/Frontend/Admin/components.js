@@ -6,6 +6,7 @@ require('./components/Elements/Widgets/_widgets')
 require('./components/Elements/Tabs/_tabs')
 require('./components/Elements/Forms/_forms')
 require('./components/Elements/Charts/_charts')
+require('./components/Elements/Maps/_maps')
 require('./components/Layouts/_layouts')
 
 Vue.component('NitsTable', () => import('./components/Elements/Tables/_nits_table.js'))

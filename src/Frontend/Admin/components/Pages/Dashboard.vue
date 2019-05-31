@@ -42,162 +42,198 @@
                         <div class="row">
                             <div class="col-xl-6">
 
-                                <!--begin:: Widgets/Quick Stats-->
-                                <div class="row row-full-height">
-                                    <div class="col-sm-12 col-md-12 col-lg-6">
-                                        <div class="kt-portlet kt-portlet--height-fluid-half kt-portlet--border-bottom-brand">
-                                            <div class="kt-portlet__body kt-portlet__body--fluid">
-                                                <div class="kt-widget26">
-                                                    <div class="kt-widget26__content">
-                                                        <span class="kt-widget26__number">570</span>
-                                                        <span class="kt-widget26__desc">Total Sales</span>
-                                                    </div>
-                                                    <div class="kt-widget26__chart" style="height:100px; width: 230px;">
-                                                        <canvas id="kt_chart_quick_stats_1"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-space-20"></div>
-                                        <div class="kt-portlet kt-portlet--height-fluid-half kt-portlet--border-bottom-danger">
-                                            <div class="kt-portlet__body kt-portlet__body--fluid">
-                                                <div class="kt-widget26">
-                                                    <div class="kt-widget26__content">
-                                                        <span class="kt-widget26__number">640</span>
-                                                        <span class="kt-widget26__desc">Completed Transactions</span>
-                                                    </div>
-                                                    <div class="kt-widget26__chart" style="height:100px; width: 230px;">
-                                                        <canvas id="kt_chart_quick_stats_2"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-6">
-                                        <div class="kt-portlet kt-portlet--height-fluid-half kt-portlet--border-bottom-success">
-                                            <div class="kt-portlet__body kt-portlet__body--fluid">
-                                                <div class="kt-widget26">
-                                                    <div class="kt-widget26__content">
-                                                        <span class="kt-widget26__number">234+</span>
-                                                        <span class="kt-widget26__desc">Transactions</span>
-                                                    </div>
-                                                    <div class="kt-widget26__chart" style="height:100px; width: 230px;">
-                                                        <canvas id="kt_chart_quick_stats_3"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-space-20"></div>
-                                        <div class="kt-portlet kt-portlet--height-fluid-half kt-portlet--border-bottom-warning">
-                                            <div class="kt-portlet__body kt-portlet__body--fluid">
-                                                <div class="kt-widget26">
-                                                    <div class="kt-widget26__content">
-                                                        <span class="kt-widget26__number">4.4M$</span>
-                                                        <span class="kt-widget26__desc">Paid Comissions</span>
-                                                    </div>
-                                                    <div class="kt-widget26__chart" style="height:100px; width: 230px;">
-                                                        <canvas id="kt_chart_quick_stats_4"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--end:: Widgets/Quick Stats-->
-                            </div>
-                            <div class="col-xl-6">
-
-                                <!--begin:: Widgets/Order Statistics-->
-                                <div class="kt-portlet kt-portlet--height-fluid">
+                                <!--begin:: Widgets/Projects Sales-->
+                                <div class="kt-portlet kt-portlet--bordered-semi kt-portlet--space kt-portlet--height-fluid">
                                     <div class="kt-portlet__head">
                                         <div class="kt-portlet__head-label">
                                             <h3 class="kt-portlet__head-title">
-                                                Order Statistics
+                                                Projects
+                                                <small>total projects</small>
                                             </h3>
                                         </div>
                                         <div class="kt-portlet__head-toolbar">
-                                            <a href="#" class="btn btn-label-brand btn-bold btn-sm dropdown-toggle" data-toggle="dropdown">
-                                                Export
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right">
-                                                <ul class="kt-nav">
-                                                    <li class="kt-nav__section kt-nav__section--first">
-                                                        <span class="kt-nav__section-text">Choose an action:</span>
-                                                    </li>
-                                                    <li class="kt-nav__item">
-                                                        <a href="#" class="kt-nav__link">
-                                                            <i class="kt-nav__link-icon flaticon2-graph-1"></i>
-                                                            <span class="kt-nav__link-text">Export</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="kt-nav__item">
-                                                        <a href="#" class="kt-nav__link">
-                                                            <i class="kt-nav__link-icon flaticon2-calendar-4"></i>
-                                                            <span class="kt-nav__link-text">Save</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="kt-nav__item">
-                                                        <a href="#" class="kt-nav__link">
-                                                            <i class="kt-nav__link-icon flaticon2-layers-1"></i>
-                                                            <span class="kt-nav__link-text">Import</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="kt-nav__item">
-                                                        <a href="#" class="kt-nav__link">
-                                                            <i class="kt-nav__link-icon flaticon2-calendar-4"></i>
-                                                            <span class="kt-nav__link-text">Update</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="kt-nav__item">
-                                                        <a href="#" class="kt-nav__link">
-                                                            <i class="kt-nav__link-icon flaticon2-file-1"></i>
-                                                            <span class="kt-nav__link-text">Customize</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                            <div class="dropdown dropdown-inline">
+                                                <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="flaticon-more-1"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <ul class="kt-nav">
+                                                        <li class="kt-nav__item">
+                                                            <a href="#" class="kt-nav__link">
+                                                                <i class="kt-nav__link-icon flaticon2-graph-1"></i>
+                                                                <span class="kt-nav__link-text">Statistics</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-nav__item">
+                                                            <a href="#" class="kt-nav__link">
+                                                                <i class="kt-nav__link-icon flaticon2-layers-1"></i>
+                                                                <span class="kt-nav__link-text">Reports</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="kt-portlet__body kt-portlet__body--fluid">
-                                        <div class="kt-widget12">
-                                            <div class="kt-widget12__content">
-                                                <div class="kt-widget12__item">
-                                                    <div class="kt-widget12__info">
-                                                        <span class="kt-widget12__desc">Annual Taxes EMS</span>
-                                                        <span class="kt-widget12__value">$400,000</span>
+                                    <div class="kt-portlet__body">
+                                        <div class="kt-widget25">
+                                            <span class="kt-widget25__stats m-font-brand">4,943</span>
+                                            <span class="kt-widget25__subtitle">Total projects</span>
+                                            <div class="kt-widget25__items">
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															4,495
+														</span>
+                                                    <div class="progress kt-progress--sm">
+                                                        <div class="progress-bar kt-bg-danger" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
-                                                    <div class="kt-widget12__info">
-                                                        <span class="kt-widget12__desc">Finance Review Date</span>
-                                                        <span class="kt-widget12__value">July 24,2019</span>
-                                                    </div>
+                                                    <span class="kt-widget25__desc">
+															Tracked projects
+														</span>
                                                 </div>
-                                                <div class="kt-widget12__item">
-                                                    <div class="kt-widget12__info">
-                                                        <span class="kt-widget12__desc">Avarage Revenue</span>
-                                                        <span class="kt-widget12__value">$60M</span>
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															4,751
+														</span>
+                                                    <div class="progress m-progress--sm">
+                                                        <div class="progress-bar kt-bg-success" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
-                                                    <div class="kt-widget12__info">
-                                                        <span class="kt-widget12__desc">Revenue Margin</span>
-                                                        <div class="kt-widget12__progress">
-                                                            <div class="progress kt-progress--sm">
-                                                                <div class="progress-bar kt-bg-brand" role="progressbar" style="width: 40%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                            <span class="kt-widget12__stat">
-																			40%
-																		</span>
-                                                        </div>
+                                                    <span class="kt-widget25__desc">
+															Verified Projects
+														</span>
+                                                </div>
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															1,043
+														</span>
+                                                    <div class="progress m-progress--sm">
+                                                        <div class="progress-bar kt-bg-warning" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
+                                                    <span class="kt-widget25__desc">
+															Added last 60 days
+														</span>
                                                 </div>
                                             </div>
-                                            <div class="kt-widget12__chart" style="height:250px;">
-                                                <canvas id="kt_chart_order_statistics"></canvas>
+                                            <div class="kt-widget25__items">
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															10,86,457
+														</span>
+                                                    <div class="progress kt-progress--sm">
+                                                        <div class="progress-bar kt-bg-danger" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span class="kt-widget25__desc">
+															Project Values(INR-Crore)
+														</span>
+                                                </div>
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															4,103
+														</span>
+                                                    <div class="progress m-progress--sm">
+                                                        <div class="progress-bar kt-bg-success" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span class="kt-widget25__desc">
+															Million-SqFt
+														</span>
+                                                </div>
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															1,798
+														</span>
+                                                    <div class="progress m-progress--sm">
+                                                        <div class="progress-bar kt-bg-warning" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span class="kt-widget25__desc">
+															Updated last 60 days
+														</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!--end:: Widgets/Order Statistics-->
+                                <!--end:: Widgets/Projects Sales-->
+                            </div>
+                            <div class="col-xl-6">
+
+                                <!--begin:: Widgets/Companies Sales-->
+                                <div class="kt-portlet kt-portlet--bordered-semi kt-portlet--space kt-portlet--height-fluid">
+                                    <div class="kt-portlet__head">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title">
+                                                Networks
+                                                <small>total connects</small>
+                                            </h3>
+                                        </div>
+                                        <div class="kt-portlet__head-toolbar">
+                                            <div class="dropdown dropdown-inline">
+                                                <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="flaticon-more-1"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <ul class="kt-nav">
+                                                        <li class="kt-nav__item">
+                                                            <a href="#" class="kt-nav__link">
+                                                                <i class="kt-nav__link-icon flaticon2-graph-1"></i>
+                                                                <span class="kt-nav__link-text">Statistics</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-nav__item">
+                                                            <a href="#" class="kt-nav__link">
+                                                                <i class="kt-nav__link-icon flaticon2-layers-1"></i>
+                                                                <span class="kt-nav__link-text">Reports</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kt-portlet__body">
+                                        <div class="kt-widget25">
+                                            <span class="kt-widget25__stats m-font-brand">14,495</span>
+                                            <span class="kt-widget25__subtitle">Industry Networks</span>
+                                            <div class="kt-widget25__items">
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															9,242
+														</span>
+                                                    <div class="progress kt-progress--sm">
+                                                        <div class="progress-bar kt-bg-danger" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span class="kt-widget25__desc">
+															Companies
+														</span>
+                                                </div>
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															8,147
+														</span>
+                                                    <div class="progress m-progress--sm">
+                                                        <div class="progress-bar kt-bg-success" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span class="kt-widget25__desc">
+															Professionals
+														</span>
+                                                </div>
+                                                <div class="kt-widget25__item">
+														<span class="kt-widget25__number">
+															1,043
+														</span>
+                                                    <div class="progress m-progress--sm">
+                                                        <div class="progress-bar kt-bg-warning" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span class="kt-widget25__desc">
+															Added last 60 days
+														</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--end:: Widgets/Companies Sales-->
                             </div>
                         </div>
 
