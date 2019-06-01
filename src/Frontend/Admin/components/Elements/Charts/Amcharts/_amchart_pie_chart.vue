@@ -1,57 +1,44 @@
 <template>
-    <div ref="armchart_pie_chart" style="height: 500px;"></div>
+    <div ref="amchart_pie_chart"></div>
 </template>
 
 <script>
     import * as am4core from "@amcharts/amcharts4/core";
     import * as am4charts from "@amcharts/amcharts4/charts";
     import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+    import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
 
+    am4core.useTheme(am4themes_dataviz);
     am4core.useTheme(am4themes_animated);
 
     export default {
         name: "amchart-pie-chart",
+        props: {
+            chartData: Object,
+        },
         data() {
             return {
                 chart: ''
             }
         },
         mounted() {
-            let chart = am4core.create(this.$refs.armchart_pie_chart, am4charts.PieChart);
+            let chart = am4core.create(this.$refs.amchart_pie_chart, am4charts.PieChart);
 
-            chart.data = [{
-                "country": "Lithuania",
-                "litres": 501.9
-            }, {
-                "country": "Czech Republic",
-                "litres": 301.9
-            }, {
-                "country": "Ireland",
-                "litres": 201.1
-            }, {
-                "country": "Germany",
-                "litres": 165.8
-            }, {
-                "country": "Australia",
-                "litres": 139.9
-            }, {
-                "country": "Austria",
-                "litres": 128.3
-            }, {
-                "country": "UK",
-                "litres": 99
-            }, {
-                "country": "Belgium",
-                "litres": 60
-            }, {
-                "country": "The Netherlands",
-                "litres": 50
-            }];
+            chart.data = this.chartData.data;
 
             // Add and configure Series
-            let pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.value = "litres";
-            pieSeries.dataFields.category = "country";
+
+            var pieSeries = chart.series.push(new am4charts.PieSeries());
+            pieSeries.dataFields.value = this.chartData.value;
+            pieSeries.dataFields.category = this.chartData.category;
+            pieSeries.ticks.template.disabled = true;
+            pieSeries.labels.template.disabled = true;
+
+            // chart.legend = new am4charts.Legend();
+            // chart.legend.position = "right";
+            // chart.legend.labels.template.maxWidth = 120;
+            // chart.legend.labels.template.truncate = true;
+            // chart.legend.itemContainers.template.tooltipText = "{category}";
 
             this.chart = chart;
         },
