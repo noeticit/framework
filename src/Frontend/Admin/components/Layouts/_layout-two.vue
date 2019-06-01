@@ -7,7 +7,7 @@
         <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
             <div class="kt-header-mobile__logo">
                 <router-link to="/dashboard">
-                    <img alt="Logo" src="/nits-assets/media/media/logos/logo-4.png" />
+                    <img alt="Logo" :src="nitseditor.app_logo" />
                 </router-link>
             </div>
             <div class="kt-header-mobile__toolbar">
@@ -94,7 +94,8 @@
         data() {
             return {
                 title: '',
-                pageData: []
+                pageData: [],
+                nitseditor: JSON.parse(nitseditor)
             }
         },
         mounted() {

@@ -3,11 +3,11 @@
     <div id="kt_header" class="kt-header kt-grid kt-grid--ver  kt-header--fixed ">
 
         <!-- begin:: Aside -->
-        <div class="kt-header__brand kt-grid__item  " id="kt_header_brand">
+        <div class="kt-header__brand kt-grid__item  " id="kt_header_brand" style="background-color: white;">
             <div class="kt-header__brand-logo">
-                <a href="index.html">
-                    <img alt="Logo" src="/nits-assets/media/media/logos/logo-6.png" />
-                </a>
+                <router-link to="/dashboard">
+                    <img alt="Logo" :src="nitseditor.app_logo" height="50px" />
+                </router-link>
             </div>
         </div>
 
@@ -695,7 +695,8 @@
         name: "base-layout-two-header",
         data() {
             return {
-                menuType: 'search'
+                menuType: 'search',
+                nitseditor: JSON.parse(nitseditor)
             }
         },
         methods: {

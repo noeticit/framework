@@ -13,6 +13,7 @@ class HomeController extends Controller
         $nitseditor = array(
             "menu" => $menus,
             "app_name" => nits_config('app_name'),
+            "app_logo" => nits_config('app_logo'),
             "layout" => nits_config('layout'),
             "domain_name" => nits_config('domain_name'),
             "language" => nits_config('language'),

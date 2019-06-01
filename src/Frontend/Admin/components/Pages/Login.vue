@@ -8,7 +8,7 @@
                 <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside nits-login_aside">
                     <div class="kt-grid__item">
                         <a href="#" class="kt-login__logo">
-                            <img src="/nits-assets/media/media/logos/logo-4.png" alt="logo here">
+                            <img :src="nitseditor.app_logo" alt="logo here">
                         </a>
                     </div>
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
