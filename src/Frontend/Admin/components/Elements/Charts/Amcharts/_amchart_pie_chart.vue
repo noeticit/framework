@@ -29,16 +29,18 @@
             // Add and configure Series
 
             var pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.value = this.chartData.value;
-            pieSeries.dataFields.category = this.chartData.category;
+            pieSeries.dataFields.value = "value";
+            pieSeries.dataFields.category = "label";
             pieSeries.ticks.template.disabled = true;
             pieSeries.labels.template.disabled = true;
 
-            // chart.legend = new am4charts.Legend();
-            // chart.legend.position = "right";
-            // chart.legend.labels.template.maxWidth = 120;
-            // chart.legend.labels.template.truncate = true;
-            // chart.legend.itemContainers.template.tooltipText = "{category}";
+            if(this.chartData.legends)
+            {
+                chart.legend = new am4charts.Legend();
+                chart.legend.labels.template.maxWidth = 120;
+                chart.legend.labels.template.truncate = true;
+                chart.legend.itemContainers.template.tooltipText = "{category}";
+            }
 
             this.chart = chart;
         },

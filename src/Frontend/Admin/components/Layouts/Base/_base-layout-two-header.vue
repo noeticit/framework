@@ -48,40 +48,14 @@
                                         </a>
                                         <a href="#" class="kt-notification__item">
                                             <div class="kt-notification__item-icon">
-                                                <i class="flaticon2-box-1 kt-font-brand"></i>
-                                            </div>
-                                            <div class="kt-notification__item-details">
-                                                <div class="kt-notification__item-title">
-                                                    Projects by location
-                                                </div>
-                                                <div class="kt-notification__item-time">
-                                                    search by location, region, state or country
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="kt-notification__item">
-                                            <div class="kt-notification__item-icon">
-                                                <i class="flaticon2-chart2 kt-font-danger"></i>
-                                            </div>
-                                            <div class="kt-notification__item-details">
-                                                <div class="kt-notification__item-title">
-                                                    Projects by specs
-                                                </div>
-                                                <div class="kt-notification__item-time">
-                                                    search by construction area, floors
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="kt-notification__item">
-                                            <div class="kt-notification__item-icon">
                                                 <i class="flaticon2-image-file kt-font-warning"></i>
                                             </div>
                                             <div class="kt-notification__item-details">
                                                 <div class="kt-notification__item-title">
-                                                    Projects by contracts
+                                                    Projects by awarded contracts
                                                 </div>
                                                 <div class="kt-notification__item-time">
-                                                    search by contracts/tenders, awards
+                                                    search by contracts, awards
                                                 </div>
                                             </div>
                                         </a>
@@ -91,13 +65,26 @@
                                             </div>
                                             <div class="kt-notification__item-details">
                                                 <div class="kt-notification__item-title">
-                                                    Entire companies
+                                                    Projects by tenders
                                                 </div>
                                                 <div class="kt-notification__item-time">
-                                                    search from name, description, location, specs etc
+                                                    search by tenders
                                                 </div>
                                             </div>
                                         </a>
+<!--                                        <a href="#" class="kt-notification__item">-->
+<!--                                            <div class="kt-notification__item-icon">-->
+<!--                                                <i class="flaticon2-bar-chart kt-font-info"></i>-->
+<!--                                            </div>-->
+<!--                                            <div class="kt-notification__item-details">-->
+<!--                                                <div class="kt-notification__item-title">-->
+<!--                                                    Entire companies-->
+<!--                                                </div>-->
+<!--                                                <div class="kt-notification__item-time">-->
+<!--                                                    search from name, description, location, specs etc-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
                                     </div>
                                 </div>
                             </div>

@@ -13,7 +13,7 @@
     export default {
         name: "admin",
         data() {
-            return { 
+            return {
                 logged: false,
             }
         },
