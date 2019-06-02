@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-grid--stretch">
-            <div class="kt-container kt-body  kt-grid kt-grid--ver" id="kt_body">
+            <div class="kt-container kt-body  kt-grid kt-grid--ver" id="kt_body" style="width: 1240px;">
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
                     <!-- begin:: Subheader -->
@@ -40,7 +40,7 @@
 
                         <!--Begin::Section-->
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col-md-6">
 
                                 <!--begin:: Widgets/Projects Sales-->
                                 <div class="kt-portlet kt-portlet--bordered-semi kt-portlet--space kt-portlet--height-fluid">
@@ -155,7 +155,7 @@
 
                                 <!--end:: Widgets/Projects Sales-->
                             </div>
-                            <div class="col-xl-6">
+                            <div class="col-md-6">
 
                                 <!--begin:: Widgets/Companies Sales-->
                                 <div class="kt-portlet kt-portlet--bordered-semi kt-portlet--space kt-portlet--height-fluid">

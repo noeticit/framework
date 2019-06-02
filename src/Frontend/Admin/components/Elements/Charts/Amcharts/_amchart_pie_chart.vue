@@ -37,6 +37,8 @@
             if(this.chartData.legends)
             {
                 chart.legend = new am4charts.Legend();
+                if(this.chartData.legendsRight)
+                    chart.legend.position = "right";
                 chart.legend.labels.template.maxWidth = 120;
                 chart.legend.labels.template.truncate = true;
                 chart.legend.itemContainers.template.tooltipText = "{category}";
