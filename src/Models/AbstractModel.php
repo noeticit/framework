@@ -15,9 +15,15 @@ class AbstractModel extends Model
 
     protected $guarded = ['id'];
 
+    protected $observer = '';
+
     protected static function boot()
     {
         parent::boot();
+
+        if (isset($observer)) {
+            static::observe($observer);
+        }
 
         if(env('APP_ENV') == 'prod')
         {
@@ -36,5 +42,6 @@ class AbstractModel extends Model
             });
         }
     }
+
 
 }

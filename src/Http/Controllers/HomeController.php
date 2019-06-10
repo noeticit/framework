@@ -26,10 +26,12 @@ class HomeController extends Controller
 //        dd(nits_config('layout'));
         
         if(nits_config('layout') === '1')
-            return view('nitseditor::Admin.layout1', [ 'nitseditor' => json_encode($nitseditor)]);
+            return view('nitseditor::Admin.views.layout1', [ 'nitseditor' => json_encode($nitseditor)]);
         elseif (nits_config('layout') === '2')
-            return view('nitseditor::Admin.layout2', [ 'nitseditor' => json_encode($nitseditor)]);
+            return view('nitseditor::Admin.views.layout2', [ 'nitseditor' => json_encode($nitseditor)]);
+        elseif (nits_config('layout') === '3')
+            return view('nitseditor::Admin.views.layout3', [ 'nitseditor' => json_encode($nitseditor)]);
         else
-            return view('nitseditor::Admin.layout1', [ 'nitseditor' => json_encode($nitseditor)]);
+            return view('nitseditor::Admin.views.layout1', [ 'nitseditor' => json_encode($nitseditor)]);
     }
 }
