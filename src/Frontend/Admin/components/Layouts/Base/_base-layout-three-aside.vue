@@ -113,5 +113,18 @@
 </script>
 
 <style scoped>
+    .kt-aside {
+        background-color: #1e1e2d;
+    }
+
+    .kt-aside__brand {
+        background-color: #1a1a27;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .kt-aside-menu-wrapper {
+        color: #a2a3b7;
+    }
 
 </style>

@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>NitsEditor: A produuct of Noetic IT Services Pvt. Ltd.</title>
+        <title>NitsEditor: A product of Noetic IT Services Pvt. Ltd.</title>
         <meta name="description" content="Login Page">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

@@ -702,5 +702,8 @@
 </script>
 
 <style scoped>
-
+    .kt-header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #eff0f6;
+    }
 </style>
