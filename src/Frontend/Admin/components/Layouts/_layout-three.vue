@@ -30,11 +30,11 @@
                 <!-- end:: Aside -->
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
-                    <base-layout-two-header></base-layout-two-header>
+                    <base-layout-three-header></base-layout-three-header>
 
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
-<!--                        <base-layout-two-subheader></base-layout-two-subheader>-->
+                        <base-layout-three-subheader></base-layout-three-subheader>
 
                         <!-- begin:: Content -->
 
