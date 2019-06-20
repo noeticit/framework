@@ -33,12 +33,13 @@
 </script>
 
 <style lang="scss">
+
     //Import scss...
     // 1: Demo Config
     @import "../theme/demo/default/sass/config";  // demo level framework config override
 
     // 2: Framework Config
-    @import "../theme/framework/config"; // framework config
+    @import "../theme/framework/config-global"; // framework config
 
     // 3: Bootstrap Include
     @import "../theme/framework/core/bootstrap/bootstrap.scss";
@@ -68,9 +69,9 @@
     @import "../theme/demo/default/sass/footer/base";
 
     // Icons
-    @import "../theme/framework/vendors/fontawesome5/css/all.min.css";
-    @import "../theme/framework/vendors/flaticon/flaticon.css";
-    @import "../theme/framework/vendors/flaticon2/flaticon.css";
-    @import "../theme/framework/vendors/line-awesome/css/line-awesome.css";
+    @import "../theme/vendors/fontawesome5/css/all.min.css";
+    @import "../theme/vendors/flaticon/flaticon.css";
+    @import "../theme/vendors/flaticon2/flaticon.css";
+    @import "../theme/vendors/line-awesome/css/line-awesome.css";
 
 </style>
