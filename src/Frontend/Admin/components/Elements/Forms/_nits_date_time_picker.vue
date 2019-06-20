@@ -94,5 +94,5 @@
     @import "./../../../../../../../../../node_modules/bootstrap-datetime-picker/css/bootstrap-datetimepicker.min.css";
     @import "./../../../theme/framework/config";
     @import "./../../../theme/framework/components/vendors/bootstrap-timepicker/bootstrap-timepicker";
-    @import "./../../../theme/framework/vendors/line-awesome/css/line-awesome.css";
+    @import "./../../../theme/vendors/line-awesome/css/line-awesome.css";
 </style>
