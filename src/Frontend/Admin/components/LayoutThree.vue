@@ -39,7 +39,7 @@
     @import "../theme/demo/default/sass/config";  // demo level framework config override
 
     // 2: Framework Config
-    @import "../theme/framework/config-global"; // framework config
+    @import "../theme/framework/config"; // framework config
 
     // 3: Bootstrap Include
     @import "../theme/framework/core/bootstrap/bootstrap.scss";
