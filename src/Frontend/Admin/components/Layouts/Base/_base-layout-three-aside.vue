@@ -26,10 +26,6 @@
 										</g>
 									</svg></span>
                 </button>
-
-                <!--
-<button class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left" id="kt_aside_toggler"><span></span></button>
--->
             </div>
         </div>
 
