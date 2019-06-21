@@ -16,7 +16,7 @@ class AbstractModel extends Model
     protected $guarded = ['id'];
 
     protected $observer = '';
-    
+
     protected static function boot()
     {
         parent::boot();
@@ -24,7 +24,7 @@ class AbstractModel extends Model
         if (isset($observer)) {
             static::observe($observer);
         }
-        
+
         if(env('APP_ENV') == 'prod')
         {
             // Decrypt the nits_encryption attributes.
@@ -42,5 +42,6 @@ class AbstractModel extends Model
             });
         }
     }
+
 
 }

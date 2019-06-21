@@ -68,9 +68,9 @@
     @import "../theme/demo/demo4/sass/footer/base";
 
     // Icons
-    @import "../theme/framework/vendors/fontawesome5/css/all.min.css";
-    @import "../theme/framework/vendors/flaticon/flaticon.css";
-    @import "../theme/framework/vendors/flaticon2/flaticon.css";
-    @import "../theme/framework/vendors/line-awesome/css/line-awesome.css";
+    @import "../theme/vendors/fontawesome5/css/all.min.css";
+    @import "../theme/vendors/flaticon/flaticon.css";
+    @import "../theme/vendors/flaticon2/flaticon.css";
+    @import "../theme/vendors/line-awesome/css/line-awesome.css";
 
 </style>
