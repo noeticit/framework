@@ -68,6 +68,8 @@ class FrameworkServiceProvider extends ServiceProvider
             $namespace = nits_get_plugin_config($package.'.namespace');
             if($namespace)
             {
+                $this->loadViewsFrom(base_path().'/plugins/'. $namespace .'/Frontend/Views', $namespace);
+                
                 if ($this->app->runningInConsole()) {
                     if(File::exists(base_path().'/plugins/'. $namespace .'/Databases/Migrations'))
                         $this->loadMigrationsFrom(base_path().'/plugins/'. $namespace .'/Databases/Migrations');

@@ -67,7 +67,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "./../../../theme/framework/vendors/line-awesome/css/line-awesome.css";
+    @import "./../../../theme/vendors/line-awesome/css/line-awesome.css";
     @import "./../../../../../../../../../node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css";
     @import "./../../../theme/framework/config";
     @import "./../../../theme/framework/components/vendors/bootstrap-timepicker/bootstrap-timepicker";
