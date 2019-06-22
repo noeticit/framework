@@ -48,8 +48,8 @@
             series.hiddenState.properties.startAngle = 90;
             series.hiddenState.properties.endAngle = 90;
 
-            chart.legend = new am4charts.Legend();
-
+            if(this.chartData.legends)
+                chart.legend = new am4charts.Legend();
 
             this.chart = chart;
         },
