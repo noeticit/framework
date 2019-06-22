@@ -22,7 +22,7 @@
 
     Vue.use(VueGoogleMaps, {
         load: {
-            key: 'AIzaSyAwfK11kto2P9kt2ZHnDSW9-LZDyd-DGkA',
+            key: 'AIzaSyA0QMehpL3LRC-SQX7fWma0nK-qzrUQVXo',
             libraries: 'places', // This is required if you use the Autocomplete plugin
             // OR: libraries: 'places,drawing'
             // OR: libraries: 'places,drawing,visualization'
