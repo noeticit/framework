@@ -34,7 +34,7 @@
 
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
-                        <base-layout-three-subheader></base-layout-three-subheader>
+<!--                        <base-layout-three-subheader></base-layout-three-subheader>-->
 
                         <!-- begin:: Content -->
 
