@@ -5,9 +5,8 @@
 <script>
     import * as am4core from "@amcharts/amcharts4/core";
     import * as am4charts from "@amcharts/amcharts4/charts";
-    // import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
-    // am4core.useTheme(am4themes_animated);
+    import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+    import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
 
     export default {
         name: "amchart-xy-chart",
@@ -17,6 +16,22 @@
             }
         },
         mounted() {
+            //Loading themes
+            if(this.chartData.theme)
+            {
+                am4core.useTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.useTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
+
+            //Creating charts
             let chart = am4core.create(this.$refs.armchart_xy_chart, am4charts.XYChart);
 
             chart.paddingRight = 20;
@@ -49,6 +64,21 @@
             chart.scrollbarX = scrollbarX;
 
             this.chart = chart;
+
+            //Un-loading theme
+            if(this.chartData.theme)
+            {
+                am4core.unuseTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.unuseTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
         },
         beforeDestroy() {
             if (this.chart) {

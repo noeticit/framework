@@ -5,11 +5,8 @@
 <script>
     import * as am4core from "@amcharts/amcharts4/core";
     import * as am4charts from "@amcharts/amcharts4/charts";
-    // import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-    // import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
-
-    // am4core.useTheme(am4themes_dataviz);
-    // am4core.useTheme(am4themes_animated);
+    import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+    import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
 
     export default {
         name: "amchart-rotated-series-chart",
@@ -22,8 +19,22 @@
             }
         },
         mounted() {
+            //Loading themes
+            if(this.chartData.theme)
+            {
+                am4core.useTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.useTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
 
-            // Create chart instance
+                }
+            }
+
+            //Creating charts
             let chart = am4core.create(this.$refs.amchart_rotated_series_chart, am4charts.XYChart);
             chart.scrollbarX = new am4core.Scrollbar();
             chart.data = this.chartData.data;
@@ -70,6 +81,21 @@
             chart.cursor = new am4charts.XYCursor();
 
             this.chart = chart;
+
+            //Un-loading theme
+            if(this.chartData.theme)
+            {
+                am4core.unuseTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.unuseTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
         },
         beforeDestroy() {
             if (this.chart) {

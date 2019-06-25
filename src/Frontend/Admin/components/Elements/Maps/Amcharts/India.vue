@@ -5,22 +5,36 @@
 <script>
     import * as am4core from "@amcharts/amcharts4/core";
     import * as am4maps from "@amcharts/amcharts4/maps";
-    // import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-    // import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
-
-    /* Chart code */
-    // Themes begin
-    // am4core.useTheme(am4themes_dataviz);
-    // am4core.useTheme(am4themes_animated);
+    import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+    import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
 
     export default {
         name: "amcharts-india",
+        props: {
+            chartData: Object
+        },
         data() {
             return {
                 chart: ''
             }
         },
         mounted() {
+            //Loading themes
+            if(this.chartData && this.chartData.theme)
+            {
+                am4core.useTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.useTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
+
+            //Creating charts
             var title = "India Map"
             // Create map instance
             this.chart = am4core.create(this.$refs.armchart_maps_india, am4maps.MapChart);
@@ -89,6 +103,21 @@
             // Create hover state and set alternative fill color
             let hs = polygonTemplate.states.create("hover");
             hs.properties.fill = this.chart.colors.getIndex(1).brighten(-0.5);
+
+            //Un-loading theme
+            if(this.chartData && this.chartData.theme)
+            {
+                am4core.unuseTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.unuseTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
         },
         beforeDestroy() {
             if (this.chart) {
