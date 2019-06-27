@@ -39,26 +39,46 @@ configRequire.keys().forEach((configPath) => {
 
             if(route.type === 'page')
             {
-                routes.push({
-                    ...route,
-                    name: `${appConfig.ns}__${route.name}`,
-                    path: `/pages/${route.path}`,
-                    meta: {
-                        requiresAuth: true, app: true
-                    }
-                });
+                if(route.meta && route.meta.requiresAuth === false)
+                    routes.push({
+                        ...route,
+                        name: `${appConfig.ns}__${route.name}`,
+                        path: `/pages/${route.path}`,
+                        meta: {
+                            requiresAuth: false, app: true
+                        }
+                    });
+                else
+                    routes.push({
+                        ...route,
+                        name: `${appConfig.ns}__${route.name}`,
+                        path: `/pages/${route.path}`,
+                        meta: {
+                            requiresAuth: true, app: true
+                        }
+                    });
             }
             else
             {
                 // Update the name and path with the app namespace prefix
-                routes.push({
-                    ...route,
-                    name: `${appConfig.ns}__${route.name}`,
-                    path: `/plugins/${appConfig.ns}/${route.path}`,
-                    meta: {
-                        requiresAuth: true, app: true
-                    }
-                });
+                if(route.meta && route.meta.requiresAuth === false)
+                    routes.push({
+                        ...route,
+                        name: `${appConfig.ns}__${route.name}`,
+                        path: `/plugins/${appConfig.ns}/${route.path}`,
+                        meta: {
+                            requiresAuth: false, app: true
+                        }
+                    });
+                else
+                    routes.push({
+                        ...route,
+                        name: `${appConfig.ns}__${route.name}`,
+                        path: `/pages/${route.path}`,
+                        meta: {
+                            requiresAuth: true, app: true
+                        }
+                    });
             }
 
         });
