@@ -598,4 +598,12 @@
         color: #a2a3b7;
     }
 
+    .kt-menu__link-icon {
+        color: #a2a3b7;
+    }
+
+    .kt-menu__link-text {
+        color: #a2a3b7;
+    }
+
 </style>

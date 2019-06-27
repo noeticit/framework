@@ -28,13 +28,13 @@
                 <base-layout-three-aside></base-layout-three-aside>
 
                 <!-- end:: Aside -->
-                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper" style="padding-top: 65px;">
 
                     <base-layout-three-header></base-layout-three-header>
 
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
-                        <base-layout-three-subheader></base-layout-three-subheader>
+<!--                        <base-layout-three-subheader></base-layout-three-subheader>-->
 
                         <!-- begin:: Content -->
 

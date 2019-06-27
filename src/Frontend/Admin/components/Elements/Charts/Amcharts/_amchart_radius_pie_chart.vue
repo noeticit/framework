@@ -8,9 +8,6 @@
     import am4themes_animated from "@amcharts/amcharts4/themes/animated";
     import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
 
-    am4core.useTheme(am4themes_dataviz);
-    am4core.useTheme(am4themes_animated);
-
     export default {
         name: "amchart-radius-pie-chart",
         props: {
@@ -22,7 +19,22 @@
             }
         },
         mounted() {
+            //Loading themes
+            if(this.chartData.theme)
+            {
+                am4core.useTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.useTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
 
+                }
+            }
+
+            //Creating charts
             let chart = am4core.create(this.$refs.amchart_radius_pie_chart, am4charts.PieChart);
             chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
@@ -39,9 +51,25 @@
 
             series.hiddenState.properties.endAngle = -90;
 
-            chart.legend = new am4charts.Legend();
+            if(this.chartData.legends)
+                chart.legend = new am4charts.Legend();
 
             this.chart = chart;
+
+            //Un-loading theme
+            if(this.chartData.theme)
+            {
+                am4core.unuseTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.unuseTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
         },
         beforeDestroy() {
             if (this.chart) {

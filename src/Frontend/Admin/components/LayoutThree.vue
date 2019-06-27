@@ -33,40 +33,46 @@
 </script>
 
 <style lang="scss">
+    // 1: Include global config
+    @import "../sass/theme/config";
 
-    //Import scss...
-    // 1: Demo Config
-    @import "../theme/demo/default/sass/config";  // demo level framework config override
-
-    // 2: Framework Config
-    @import "../theme/framework/config"; // framework config
+    // 2: Include demo config (that overrides the above global config)
+    @import "../sass/theme/demos/demo1/config";
 
     // 3: Bootstrap Include
-    @import "../theme/framework/core/bootstrap/bootstrap.scss";
+    @import "../sass/bootstrap/variables";
+    @import "./../../../../../../../node_modules/bootstrap/scss/bootstrap";
+    @import "../sass/bootstrap/bootstrap.scss";
 
-    // 4: Framework Include
-    @import "../theme/framework/include";
+    // 4: Core Include
+    @import "../sass/theme/core/include";
 
     // 5: Demo Configs
-    @import "../theme/demo/default/sass/header/config";
-    @import "../theme/demo/default/sass/brand/config";
-    @import "../theme/demo/default/sass/aside/config";
-    @import "../theme/demo/default/sass/footer/config";
+    @import "../sass/theme/demos/demo1/header/config";
+
+    @import "../sass/theme/demos/demo1/brand/config";
+
+    @import "../sass/theme/demos/demo1/aside/config";
+
+    @import "../sass/theme/demos/demo1/footer/config";
+
 
     // 6: Demo Includes
-    @import "../theme/demo/default/sass/base/base";
-    @import "../theme/demo/default/sass/header/base";
-    @import "../theme/demo/default/sass/header/base-mobile";
-    @import "../theme/demo/default/sass/header/menu";
-    @import "../theme/demo/default/sass/header/topbar";
+    // Layout
+    @import "../sass/theme/demos/demo1/base/base";
 
-    @import "../theme/demo/default/sass/brand/base";
+    @import "../sass/theme/demos/demo1/header/header";
+    @import "../sass/theme/demos/demo1/header/base-mobile";
+    @import "../sass/theme/demos/demo1/header/menu";
+    @import "../sass/theme/demos/demo1/header/topbar";
 
-    @import "../theme/demo/default/sass/aside/base";
+    @import "../sass/theme/demos/demo1/brand/brand";
 
-    @import "../theme/demo/default/sass/content/base";
+    @import "../sass/theme/demos/demo1/aside/aside";
 
-    @import "../theme/demo/default/sass/footer/base";
+    @import "../sass/theme/demos/demo1/content/content";
+
+    @import "../sass/theme/demos/demo1/footer/footer";
 
     // Icons
     @import "../theme/vendors/fontawesome5/css/all.min.css";

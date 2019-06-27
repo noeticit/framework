@@ -8,9 +8,6 @@
     import am4themes_animated from "@amcharts/amcharts4/themes/animated";
     import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
 
-    am4core.useTheme(am4themes_dataviz);
-    am4core.useTheme(am4themes_animated);
-
     export default {
         name: "amchart_bar_chart",
         props: {
@@ -22,6 +19,22 @@
             }
         },
         mounted() {
+            //Loading themes
+            if(this.chartData.theme)
+            {
+                am4core.useTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.useTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
+
+            //Creating charts
             let chart = am4core.create(this.$refs.amchart_bar_chart, am4charts.XYChart3D);
 
             chart.data = this.chartData.data.map(a => ({
@@ -48,6 +61,27 @@
             series.columns.template.column3D.strokeOpacity = 0.2;
 
             this.chart = chart;
+
+            //Un-loading theme
+            if(this.chartData.theme)
+            {
+                am4core.unuseTheme(am4themes_animated);
+                switch (this.chartData.theme) {
+                    case 'dataviz':
+                        am4core.unuseTheme(am4themes_dataviz);
+                        break;
+                    case '':
+                        break;
+                    default:
+
+                }
+            }
+
+        },
+        beforeDestroy() {
+            if (this.chart) {
+                this.chart.dispose();
+            }
         }
     }
 </script>
