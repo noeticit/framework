@@ -299,6 +299,14 @@
 
     export default {
         name: "base-layout-four-header",
+        data() {
+            return {
+                userNotifications: '',
+                topbar_notifications_notifications: [],
+                topbar_notifications_events: [],
+                UserQuickActions: ''
+            }
+        },
         methods: {
             logout() {
                 this.$auth.logout()
