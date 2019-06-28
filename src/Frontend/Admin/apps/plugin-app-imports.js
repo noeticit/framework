@@ -74,7 +74,7 @@ configRequire.keys().forEach((configPath) => {
                     routes.push({
                         ...route,
                         name: `${appConfig.ns}__${route.name}`,
-                        path: `/plugins/${route.path}`,
+                        path: `/plugins/${appConfig.ns}/${route.path}`,
                         meta: {
                             requiresAuth: true, app: true
                         }
