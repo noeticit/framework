@@ -304,7 +304,9 @@
                 userNotifications: '',
                 topbar_notifications_notifications: [],
                 topbar_notifications_events: [],
-                UserQuickActions: ''
+                UserQuickActions: '',
+                User_Quick_Actions: [],
+                profileSection: []
             }
         },
         methods: {
