@@ -65,6 +65,13 @@ class FrameworkServiceProvider extends ServiceProvider
 
         //Plugins migrations, factories and seeder.
         foreach (nits_plugins() as $package) {
+            $providers = collect(nits_get_plugin_config($package.'.providers'));
+
+            if($providers->count() > 0)
+                $providers->map(function ($item) {
+                    $this->app->register($item);
+                });
+
             $namespace = nits_get_plugin_config($package.'.namespace');
             if($namespace)
             {
