@@ -11,4 +11,7 @@ return [
     //Description of plugin
     'description' => '',
 
+    'providers' => [
+        //List of service provider used in this plugin
+    ]
 ];
