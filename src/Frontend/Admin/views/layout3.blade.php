@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>NitsEditor: A product of Noetic IT Services Pvt. Ltd.</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo/bx_logo.png">
         <meta name="description" content="Login Page">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -37,6 +40,9 @@
         <!-- Map scripts  -->
         <script src="/nits-assets/maps-india/jsmaps/jsmaps-libs.js" type="text/javascript"></script>
         <!-- End Map scripts -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     </body>
 </html>

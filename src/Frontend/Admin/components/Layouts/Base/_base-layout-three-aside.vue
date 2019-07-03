@@ -5,7 +5,7 @@
         <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
             <div class="kt-aside__brand-logo">
                 <router-link to="/dashboard">
-                    <img alt="Logo" :src="nitseditor.app_logo" height="50px" />
+<!--                    <img alt="Logo" :src="nitseditor.app_logo" height="50px" />-->
 <!--                    <img alt="Logo" src="/nits-assets/media/logos/logo-light.png" />-->
                 </router-link>
             </div>

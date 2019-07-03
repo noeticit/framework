@@ -6,7 +6,13 @@
         <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper" style="opacity: 1;">
             <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
                 <ul class="kt-menu__nav ">
-                    <li class="kt-menu__item  kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open kt-menu__item--here kt-menu__item--active"><h4>Applications</h4></li>
+                   <li>
+                       <router-link to="/dashboard">
+<!--                           <img alt="Logo" :src="nitseditor.app_logo" height="40px" />-->
+                           <img alt="Logo" src="/logo/logo.png" height="30px" style="margin-top: 15px"/>
+                       </router-link>
+                   </li>
+<!--                    <li class="kt-menu__item  kt-menu__item&#45;&#45;open kt-menu__item&#45;&#45;here kt-menu__item&#45;&#45;submenu kt-menu__item&#45;&#45;rel kt-menu__item&#45;&#45;open kt-menu__item&#45;&#45;here kt-menu__item&#45;&#45;active"><h4>Applications</h4></li>-->
                 </ul>
             </div>
         </div>
@@ -15,8 +21,8 @@
 
         <!-- begin:: Header Menu -->
         <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
-        <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper" style="width : 1100px;">
-            <form v-if="menuType === 'search'" class="kt-form" style="padding: 20px;">
+        <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper" style="width : 100%;">
+            <form v-if="menuType === 'search'" class="kt-form" style="padding: 15px;">
                 <div class="form-group row">
                     <div class="col-lg-8">
                         <div class="input-group">
@@ -87,11 +93,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="input-group">
-                            <button type="reset" class="btn btn-primary">Save search</button>
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-4">-->
+<!--                        <div class="input-group">-->
+<!--                            <button type="reset" class="btn btn-primary">Save search</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </form>
             <div v-else id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
