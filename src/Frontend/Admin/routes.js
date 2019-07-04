@@ -28,9 +28,17 @@ export const router = new VueRouter({
                 }
             },
             {
-                path: '/permissions',
-                component: Vue.component('permissions', () => import('./components/Pages/Permissions.vue')),
-                name: 'permissions',
+                path: '/permission',
+                component: Vue.component('permission', () => import('./components/Pages/Settings/permission.vue')),
+                name: 'permission',
+                meta: {
+                    requiresAuth: true
+                }
+            },
+            {
+                path: '/overview',
+                component: Vue.component('overview', () => import('./components/Pages/Settings/overview.vue')),
+                name: 'overview',
                 meta: {
                     requiresAuth: true
                 }

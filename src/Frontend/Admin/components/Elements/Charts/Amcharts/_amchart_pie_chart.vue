@@ -7,6 +7,7 @@
     import * as am4charts from "@amcharts/amcharts4/charts";
     import am4themes_animated from "@amcharts/amcharts4/themes/animated";
     import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
+    import am4themes_material from "@amcharts/amcharts4/themes/material.js";
 
     export default {
         name: "amchart-pie-chart",
@@ -27,7 +28,8 @@
                     case 'dataviz':
                         am4core.useTheme(am4themes_dataviz);
                         break;
-                    case '':
+                    case 'material':
+                        am4core.useTheme(am4themes_material);
                         break;
                     default:
 
