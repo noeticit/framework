@@ -18,3 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Auth::routes(['verify' => true]);
+
+Route::group(['middleware'=>['auth:api']],function() {
+
+    Route::prefix('permissions')->group(function() {
+
+        Route::get('/table', 'PermissionController@index');
+
+    });
+
+});
