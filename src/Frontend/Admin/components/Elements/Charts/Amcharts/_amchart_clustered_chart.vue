@@ -52,7 +52,7 @@
 
             let  valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.min = 0;
-            valueAxis.title.text = "Building Use";
+            valueAxis.title.text = "";
 
             // Create series
             function createSeries(field, name, stacked) {
@@ -65,11 +65,18 @@
                 series.columns.template.width = am4core.percent(95);
             }
 
-            createSeries("residential", "Residential", true);
-            createSeries("retail", "Retail", true);
-            createSeries("commercial", "Commercial", true);
-            createSeries("industrial", "Industrial", true);
-            createSeries("educational", "Educational", true);
+            // createSeries("residential", "Residential", true);
+            // createSeries("retail", "Retail", true);
+            // createSeries("commercial", "Commercial", true);
+            // createSeries("industrial", "Industrial", true);
+            // createSeries("educational", "Educational", true);
+
+            // States
+            createSeries("delhi", "Delhi", true);
+            createSeries("goa", "Goa", true);
+            createSeries("chennai", "Chennai", true);
+            createSeries("punjab", "Punjab", true);
+            createSeries("mumbai", "Mumbai", true);
 
 
             // Add legend
