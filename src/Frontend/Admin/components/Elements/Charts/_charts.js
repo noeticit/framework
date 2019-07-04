@@ -4,6 +4,9 @@ import Vue from 'vue';
 
 Vue.component('amchart-xy-chart', () => import('./Amcharts/_amchart_xy_chart.vue'))
 Vue.component('amchart-pie-chart', () => import('./Amcharts/_amchart_pie_chart.vue'))
+Vue.component('amchart-clustered-chart', () => import('./Amcharts/_amchart_clustered_chart.vue'))
+Vue.component('amchart-pareto-chart', () => import('./Amcharts/_amchart_pareto_chart.vue'))
+Vue.component('amchart-pie-legend-chart', () => import('./Amcharts/_amchart_pie_legend_chart.vue'))
 Vue.component('amchart-radius-pie-chart', () => import('./Amcharts/_amchart_radius_pie_chart.vue'))
 Vue.component('amchart-semi-pie-chart', () => import('./Amcharts/_amchart_semi_pie_chart.vue'))
 Vue.component('amchart-donut-chart', () => import('./Amcharts/_amchart_donut_chart.vue'))
