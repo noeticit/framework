@@ -1,28 +1,28 @@
 <template>
     <div>
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-grid--stretch">
-            <div class="kt-container kt-body  kt-grid kt-grid--ver" id="kt_body" style="width: 1240px;">
+            <div class="kt-container kt-body  kt-grid kt-grid--ver" id="kt_body" style="width: 100%;">
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
-                    <!-- begin:: Subheader -->
-                    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
-                        <div class="kt-subheader__main">
-                            <h3 class="kt-subheader__title">Permissions</h3>
-                            <h4 class="kt-subheader__desc">Set your user's permission</h4>
-                        </div>
-                        <div class="kt-subheader__toolbar">
-                            <div class="kt-subheader__wrapper">
-                                <a href="#" class="btn kt-subheader__btn-secondary">
-                                    Export
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; begin:: Subheader &ndash;&gt;-->
+<!--                    <div class="kt-subheader   kt-grid__item" id="kt_subheader">-->
+<!--                        <div class="kt-subheader__main">-->
+<!--                            <h3 class="kt-subheader__title">Permissions</h3>-->
+<!--                            <h4 class="kt-subheader__desc">Set your user's permission</h4>-->
+<!--                        </div>-->
+<!--                        <div class="kt-subheader__toolbar">-->
+<!--                            <div class="kt-subheader__wrapper">-->
+<!--                                <a href="#" class="btn kt-subheader__btn-secondary">-->
+<!--                                    Export-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <!-- end:: Subheader -->
+<!--                    &lt;!&ndash; end:: Subheader &ndash;&gt;-->
 
                     <!-- begin:: Content -->
-                    <div class="kt-content kt-grid__item kt-grid__item--fluid">
+                    <div class="kt-content kt-grid__item kt-grid__item--fluid" style="margin-top: -50px">
 
                         <!--Begin::Dashboard 4-->
 
@@ -134,7 +134,7 @@
 
 <script>
     export default {
-        name: "dashboard",
+        name: "permissions",
         data() {
             return {
                 search: '',
