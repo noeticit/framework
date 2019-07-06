@@ -10,8 +10,10 @@ class HomeController extends Controller
     public function admin()
     {
         $menus = Menu::tree();
+        $all_menu = Menu::all();
         $nitseditor = array(
             "menu" => $menus,
+            "all_menu" => $all_menu,
             "app_name" => nits_config('app_name'),
             "app_logo" => nits_config('app_logo'),
             "layout" => nits_config('layout'),
