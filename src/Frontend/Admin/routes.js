@@ -28,6 +28,14 @@ export const router = new VueRouter({
                 }
             },
             {
+                path: '/dashboard-biltrax-analytics',
+                component: Vue.component('dashboard2', () => import('./components/Pages/Dashboard2.vue')),
+                name: 'dashboard2',
+                meta: {
+                    requiresAuth: true
+                }
+            },
+            {
                 path: '/permission',
                 component: Vue.component('permission', () => import('./components/Pages/Settings/permission.vue')),
                 name: 'permission',
