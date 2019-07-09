@@ -35,6 +35,7 @@ export default class auth {
                             authUser.first_name = encrypt(response.data.first_name)
                             authUser.last_name = encrypt(response.data.last_name)
                             authUser.email = encrypt(response.data.email)
+                            authUser.role_id = response.data.role_id
                             authUser.email_verified_at = encrypt(response.data.email_verified_at)
                             //Storing into local storage.
                             window.localStorage.setItem('authUser', JSON.stringify(authUser));
