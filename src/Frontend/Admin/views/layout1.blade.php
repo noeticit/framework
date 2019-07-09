@@ -30,7 +30,7 @@
             window.nitseditor = @json($nitseditor);
         </script>
 
-{{--        <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>--}}
+        <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
         <script src="{{ mix('nits-assets/js/admin/layout-one.js') }}"></script>
     </body>
 </html>
