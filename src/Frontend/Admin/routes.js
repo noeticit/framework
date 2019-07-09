@@ -21,7 +21,7 @@ export const router = new VueRouter({
             },
             {
                 path: '/dashboard',
-                component: Vue.component('dashboard', () => import('./components/Pages/Dashboard.vue')),
+                component: Vue.component('dashboard', () => import('ProjectComponents/admin/components/Dashboard.vue')),
                 name: 'dashboard',
                 meta: {
                     requiresAuth: true

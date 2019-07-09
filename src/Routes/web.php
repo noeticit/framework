@@ -5,5 +5,3 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/{view?}', 'HomeController@admin')->where('view', '(.*)')->name('nitseditor.admin');
-
-Route::get('test-code-wars', 'TestingController@test');
