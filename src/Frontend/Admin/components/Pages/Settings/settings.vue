@@ -99,6 +99,7 @@
         data() {
             return {
                 search: '',
+                code: '',
                 dataAll:[
                     {name: 'Admin', id: ''},
                     {name: 'Super Admin', id: '1'},
