@@ -86,6 +86,7 @@
     import {KTMenu} from 'NitsTheme/framework/components/foundation/menu/menu';
     import {KTToggle} from 'NitsTheme/framework/components/foundation/toggle/toggle';
     import {KTScrolltop} from 'NitsTheme/framework/components/foundation/scrolltop/scrolltop';
+    import {menu} from 'ProjectComponents/admin/_model';
     export default {
         name: "base-layout-three-aside",
         data() {
@@ -99,36 +100,7 @@
         },
         methods: {
             menumain() {
-                var menu_type = _.find(JSON.parse(nitseditor).all_menu, (o) => {
-                    return o.link === this.$router.currentRoute.path;
-                })
-                if(menu_type.menu_location === 'main_menu')
-                    var main_menu = _.filter(JSON.parse(nitseditor).menu, function(o) { return o.menu_location === 'main_menu'; })
-                else if(menu_type.menu_location === 'analytics_menu')
-                    var main_menu = _.filter(JSON.parse(nitseditor).menu, function(o) { return o.menu_location === 'analytics_menu'; })
-
-                this.menu = main_menu.map(a => ({
-                    name: a.name,
-                    link: a.link,
-                    icon: a.icon,
-                    sub_menu: a.children.length ? a.children.map(b => ({
-                        name: b.name,
-                        link: b.link,
-                        icon: b.icon,
-                        sub_menu: b.children.length ? b.children.map(c => ({
-                            name: c.name,
-                            link: c.link,
-                            icon: c.icon
-                        })) : []
-                    })) : []
-                }))
-
-                if(menu_type.menu_location === 'main_menu')
-                    this.menu.push({name: 'Biltrax Analytics', link: '/dashboard-biltrax-analytics', icon: 'flaticon2-protection'})
-                else if(menu_type.menu_location === 'analytics_menu')
-                    this.menu.push({name: 'Search Data', link: '/dashboard', icon: 'flaticon2-protection'})
-
-                console.log(this.menu);
+                this.menu = menu(this.$router.currentRoute.path)
             }
         },
         mounted() {
