@@ -145,6 +145,8 @@
 </template>
 
 <script>
+    import {login} from 'ProjectComponents/admin/_model'
+
     export default {
         name: "login",
         data() {
@@ -173,22 +175,12 @@
                     password: this.password
                 }
 
-                this.$auth.login(user).then(response => {
+                login(user).then(resolve => {
                     this.loading = false
-                    this.$router.push('/dashboard')
-                }).catch( err => {
-                    if(err.response.status === 401){
-                        this.error = err.response.data.message
-                        this.loading = false
-                    }
-                    if(err.response.status === 500) {
-                        this.error = 'Server error, please try after sometime.'
-                        this.loading = false
-                    }
-                    if(err.response.status === 400) {
-                        this.error = 'Environment variable missing. Check and retry.'
-                        this.loading = false
-                    }
+                    this.$router.push(resolve.redirect)
+                }).catch(error => {
+                    this.loading = false
+                    this.error = error
                 })
 
             },
