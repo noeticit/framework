@@ -23,7 +23,7 @@
                                     </a>
                                     <span class="kt-widget__subtitle">
 																Head of Development
-															</span>
+                                    </span>
                                 </div>
                                 <div class="kt-widget__action">
                                     <button type="button" class="btn btn-info btn-sm">chat</button>&nbsp;

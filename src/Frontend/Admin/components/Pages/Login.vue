@@ -8,7 +8,7 @@
                 <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside nits-login_aside">
                     <div class="kt-grid__item">
                         <a href="#" class="kt-login__logo">
-                            <img :src="nitseditor.app_logo" alt="logo here">
+                            <img :src="nitseditor.app_logo" alt="logo here" height="100px" width="100px">
                         </a>
                     </div>
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
@@ -19,9 +19,7 @@
                     </div>
                     <div class="kt-grid__item">
                         <div class="kt-login__info">
-                            <div class="kt-login__copyright">
-                                {{ nitseditor.copyright }}
-                            </div>
+                            <div class="kt-login__copyright" v-html="nitseditor.copyright"></div>
                             <div class="kt-login__menu">
                                 <a href="#" class="kt-link">Privacy</a>
                                 <a href="#" class="kt-link">Legal</a>
@@ -145,6 +143,8 @@
 </template>
 
 <script>
+    import {login} from 'ProjectComponents/admin/_model'
+
     export default {
         name: "login",
         data() {
@@ -173,22 +173,12 @@
                     password: this.password
                 }
 
-                this.$auth.login(user).then(response => {
+                login(user).then(resolve => {
                     this.loading = false
-                    this.$router.push('/dashboard')
-                }).catch( err => {
-                    if(err.response.status === 401){
-                        this.error = err.response.data.message
-                        this.loading = false
-                    }
-                    if(err.response.status === 500) {
-                        this.error = 'Server error, please try after sometime.'
-                        this.loading = false
-                    }
-                    if(err.response.status === 400) {
-                        this.error = 'Environment variable missing. Check and retry.'
-                        this.loading = false
-                    }
+                    this.$router.push(resolve.redirect)
+                }).catch(error => {
+                    this.loading = false
+                    this.error = error
                 })
 
             },
