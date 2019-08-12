@@ -41,24 +41,28 @@
 
             this.chart.titles.create().text = title;
 
-            // Set map definition
-            this.chart.geodataSource.url = "/nits-assets/map_geodata/indiaLow.json";
-            this.chart.geodataSource.events.on("parseended", function(ev) {
-                let data = [];
-                for(var i = 0; i < ev.target.data.features.length; i++) {
-                    data.push({
-                        id: ev.target.data.features[i].id,
-                        value: Math.round( Math.random() * 10000 )
-                    })
-                }
-                polygonSeries.data = data;
-            })
 
             // Set projection
             this.chart.projection = new am4maps.projections.Mercator();
 
             // Create map polygon series
             let polygonSeries = this.chart.series.push(new am4maps.MapPolygonSeries());
+
+            this.chart.geodataSource.url = "/nits-assets/map_geodata/indiaLow.json";
+            this.chart.geodataSource.events.on("parseended", (ev) => {
+                let data = [];
+                for(var i = 0; i < ev.target.data.features.length; i++) {
+                    let state = _.find(this.chartData.data, (o) => {
+                        return o.label === ev.target.data.features[i].properties.name;
+                    })
+
+                    data.push({
+                        id: ev.target.data.features[i].id,
+                        value: typeof state !== 'undefined' && state.value ? state.value : 0
+                    })
+                }
+                polygonSeries.data = data;
+            })
 
             //Set min/max fill color for each area
             polygonSeries.heatRules.push({
