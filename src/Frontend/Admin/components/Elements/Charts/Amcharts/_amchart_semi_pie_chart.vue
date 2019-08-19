@@ -51,14 +51,21 @@
             series.dataFields.value = "value";
             series.dataFields.category = "label";
 
+            if(typeof this.chartData.hideTickLabels !== 'undefined' &&  this.chartData.hideTickLabels) {
+                series.ticks.template.disabled = true;
+                series.labels.template.text = "";
+                series.labels.template.radius = am4core.percent(-40);
+                series.labels.template.fill = am4core.color("white");
+            }
+
             series.slices.template.cornerRadius = 10;
             series.slices.template.innerCornerRadius = 7;
             series.slices.template.draggable = true;
             series.slices.template.inert = true;
             series.alignLabels = false;
 
-            series.hiddenState.properties.startAngle = 90;
-            series.hiddenState.properties.endAngle = 90;
+            // series.hiddenState.properties.startAngle = 90;
+            // series.hiddenState.properties.endAngle = 90;
 
             if(this.chartData.legends)
                 chart.legend = new am4charts.Legend();

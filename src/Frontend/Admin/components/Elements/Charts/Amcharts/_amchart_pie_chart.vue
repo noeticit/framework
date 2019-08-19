@@ -51,11 +51,21 @@
             pieSeries.slices.template.strokeWidth = 2;
             pieSeries.slices.template.strokeOpacity = 1;
 
+            // Labels hidden
+            if(typeof this.chartData.hideTickLabels !== 'undefined' &&  this.chartData.hideTickLabels) {
+                pieSeries.ticks.template.disabled = true;
+                pieSeries.labels.template.text = "";
+                pieSeries.labels.template.radius = am4core.percent(-40);
+                pieSeries.labels.template.fill = am4core.color("white");
+            }
+
             // This creates initial animation
             pieSeries.hiddenState.properties.opacity = 1;
             pieSeries.hiddenState.properties.endAngle = -90;
             pieSeries.hiddenState.properties.startAngle = -90;
 
+            if(this.chartData.legends)
+                chart.legend = new am4charts.Legend();
             // if(this.chartData.legends)
             // {
             //     chart.legend = new am4charts.Legend();
