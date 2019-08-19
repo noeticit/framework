@@ -3,6 +3,7 @@
 </template>
 
 <script>
+    import {eventBus} from 'NitsModels/_events.js';
     import * as am4core from "@amcharts/amcharts4/core";
     import * as am4charts from "@amcharts/amcharts4/charts";
     import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -15,7 +16,8 @@
         },
         data() {
             return {
-                chart: ''
+                chart: '',
+                events: ''
             }
         },
         mounted() {
@@ -67,6 +69,18 @@
             // series.hiddenState.properties.startAngle = 90;
             // series.hiddenState.properties.endAngle = 90;
 
+            //For click events
+            this.events = series.slices.template.events.on("hit", function(ev) {
+                if(typeof this.chartData.key !== 'undefined')
+                {
+                    const clickedData = {
+                        var_name: this.chartData.key,
+                        data: ev.target.dataItem.category
+                    }
+                    eventBus.$emit('amchart-graph-clicked', clickedData);
+                }
+            }, this);
+
             if(this.chartData.legends)
                 chart.legend = new am4charts.Legend();
 
@@ -89,6 +103,7 @@
         },
         beforeDestroy() {
             if (this.chart) {
+                this.events.dispose();
                 this.chart.dispose();
             }
         }

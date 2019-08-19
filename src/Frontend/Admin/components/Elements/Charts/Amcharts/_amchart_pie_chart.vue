@@ -16,7 +16,8 @@
         },
         data() {
             return {
-                chart: ''
+                chart: '',
+                events: ''
             }
         },
         mounted() {
@@ -64,6 +65,18 @@
             pieSeries.hiddenState.properties.endAngle = -90;
             pieSeries.hiddenState.properties.startAngle = -90;
 
+            //For click events
+            this.events = series.slices.template.events.on("hit", function(ev) {
+                if(typeof this.chartData.key !== 'undefined')
+                {
+                    const clickedData = {
+                        var_name: this.chartData.key,
+                        data: ev.target.dataItem.category
+                    }
+                    eventBus.$emit('amchart-graph-clicked', clickedData);
+                }
+            }, this);
+
             if(this.chartData.legends)
                 chart.legend = new am4charts.Legend();
             // if(this.chartData.legends)
@@ -94,6 +107,7 @@
         },
         beforeDestroy() {
             if (this.chart) {
+                this.events.dispose();
                 this.chart.dispose();
             }
         }
