@@ -66,7 +66,7 @@
             pieSeries.hiddenState.properties.startAngle = -90;
 
             //For click events
-            this.events = series.slices.template.events.on("hit", function(ev) {
+            this.events = pieSeries.slices.template.events.on("hit", function(ev) {
                 if(typeof this.chartData.key !== 'undefined')
                 {
                     const clickedData = {
