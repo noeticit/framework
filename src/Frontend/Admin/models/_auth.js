@@ -9,7 +9,7 @@ export default class auth {
         const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
         return tokenData && tokenData.access_token ? true : false;
     }
-    
+
     //Login
     login(user) {
         return new Promise((resolve, reject) => {
@@ -29,27 +29,28 @@ export default class auth {
                     authUser.refesh_token = encrypt(response.data.refresh_token);
                     window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-                    axios.get('/nits-system-api/user', {headers: getHeader()}).then(response => {
-                        if(response.status === 200)
+                    axios.get('/nits-system-api/user', {headers: getHeader()}).then(res => {
+                        if(res.status === 200)
                         {
-                            authUser.first_name = encrypt(response.data.first_name)
-                            authUser.last_name = encrypt(response.data.last_name)
-                            authUser.email = encrypt(response.data.email)
-                            authUser.role_id = response.data.role_id
-                            authUser.email_verified_at = encrypt(response.data.email_verified_at)
+                            authUser.first_name = encrypt(res.data.first_name)
+                            authUser.last_name = res.data.last_name ? encrypt(res.data.last_name) : null;
+                            authUser.email = encrypt(res.data.email)
+                            authUser.role_id = res.data.role_id
+                            authUser.email_verified_at = res.data.email_verified_at ? encrypt(res.data.email_verified_at) : null;
+
                             //Storing into local storage.
                             window.localStorage.setItem('authUser', JSON.stringify(authUser));
                             //Storing to state.
                             store.commit("STORE_USER_DATA", authUser);
 
-                            return resolve('Login Successfull');
+                            return resolve(res);
                         }
                     }).catch((err) => {
                         return reject(err);
                     })
                 }
-            }).catch((err) => {
-                return reject(err);
+            }).catch((error) => {
+                return reject(error);
             })
         })
     }
