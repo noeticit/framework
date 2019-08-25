@@ -643,6 +643,9 @@
                 nitseditor: JSON.parse(nitseditor)
             }
         },
+	components: {
+            TopBar
+        },
         methods: {
             logout() {
                 this.$auth.logout()
