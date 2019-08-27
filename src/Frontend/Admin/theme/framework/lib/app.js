@@ -103,7 +103,7 @@ export var KTApp = function() {
     }
 
     var initSticky = function() {
-        var sticky = new Sticky('[data-sticky="true"]');
+        // var sticky = new Sticky('[data-sticky="true"]');
     }
 
     var initAbsoluteDropdown = function(dropdown) {
@@ -277,7 +277,7 @@ export var KTApp = function() {
             var skin = (options && options.skin) ? options.skin : 'light';
             var alignment = (options && options.alignment) ? options.alignment : 'right';
             var size = (options && options.size) ? 'kt-spinner--' + options.size : '';
-            var classes = 'kt-spinner ' + 'kt-spinner--' + skin + ' kt-spinner--' + alignment + ' kt-spinner--' + size; 
+            var classes = 'kt-spinner ' + 'kt-spinner--' + skin + ' kt-spinner--' + alignment + ' kt-spinner--' + size;
 
             KTApp.unprogress(target);
 
@@ -300,6 +300,6 @@ export var KTApp = function() {
 }();
 
 // Initialize KTApp class on document ready
-$(document).ready(function() {
-    KTApp.init(KTAppOptions);
-});
+// $(document).ready(function() {
+//     KTApp.init(KTAppOptions);
+// });

@@ -13,3 +13,4 @@ Vue.component('NitsTable', () => import('./components/Elements/Tables/_nits_tabl
 Vue.component('NitsSpinners', () => import('./components/Elements/Spinners/_nits_spinner.js'))
 Vue.component('NitsPagination', () => import('./components/Elements/Pagination/Pagination.vue'))
 Vue.component('NitsPaginationOne', () => import('./components/Elements/Pagination/PaginationOne.vue'))
+Vue.component('NitsCalendar', () => import('./components/Elements/Calendar/Calendar.vue'))
