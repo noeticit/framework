@@ -1,7 +1,3 @@
-<template>
-    <div :id="identity"></div>
-</template>
-
 <script>
     import {KTApp} from 'NitsTheme/framework/lib/app';
     import {KTUtil} from 'NitsTheme/framework/lib/util';
@@ -10,7 +6,15 @@
 
     export default {
         name: "Calendar",
-        props: ['identity', 'events'],
+        props: {
+            identity: String,
+            events: Array,
+            calendarHeight: Number,
+            defaultView: String,
+            navLinks: Boolean,
+            editable: Boolean,
+            eventLimit: Boolean
+        },
         mounted() {
 
             const self = this;
@@ -21,6 +25,7 @@
                     //main function to initiate the module
                     init: function() {
 
+
                         $('#'+self.identity).fullCalendar({
                             isRTL: KTUtil.isRTL(),
                             header: {
@@ -28,13 +33,12 @@
                                 center: 'title',
                                 right: 'month,agendaDay,listWeek'
                             },
-                            defaultView: 'listWeek',
-                            editable: true,
-                            eventLimit: true, // allow "more" link when too many events
-                            navLinks: true,
-                            height: 900,
+                            defaultView: self.defaultView,
+                            editable: self.editable,
+                            eventLimit: self.eventLimit, // allow "more" link when too many events
+                            navLinks: self.navLinks,
+                            height: self.calendarHeight,
                             events: self.events,
-
                             eventRender: function(event, element) {
                                 if (element.hasClass('fc-day-grid-event')) {
                                     element.data('content', event.description);
