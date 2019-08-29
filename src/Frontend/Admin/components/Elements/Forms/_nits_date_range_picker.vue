@@ -59,7 +59,7 @@
                     }).on('apply.daterangepicker', function(e, picker) {
                         const dates = {
                             start_date: picker.startDate.format('DD-MM-YYYY'),
-                            end_date: picker.startDate.format('DD-MM-YYYY')
+                            end_date: picker.endDate.format('DD-MM-YYYY')
                         }
                         self.$emit('input', JSON.stringify(dates));
                     });
