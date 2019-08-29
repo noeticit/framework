@@ -69,7 +69,7 @@
                 createElement('div', {class: 'input-group date'}, [
                     createElement('input', {
                         class: 'form-control'+ (this.error ? ' is-invalid ' : ''),
-                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: "kt_datetimepicker_3"},
+                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: this.identity},
                         on: {
                             change: (event) => {
                                 this.$emit('change', event.target.value)
