@@ -1,18 +1,18 @@
 <template>
     <GmapMap
-            :center="{lat: 22.1960365, lng: 75.7061635}"
-            :zoom="7"
-            map-type-id="terrain"
-            style="height: 600px"
+        :center="{lat: 24.326176, lng: 78.187721}"
+        :zoom="5"
+        map-type-id="terrain"
+        style="height: 600px"
 
     >
         <GmapMarker
-                :key="index"
-                v-for="(m, index) in markers"
-                :position="m.position"
-                :clickable="true"
-                :draggable="true"
-                @click="center=m.position"
+            :key="index"
+            v-for="(m, index) in MapData.data"
+            :position="m.position"
+            :clickable="true"
+            :draggable="true"
+            @click="center=m.position"
         />
     </GmapMap>
 </template>
@@ -47,6 +47,7 @@
 
     export default {
         name: "google-map",
+        props: ['MapData'],
         data() {
             return {
                 // mapOptions: {
@@ -136,11 +137,6 @@
                 ]
             }
         },
-        methods: {
-            marker() {
-
-            }
-        }
     }
 </script>
 
