@@ -6,20 +6,34 @@
         style="height: 600px"
 
     >
-        <GmapMarker
-            :key="index"
-            v-for="(m, index) in MapData.data"
-            :position="m.position"
-            :clickable="true"
-            :draggable="true"
-            @click="center=m.position"
-        />
+        <gmap-info-window
+            :options="infoOptions"
+            :position="infoWindowPos"
+            :opened="infoWinOpen"
+            @closeclick="infoWinOpen=false">
+        </gmap-info-window>
+
+        <gmap-cluster>
+            <GmapMarker
+                :key="index"
+                v-for="(m, index) in MapData.data"
+                :position="m.position"
+                :clickable="true"
+                :draggable="true"
+                @click="toggleInfoWindow(m,index)"
+            />
+        </gmap-cluster>
+
     </GmapMap>
 </template>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markerclustererplus/2.1.4/markerclusterer.js"></script>
+
 <script>
     import * as VueGoogleMaps from 'vue2-google-maps'
+    import GmapCluster from 'vue2-google-maps/dist/components/cluster'
 
+    Vue.component('GmapCluster', GmapCluster)
     Vue.use(VueGoogleMaps, {
         load: {
             key: 'AIzaSyA0QMehpL3LRC-SQX7fWma0nK-qzrUQVXo',
@@ -50,93 +64,37 @@
         props: ['MapData'],
         data() {
             return {
-                // mapOptions: {
-                //     styles: [
-                //         {elementType: 'geometry', stylers: [{color: '#5d78ff'}]},
-                //         {elementType: 'labels.text.stroke', stylers: [{color: '#5d78ff'}]},
-                //         {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-                //         {
-                //             featureType: 'administrative.locality',
-                //             elementType: 'labels.text.fill',
-                //             stylers: [{color: '#d59563'}]
-                //         },
-                //         {
-                //             featureType: 'poi',
-                //             elementType: 'labels.text.fill',
-                //             stylers: [{color: '#d59563'}]
-                //         },
-                //         {
-                //             featureType: 'poi.park',
-                //             elementType: 'geometry',
-                //             stylers: [{color: '#263c3f'}]
-                //         },
-                //         {
-                //             featureType: 'poi.park',
-                //             elementType: 'labels.text.fill',
-                //             stylers: [{color: '#6b9a76'}]
-                //         },
-                //         {
-                //             featureType: 'road',
-                //             elementType: 'geometry',
-                //             stylers: [{color: '#38414e'}]
-                //         },
-                //         {
-                //             featureType: 'road',
-                //             elementType: 'geometry.stroke',
-                //             stylers: [{color: '#212a37'}]
-                //         },
-                //         {
-                //             featureType: 'road',
-                //             elementType: 'labels.text.fill',
-                //             stylers: [{color: '#9ca5b3'}]
-                //         },
-                //         {
-                //             featureType: 'road.highway',
-                //             elementType: 'geometry',
-                //             stylers: [{color: '#746855'}]
-                //         },
-                //         {
-                //             featureType: 'road.highway',
-                //             elementType: 'geometry.stroke',
-                //             stylers: [{color: '#1f2835'}]
-                //         },
-                //         {
-                //             featureType: 'road.highway',
-                //             elementType: 'labels.text.fill',
-                //             stylers: [{color: '#f3d19c'}]
-                //         },
-                //         {
-                //             featureType: 'transit',
-                //             elementType: 'geometry',
-                //             stylers: [{color: '#2f3948'}]
-                //         },
-                //         {
-                //             featureType: 'transit.station',
-                //             elementType: 'labels.text.fill',
-                //             stylers: [{color: '#d59563'}]
-                //         },
-                //         {
-                //             featureType: 'water',
-                //             elementType: 'geometry',
-                //             stylers: [{color: '#17263c'}]
-                //         },
-                //         {
-                //             featureType: 'water',
-                //             elementType: 'labels.text.fill',
-                //             stylers: [{color: '#515c6d'}]
-                //         },
-                //         {
-                //             featureType: 'water',
-                //             elementType: 'labels.text.stroke',
-                //             stylers: [{color: '#17263c'}]
-                //         }
-                //     ]
-                // },
+                infoWindowPos: null,
+                infoWinOpen: false,
+                currentMidx: null,
+                infoOptions: {
+                    content: '',
+                    //optional: offset infowindow so it visually sits nicely on top of our marker
+                    pixelOffset: {
+                        width: 0,
+                        height: -35
+                    }
+                },
                 markers: [
                     {position: { lat: 22.1960365, lng: 75.7061635 } }
                 ]
             }
         },
+        methods:{
+            toggleInfoWindow: function(marker, idx) {
+                this.infoWindowPos = marker.position;
+                this.infoOptions.content = marker.name;
+                //check if its the same marker that was selected if yes toggle
+                if (this.currentMidx == idx) {
+                    this.infoWinOpen = !this.infoWinOpen;
+                }
+                //if different marker set infowindow to open and reset current marker index
+                else {
+                    this.infoWinOpen = true;
+                    this.currentMidx = idx;
+                }
+            }
+        }
     }
 </script>
 

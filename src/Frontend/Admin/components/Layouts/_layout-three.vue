@@ -42,14 +42,14 @@
                         <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding: 10px;">
 
                             <!--Begin::Dashboard 6-->
-                            <div v-if="$can($route.name, 'view')">
+<!--                            <div v-if="$can($route.name, 'view')">-->
                                 <router-view></router-view>
-                            </div>
-                           <div v-else>
-                               <div class="text-center">
-                                   <strong>Don't have permission to view this section</strong>
-                               </div>
-                           </div>
+<!--                            </div>-->
+<!--                           <div v-else>-->
+<!--                               <div class="text-center">-->
+<!--                                   <strong>Don't have permission to view this section</strong>-->
+<!--                               </div>-->
+<!--                           </div>-->
                             <!--End::Dashboard 6-->
                         </div>
 
