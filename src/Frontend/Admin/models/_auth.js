@@ -38,6 +38,8 @@ export default class auth {
                             authUser.role_id = res.data.role_id
                             authUser.email_verified_at = res.data.email_verified_at ? encrypt(res.data.email_verified_at) : null;
 
+                            console.log(res.data.role.pages)
+                            window.localStorage.setItem('permissions', )
                             //Storing into local storage.
                             window.localStorage.setItem('authUser', JSON.stringify(authUser));
                             //Storing to state.

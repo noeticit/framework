@@ -22,7 +22,7 @@ export const router = new VueRouter({
             {
                 path: '/dashboard',
                 component: Vue.component('dashboard', () => import('ProjectComponents/admin/components/Dashboard.vue')),
-                name: 'dashboard',
+                name: 'Dashboard',
                 meta: {
                     requiresAuth: true
                 }
@@ -45,7 +45,7 @@ export const router = new VueRouter({
             },
             {
                 path: '/overview',
-                component: Vue.component('overview', () => import('./components/Pages/Settings/overview.vue')),
+                component: Vue.component('overview', () => import('./components/Pages/Settings/Overview.vue')),
                 name: 'overview',
                 meta: {
                     requiresAuth: true

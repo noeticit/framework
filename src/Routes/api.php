@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Nitseditor\Framework\Models\User;
+use Nitseditor\Framework\Resources\UserResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return new UserResource(User::where('id', auth()->id())->first());
 });
 
 //Auth::routes(['verify' => true]);
