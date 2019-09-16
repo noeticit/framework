@@ -42,7 +42,14 @@
                         <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding: 10px;">
 
                             <!--Begin::Dashboard 6-->
-                            <router-view></router-view>
+<!--                            <div v-if="$can($route.name, 'view')">-->
+                                <router-view></router-view>
+<!--                            </div>-->
+<!--                           <div v-else>-->
+<!--                               <div class="text-center">-->
+<!--                                   <strong>Don't have permission to view this section</strong>-->
+<!--                               </div>-->
+<!--                           </div>-->
                             <!--End::Dashboard 6-->
                         </div>
 
@@ -98,8 +105,14 @@
                 nitseditor: JSON.parse(nitseditor)
             }
         },
-        mounted() {
+        created() {
+            console.log(this.$ability.rules);
+            console.log(this.$route.name);
 
+            if(this.$can(this.$route.name, 'view'))
+                console.log('happening');
+            else
+                console.log('Not')
         }
     }
 </script>

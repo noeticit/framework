@@ -27,7 +27,16 @@ class CreateMenusTable extends Migration
             $table->foreign('parent_id')->references('id')->on('menus');
         });
 
+        Schema::create('menus_roles', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('role_id')->unsigned();
+            $table->bigInteger('menu_id')->unsigned();
+            $table->timestamps();
+            $table->softDeletes();
 
+            $table->foreign('menu_id')->references('id')->on('menus');
+            $table->foreign('role_id')->references('id')->on('roles');
+        });
     }
 
     /**
