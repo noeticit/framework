@@ -1,19 +1,20 @@
 <template>
+<!--    :options="options"-->
+
     <GmapMap
         :center="{lat: 24.326176, lng: 78.187721}"
         :zoom="5"
         map-type-id="terrain"
         style="height: 600px"
-
     >
         <gmap-info-window
             :options="infoOptions"
             :position="infoWindowPos"
             :opened="infoWinOpen"
-            @closeclick="infoWinOpen=false">
+            @mouseover="infoWinOpen=true">
         </gmap-info-window>
 
-        <gmap-cluster>
+        <gmap-cluster :styles="clusterStyles">
             <GmapMarker
                 :key="index"
                 v-for="(m, index) in MapData.data"
@@ -66,9 +67,11 @@
             return {
                 infoWindowPos: null,
                 infoWinOpen: false,
+                infoContent: '',
                 currentMidx: null,
                 infoOptions: {
                     content: '',
+                    slug:'',
                     //optional: offset infowindow so it visually sits nicely on top of our marker
                     pixelOffset: {
                         width: 0,
@@ -77,13 +80,190 @@
                 },
                 markers: [
                     {position: { lat: 22.1960365, lng: 75.7061635 } }
-                ]
+                ],
+                clusterStyles:[
+                    {
+                        width: 52,
+                        height:52,
+                        fontFamily: "comic sans ms",
+                        textSize: 10,
+                        textColor: "black",
+                        url: 'https://googlemaps.github.io/js-marker-clusterer/images/m1.png',
+                    }
+
+                ],
+                options: {
+                    disableDefaultUI: false,
+                    scrollwheel: false,
+                    styles: [
+                        {
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#f5f5f5"
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.icon",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#616161"
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.text.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#f5f5f5"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "administrative.land_parcel",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#bdbdbd"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#eeeeee"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#757575"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi.park",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#e5e5e5"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi.park",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#9e9e9e"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.arterial",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#757575"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#dadada"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#616161"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.local",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#9e9e9e"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "transit.line",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#e5e5e5"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "transit.station",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#eeeeee"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#c9c9c9"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#9e9e9e"
+                                }
+                            ]
+                        }
+                    ]
+                }
+
             }
         },
         methods:{
-            toggleInfoWindow: function(marker, idx) {
+            toggleInfoWindow: function (marker, idx) {
                 this.infoWindowPos = marker.position;
-                this.infoOptions.content = marker.name;
+                this.infoOptions.content = this.getInfoWindowContent(marker);
+
                 //check if its the same marker that was selected if yes toggle
                 if (this.currentMidx == idx) {
                     this.infoWinOpen = !this.infoWinOpen;
@@ -93,7 +273,41 @@
                     this.infoWinOpen = true;
                     this.currentMidx = idx;
                 }
-            }
+            },
+            showProfile(slug){
+                let route = this.$router.resolve({ name: 'Biltrax__project-profile', params: { slug: slug}})
+                window.open(route.href, '_blank');
+            },
+            // toggleInfoWindow: function(marker, idx) {
+            //     this.infoWindowPos = marker.position;
+            //     this.infoOptions.content = marker.name;
+            //     //check if its the same marker that was selected if yes toggle
+            //     if (this.currentMidx == idx) {
+            //         this.infoWinOpen = !this.infoWinOpen;
+            //     }
+            //     //if different marker set infowindow to open and reset current marker index
+            //     else {
+            //         this.infoWinOpen = true;
+            //         this.currentMidx = idx;
+            //     }
+            // }
+                getInfoWindowContent: function (marker) {
+                    return (`<div class="card" style="width: 10rem;">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <a target="_blank" href="${'/admin/plugins/Biltrax/project-profile/'+marker.slug}" class="title is-4">${marker.name}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`);
+                },
+
         }
     }
 </script>
