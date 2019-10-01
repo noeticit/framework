@@ -300,7 +300,7 @@
                         </div>
                         <div class="card-content">
                             <div class="media">
-                                <div class="media-content">
+                                <div class="media-content" v-if="${marker.type === 'Project'}">
                                     <a target="_blank" href="${'/admin/plugins/Biltrax/project-profile/'+marker.slug}" class="title is-4">${marker.name}</a>
                                 </div>
                             </div>
