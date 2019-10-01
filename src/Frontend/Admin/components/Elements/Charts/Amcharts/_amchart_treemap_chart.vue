@@ -47,7 +47,7 @@
             function processData(data) {
                 let treeData = [];
 
-                let smallBrands = { name: "Other", children: [] };
+                // let smallBrands = { name: "Other", children: [] };
 
                 for (var brand in data) {
                     let brandData = { name: brand, children: [] }
@@ -64,15 +64,15 @@
                     }
 
                     // add to small brands if total number less than
-                    if (brandTotal > 100000) {
+                    if (brandTotal > 1000) {
                         treeData.push(brandData);
                     }
-                    else {
-                        smallBrands.children.push(brandData)
-                    }
+                    // else {
+                    //     smallBrands.children.push(brandData)
+                    // }
 
                 }
-                treeData.push(smallBrands);
+                // treeData.push(smallBrands);
                 return treeData;
             }
 

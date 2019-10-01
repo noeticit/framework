@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             'last_name' => $this->last_name,
             'email' => $this->email,
             'role' => $this->roleName->name,
+            'role_id' => $this->role_id,
             'permissions' => collect($this->roleName->pages)->pluck('name')->map(function ($item) {
                 return [
                     $item, 'view'
