@@ -12,7 +12,7 @@ if (! function_exists('nits_plugins')) {
     {
         $files = File::directories(base_path('plugins'));
         $plugins = collect($files)->map(function ($item) {
-            return preg_replace('/[^A-Za-z0-9\-]/', '', Str::replace(base_path('plugins'), "", $item));
+            return preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(base_path('plugins'), "", $item));
         });
         return $plugins;
     }
