@@ -6,7 +6,6 @@ namespace Nitseditor\Framework\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 
 class CreateCrudCommand extends Command
 {
@@ -120,11 +119,11 @@ class CreateCrudCommand extends Command
             }
 
             //Creating Databases.
-            $migrationClass = ucfirst(Str::plural(strtolower($migrationName)));
-            $fileName = Carbon::now()->format('Y_m_d_His'). '_create_'. Str::plural(strtolower($migrationName)). '_table';
+            $migrationClass = ucfirst(str_plural(strtolower($migrationName)));
+            $fileName = Carbon::now()->format('Y_m_d_His'). '_create_'. str_plural(strtolower($migrationName)). '_table';
             $databaseTemplate = str_replace(
                 ['{{MigrationClass}}', '{{tableName}}'],
-                [$migrationClass, Str::plural(strtolower($migrationName))],
+                [$migrationClass, str_plural(strtolower($migrationName))],
                 get_plugin_stub('Database')
             );
 
@@ -261,7 +260,7 @@ class CreateCrudCommand extends Command
             }
 
             //Appending route resource.
-            File::append(base_path("plugins/{$pluginName}/Routes/api.php"), "\n".'Route::apiResource(\'' . Str::plural(strtolower($name)) . '\', \''.ucfirst(strtolower($name)).'Controller'.'\');');
+            File::append(base_path("plugins/{$pluginName}/Routes/api.php"), "\n".'Route::apiResource(\'' . str_plural(strtolower($name)) . '\', \''.ucfirst(strtolower($name)).'Controller'.'\');');
         }
     }
 }

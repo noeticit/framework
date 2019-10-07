@@ -54,10 +54,10 @@
                             <!--begin::Form-->
                             <form class="kt-form" action="" novalidate="novalidate">
                                 <div class="form-group">
-                                    <input class="form-control" v-model="email" type="text" placeholder="Email" name="email" autocomplete="off">
+                                    <input class="form-control" dusk="login-email" v-model="email" type="text" placeholder="Email" name="email" autocomplete="off">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" v-model="password" type="password" placeholder="Password" name="password">
+                                    <input class="form-control" dusk="login-password" v-model="password" type="password" placeholder="Password" name="password">
                                 </div>
                                 <div class="form-group" v-if="error">
                                     <span class="text-center text-danger">{{ error }}</span>
@@ -68,7 +68,7 @@
                                     <a href="#" class="kt-link kt-login__link-forgot">
                                         Forgot Password ?
                                     </a>
-                                    <button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="login()">Sign In</button>
+                                    <button id="kt_login_signin_submit" dusk="login-submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="login()">Sign In</button>
                                 </div>
 
                                 <!--end::Action-->

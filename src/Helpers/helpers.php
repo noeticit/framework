@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 if (! function_exists('nits_plugins')) {
     /**
@@ -91,11 +90,11 @@ if(! function_exists('document_s3_upload')) {
 
         $decoded = base64_decode($exploded[1]);
 
-        if (Str::contains($exploded[0], $format[1])) {
+        if (str_contains($exploded[0], $format[1])) {
             $extension = $format[1];
         }
 
-        $fileName = $file_name ? $file_name : Str::random() . '.' . $extension;
+        $fileName = $file_name ? $file_name : str_random() . '.' . $extension;
 
         $path = Storage::disk('s3')->put(env('APP_NAME').'/'.$dir.'/'.$fileName, $decoded, 'public'); // only  for decoded file.
 
