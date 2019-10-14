@@ -6,6 +6,7 @@ namespace Nitseditor\Framework\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CreateDatabaseCommand extends Command
 {
@@ -80,11 +81,11 @@ class CreateDatabaseCommand extends Command
             }
 
             //Creating Databases.
-            $migrationClass = ucfirst(str_plural(strtolower($migrationName)));
-            $fileName = Carbon::now()->format('Y_m_d_His'). '_create_'. str_plural(strtolower($migrationName)). '_table';
+            $migrationClass = ucfirst(Str::plural(strtolower($migrationName)));
+            $fileName = Carbon::now()->format('Y_m_d_His'). '_create_'. Str::plural(strtolower($migrationName)). '_table';
             $databaseTemplate = str_replace(
                 ['{{MigrationClass}}', '{{tableName}}'],
-                [$migrationClass, str_plural(strtolower($migrationName))],
+                [$migrationClass, Str::plural(strtolower($migrationName))],
                 get_plugin_stub('Database')
             );
 
