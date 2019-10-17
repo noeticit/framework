@@ -13,11 +13,13 @@ import store from "./store/_store";
 import adminLayout from './components/LayoutOne';
 import { abilitiesPlugin } from '@casl/vue';
 import ability from './models/_ability';
+import VModal from 'vue-js-modal';
 
 const auth = new authorization();
 
 window.Vue = require('vue');
 
+Vue.use(VModal);
 Vue.use(VueRouter);
 Vue.use(abilitiesPlugin, ability);
 Vue.prototype.$auth = auth;
