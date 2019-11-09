@@ -83,12 +83,12 @@
                 ],
                 clusterStyles:[
                     {
-                        width: 52,
-                        height:52,
+                        width: 55,
+                        height:55,
                         fontFamily: "comic sans ms",
                         textSize: 10,
                         textColor: "black",
-                        url: 'https://googlemaps.github.io/js-marker-clusterer/images/m1.png',
+                        url: '/images/marker.png',
                     }
 
                 ],
