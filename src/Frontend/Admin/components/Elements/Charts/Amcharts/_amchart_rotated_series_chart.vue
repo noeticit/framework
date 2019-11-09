@@ -3,6 +3,7 @@
 </template>
 
 <script>
+    import {eventBus} from 'NitsModels/_events.js';
     import * as am4core from "@amcharts/amcharts4/core";
     import * as am4charts from "@amcharts/amcharts4/charts";
     import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -12,10 +13,12 @@
         name: "amchart-rotated-series-chart",
         props: {
             chartData: Object,
+            call_event: String,
         },
         data() {
             return {
-                chart: ''
+                chart: '',
+                events: ''
             }
         },
         mounted() {
@@ -79,6 +82,18 @@
 
             // Cursor
             chart.cursor = new am4charts.XYCursor();
+
+            //For click events
+            this.events = series.columns.template.events.on("hit", function(ev) {
+                if(typeof this.chartData.key !== 'undefined')
+                {
+                    const clickedData = {
+                        var_name: this.chartData.key,
+                        data: ev.target.dataItem.categoryX
+                    }
+                    eventBus.$emit(this.call_event, clickedData);
+                }
+            }, this);
 
             this.chart = chart;
 

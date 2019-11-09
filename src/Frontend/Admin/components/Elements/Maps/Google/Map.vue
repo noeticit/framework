@@ -288,14 +288,14 @@
             //     //if different marker set infowindow to open and reset current marker index
             //     else {
             //         this.infoWinOpen = true;
-            //         this.currentMidx = idx;
+            //         this.currentMidx = idx;c
             //     }
             // }
                 getInfoWindowContent: function (marker) {
-                    return (`<div class="card" style="width: 10rem;">
+                    return (`<div class="card" style="width: 8rem;">
                         <div class="card-image">
                             <figure class="image is-4by3">
-                              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                              <img src="/logo/logo.png" height="30" alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="card-content">

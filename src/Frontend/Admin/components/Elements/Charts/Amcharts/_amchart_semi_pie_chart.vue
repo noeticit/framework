@@ -13,6 +13,7 @@
         name: "amchart-semi-pie-chart",
         props: {
             chartData: Object,
+            call_event: String,
         },
         data() {
             return {
@@ -77,7 +78,7 @@
                         var_name: this.chartData.key,
                         data: ev.target.dataItem.category
                     }
-                    eventBus.$emit('amchart-graph-clicked', clickedData);
+                    eventBus.$emit(this.call_event, clickedData);
                 }
             }, this);
 
