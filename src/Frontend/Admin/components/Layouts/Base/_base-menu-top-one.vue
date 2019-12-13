@@ -38,6 +38,7 @@
 </template>
 
 <script>
+    import {menu} from 'ProjectComponents/admin/_model';
     export default {
         name: "base-menu-top-one",
         data() {
@@ -45,19 +46,19 @@
                 menu: []
             }
         },
+        methods: {
+            menumain() {
+                this.menu = menu(this.$router.currentRoute.path)
+            }
+        },
+        watch:{
+            $route: {
+                handler: 'menumain',
+                immediate: true
+            },
+        },
         created() {
-            this.menu = JSON.parse(nitseditor).menu.map(a => ({
-                name: a.name,
-                link: a.link,
-                sub_menu: a.children.length ? a.children.map(b => ({
-                    name: b.name,
-                    link: b.link,
-                    sub_menu: b.children.length ? b.children.map(c => ({
-                        name: c.name,
-                        link: c.link
-                    })) : []
-                })) : []
-            }))
+
         },
     }
 </script>
