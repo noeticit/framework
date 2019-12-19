@@ -1,13 +1,20 @@
 import {encrypt} from "./_encrypt";
 import {getHeader} from "./_config";
 import store from "../store/_store";
+import VueSession from 'NitsModels/_session';
+
+let session = new VueSession('localStorage', process.env.MIX_LIFE_SESSION, process.env.INACTIVITY_SESSION);
 
 export default class auth {
 
     //Finding logged-in user.
     isLoggedIn() {
-        const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
-        return tokenData && tokenData.access_token ? true : false;
+        // const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
+        if(session.exists()) {
+            const tokenData = session.get('authUser');
+            return tokenData && tokenData.access_token ? true : false;
+        }
+        return false;
     }
 
     //Login
@@ -27,7 +34,8 @@ export default class auth {
                 if (response.status === 200) {
                     authUser.access_token = encrypt(response.data.access_token);
                     authUser.refesh_token = encrypt(response.data.refresh_token);
-                    window.localStorage.setItem('authUser', JSON.stringify(authUser));
+                    session.set('authUser', JSON.stringify(authUser));
+                    // window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
                     axios.get('/nits-system-api/user', {headers: getHeader()}).then(res => {
                         if(res.status === 200)
@@ -41,7 +49,8 @@ export default class auth {
                             console.log(res.data.role.pages)
                             window.localStorage.setItem('permissions', )
                             //Storing into local storage.
-                            window.localStorage.setItem('authUser', JSON.stringify(authUser));
+                            session.set('authUser', JSON.stringify(authUser));
+                            // window.localStorage.setItem('authUser', JSON.stringify(authUser));
                             //Storing to state.
                             store.commit("STORE_USER_DATA", authUser);
 
@@ -59,7 +68,8 @@ export default class auth {
 
     //For Logout..
     logout() {
-        window.localStorage.removeItem('authUser')
+        session.remove('authUser');
+        // window.localStorage.removeItem('authUser')
         return true;
     }
 

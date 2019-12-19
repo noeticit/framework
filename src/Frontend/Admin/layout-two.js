@@ -14,6 +14,7 @@ import adminLayout from './components/LayoutTwo';
 import { abilitiesPlugin } from '@casl/vue';
 import ability from './models/_ability';
 import VModal from 'vue-js-modal';
+import VueSession from 'NitsModels/_session';
 
 const auth = new authorization();
 
@@ -21,6 +22,16 @@ window.Vue = require('vue');
 
 Vue.use(VModal);
 Vue.use(VueRouter);
+
+var options = {
+    persist: true,
+    life_session: 5,
+    inactivity_session: 3
+}
+
+Vue.use(VueSession, options);
+this.$session.start();
+
 Vue.use(abilitiesPlugin, ability);
 Vue.prototype.$auth = auth;
 

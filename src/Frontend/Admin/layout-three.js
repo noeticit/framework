@@ -14,15 +14,21 @@ import adminLayout from './components/LayoutThree';
 import { abilitiesPlugin } from '@casl/vue';
 import ability from './models/_ability';
 import VModal from 'vue-js-modal';
+import session from 'NitsModels/_session';
 
 const auth = new authorization();
+
+const sessions = new session('localStorage', process.env.MIX_LIFE_SESSION, process.env.INACTIVITY_SESSION);
+sessions.start();
 
 window.Vue = require('vue');
 
 Vue.use(VModal);
 Vue.use(VueRouter);
+
 Vue.use(abilitiesPlugin, ability);
 Vue.prototype.$auth = auth;
+Vue.prototype.$session = sessions;
 
 require('./components');
 
