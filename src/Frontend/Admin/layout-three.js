@@ -18,10 +18,10 @@ import session from 'NitsModels/_session';
 
 const auth = new authorization();
 
+window.Vue = require('vue');
+
 const sessions = new session(process.env.MIX_STORAGE_PERSIST, process.env.MIX_INACTIVITY_SESSION);
 sessions.start();
-
-window.Vue = require('vue');
 
 Vue.use(VModal);
 Vue.use(VueRouter);

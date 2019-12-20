@@ -10,6 +10,8 @@
 </template>
 
 <script>
+    import {eventBus} from 'NitsModels/_events.js';
+
     export default {
         name: "admin",
         data() {
@@ -18,7 +20,10 @@
             }
         },
         created() {
-           //Testing apps.
+            eventBus.$on('log-out', () => {
+                this.$router.push({path: '/'});
+                this.logged = false
+            });
         },
         watch: {
             '$route' (to, from) {

@@ -1,3 +1,5 @@
+import {eventBus} from 'NitsModels/_events.js';
+
 export default class session {
 
     constructor(STORAGE, INACTIVITY_SESSION) {
@@ -25,7 +27,6 @@ export default class session {
         clearInterval(t);
 
         t = setInterval(() => {
-            console.log('tick');
             this.getAll();
         }, 1000);
     }
@@ -101,6 +102,7 @@ export default class session {
     }
 
     destroy(){
+        eventBus.$emit('log-out');
         var all = JSON.parse(window[this.STORAGE].getItem(this.key));
         this.setAll({'session-id': all['session-id'], 'timelife': all['timelife'] });
     }
