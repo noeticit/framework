@@ -1,7 +1,7 @@
 import {decrypt} from './_encrypt.js'
 import VueSession from 'NitsModels/_session';
 
-const session = new VueSession('localStorage', process.env.MIX_LIFE_SESSION, process.env.INACTIVITY_SESSION);
+const session = new VueSession(process.env.MIX_STORAGE_PERSIST, process.env.MIX_INACTIVITY_SESSION);
 
 export const getHeader = function () {
     const tokenData = session.get('authUser')

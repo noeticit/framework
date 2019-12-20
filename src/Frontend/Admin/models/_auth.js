@@ -3,18 +3,19 @@ import {getHeader} from "./_config";
 import store from "../store/_store";
 import VueSession from 'NitsModels/_session';
 
-let session = new VueSession('localStorage', process.env.MIX_LIFE_SESSION, process.env.INACTIVITY_SESSION);
+let session = new VueSession(process.env.MIX_STORAGE_PERSIST, process.env.MIX_INACTIVITY_SESSION);
 
 export default class auth {
 
     //Finding logged-in user.
     isLoggedIn() {
         // const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
-        if(session.exists()) {
-            const tokenData = session.get('authUser');
-            return tokenData && tokenData.access_token ? true : false;
-        }
-        return false;
+        // if(session.exists()) {
+        //
+        // }
+        // return false;
+        const tokenData = session.get('authUser');
+        return tokenData && tokenData.access_token ? true : false;
     }
 
     //Login
@@ -34,7 +35,7 @@ export default class auth {
                 if (response.status === 200) {
                     authUser.access_token = encrypt(response.data.access_token);
                     authUser.refesh_token = encrypt(response.data.refresh_token);
-                    session.set('authUser', JSON.stringify(authUser));
+                    session.set('authUser', authUser);
                     // window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
                     axios.get('/nits-system-api/user', {headers: getHeader()}).then(res => {
@@ -49,7 +50,7 @@ export default class auth {
                             console.log(res.data.role.pages)
                             window.localStorage.setItem('permissions', )
                             //Storing into local storage.
-                            session.set('authUser', JSON.stringify(authUser));
+                            session.set('authUser', authUser);
                             // window.localStorage.setItem('authUser', JSON.stringify(authUser));
                             //Storing to state.
                             store.commit("STORE_USER_DATA", authUser);

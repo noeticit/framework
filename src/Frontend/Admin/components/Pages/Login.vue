@@ -175,6 +175,7 @@
 
                 login(user).then(resolve => {
                     this.loading = false
+                    // console.log(resolve.redirect);
                     this.$router.push(resolve.redirect)
                 }).catch(error => {
                     this.loading = false

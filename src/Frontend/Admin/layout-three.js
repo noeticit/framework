@@ -18,7 +18,7 @@ import session from 'NitsModels/_session';
 
 const auth = new authorization();
 
-const sessions = new session('localStorage', process.env.MIX_LIFE_SESSION, process.env.INACTIVITY_SESSION);
+const sessions = new session(process.env.MIX_STORAGE_PERSIST, process.env.MIX_INACTIVITY_SESSION);
 sessions.start();
 
 window.Vue = require('vue');
@@ -37,14 +37,10 @@ require('./components');
  */
 
 router.beforeEach((to, from, next) => {
-    if(to.meta.requiresAuth && auth.isLoggedIn())
-        next()
-    if(!to.meta.requiresAuth && auth.isLoggedIn())
-        next()
-    if(to.meta.requiresAuth && !auth.isLoggedIn())
-        next({path: '/'})
-    if(!to.meta.requiresAuth && !auth.isLoggedIn())
-        next()
+    if(to.meta.requiresAuth && auth.isLoggedIn()) next()
+    if(!to.meta.requiresAuth && auth.isLoggedIn()) next()
+    if(to.meta.requiresAuth && !auth.isLoggedIn()) next({path: '/'})
+    if(!to.meta.requiresAuth && !auth.isLoggedIn()) next()
 })
 
 
