@@ -58,24 +58,27 @@
 
                     for (var model in data[brand]) {
                         // do not add very small
-                        if (data[brand][model] > 100) {
+                        if (data[brand][model]) {
                             brandData.children.push({ name: model, count: data[brand][model] });
                         }
                     }
 
                     // add to small brands if total number less than
-                    if (brandTotal > 100000) {
+                    if (brandTotal) {
+                        // console.log(brandData)
                         treeData.push(brandData);
+                        // console.log(treeData)
                     }
-                    else {
-                        smallBrands.children.push(brandData)
-                    }
+                    // else {
+                    //     smallBrands.children.push(brandData)
+                    //     console.log(smallBrands)
+                    // }
 
                 }
-                treeData.push(smallBrands);
+                // treeData.push(smallBrands);
+                // console.log(treeData)
                 return treeData;
             }
-
 
             // only one level visible initially
             chart.maxLevels = 1;
@@ -83,7 +86,7 @@
             chart.dataFields.value = "count";
             chart.dataFields.name = "name";
             chart.dataFields.children = "children";
-            chart.homeText = this.chartData.hometext;
+            chart.homeText = 'Breakdown Role/Specialisation';
 
             // enable navigation
             chart.navigationBar = new am4charts.NavigationBar();
@@ -115,7 +118,7 @@
             image.width = am4core.percent(80);
             image.height = am4core.percent(80);
 
-            // add adapter for href to load correct image
+            // // add adapter for href to load correct image
             // image.adapter.add("href", function (href, target) {
             //     let dataItem = target.parent.dataItem;
             //     if (dataItem) {
