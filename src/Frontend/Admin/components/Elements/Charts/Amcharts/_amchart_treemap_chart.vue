@@ -146,6 +146,20 @@
             bullet2.label.text = "{name}";
             bullet2.label.fill = am4core.color("#ffffff");
 
+            //For click events
+            // this.events = chart.columns.template.events.on("hit", function(ev) {
+            //     console.log('check');
+            //     if(typeof this.chartData.key !== 'undefined')
+            //     {
+            //         const clickedData = {
+            //             var_name: this.chartData.key,
+            //             data: ev.target.dataItem.category
+            //         }
+            //         eventBus.$emit(this.call_event, clickedData);
+            //     }
+            //     console.log('check');
+            // }, this);
+
             chart.data = processData(data);
 
             this.chart = chart;

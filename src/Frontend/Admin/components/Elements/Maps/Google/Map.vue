@@ -295,7 +295,7 @@
                     return (`<div class="card" style="width: 100%">
                         <div class="card-image">
                             <figure class="image is-4by3">
-                              <img src="/logo/logo.png" height="30" alt="Placeholder image">
+                              <img src="${marker.logo}" height="30" alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="card-content">

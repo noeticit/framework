@@ -52,7 +52,8 @@
                         applyClass: 'btn-primary',
                         cancelClass: 'btn-secondary',
                         locale: {
-                            format: 'DD-MM-YYYY'
+                            format: 'DD-MM-YYYY',
+                            cancelLabel: 'Clear'
                         }
                     }, function(start, end, label) {
                         $('#'+self.identity).val( start.format('DD-MM-YYYY') + ' / ' + end.format('DD-MM-YYYY'));
@@ -62,7 +63,12 @@
                             end_date: picker.endDate.format('DD-MM-YYYY')
                         }
                         self.$emit('input', JSON.stringify(dates));
+                    }).on('cancel.daterangepicker', function(ev, picker) {
+                        $(this).val('');
+                        self.$emit('input', '');
                     });
+
+                    // $('input[name="datefilter"]')
 
                 }
 
