@@ -20,7 +20,7 @@
             }
         },
         created(){
-          console.log(this.chartData.data)
+          // console.log(this.chartData.data)
         },
         mounted() {
             //Loading themes

@@ -3,6 +3,7 @@ import Vue from 'vue';
 //Forms
 
 Vue.component('amchart-xy-chart', () => import('./Amcharts/_amchart_xy_chart.vue'))
+Vue.component('amchart-multiple-value-axes', () => import('./Amcharts/_amchart_multiple_value_axes.vue'))
 Vue.component('amchart-pie-chart', () => import('./Amcharts/_amchart_pie_chart.vue'))
 Vue.component('amchart-clustered-chart', () => import('./Amcharts/_amchart_clustered_chart.vue'))
 Vue.component('amchart-stacked-column-chart', () => import('./Amcharts/_amchart_stacked_column_chart.vue'))
