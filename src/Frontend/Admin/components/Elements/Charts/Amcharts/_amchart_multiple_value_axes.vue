@@ -33,8 +33,6 @@
                     }
                 }
 
-                console.log(this.chartData);
-
                 //Creating charts
                 this.chart = am4core.create(this.$refs.amchart_multiple_value_axes, am4charts.XYChart);
 
@@ -42,9 +40,12 @@
 
                 // Create axes
                 let dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
-                dateAxis.renderer.minGridDistance = 50;
+                dateAxis.baseInterval = {
+                    "timeUnit": "minute",
+                    "count": 1
+                };
+                dateAxis.tooltipDateFormat = "HH:mm, d MMMM";
 
-                console.log(this.chartData.label);
                 this.chartData.label.forEach((a) => {
                     this.createAxisAndSeries(a.field, a.name, a.opposite, a.bullet);
                 })
