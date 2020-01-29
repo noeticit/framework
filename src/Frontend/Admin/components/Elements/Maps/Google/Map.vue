@@ -292,16 +292,16 @@
             //     }
             // }
                 getInfoWindowContent: function (marker) {
-                    return (`<div class="card" style="width: 100%">
+                    return (`<div class="card" style="width: 70%;">
                         <div class="card-image">
                             <figure class="image is-4by3">
-                              <img src="${marker.logo}" height="30" alt="Placeholder image">
+                              <img src="${marker.logo}" height="100" alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-content">
-                                    <a target="_blank" href="${'/admin/plugins/Biltrax/project-profile/'+marker.slug}" class="title is-4">${marker.name}</a><br/>
+                                    <a target="_blank" href="${marker.slug}" class="title is-4">${marker.name}</a><br/>
                                 </div>
                             </div>
                         </div>
