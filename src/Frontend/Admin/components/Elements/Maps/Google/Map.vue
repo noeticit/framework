@@ -292,10 +292,10 @@
             //     }
             // }
                 getInfoWindowContent: function (marker) {
-                    return (`<div class="card" style="width: 70%;">
+                    return (`<div class="card" style="width: 200px;">
                         <div class="card-image">
                             <figure class="image is-4by3">
-                              <img src="${marker.logo}" height="100" alt="Placeholder image">
+                              <img src="${marker.logo}" height="100" style="max-width: 180px" alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="card-content">
