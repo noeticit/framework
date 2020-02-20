@@ -36,12 +36,8 @@ require('./components');
 /**
  * Middleware to check authentication
  */
-
-
 var base_url= window.location.origin;  // http://biltrax_2.local
 var last_url1=base_url.concat('/admin')
-
-console.log(window.location.pathname); //  /admin/plugins/Biltrax/project-search
 
 router.beforeEach((to, from, next) => {
     if(to.meta.requiresAuth && auth.isLoggedIn()) next()
