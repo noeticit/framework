@@ -16,6 +16,7 @@ import ability from './models/_ability';
 import VModal from 'vue-js-modal';
 import session from 'NitsModels/_session';
 
+
 const auth = new authorization();
 
 window.Vue = require('vue');
@@ -35,18 +36,26 @@ require('./components');
 /**
  * Middleware to check authentication
  */
+var base_url= window.location.origin;  // http://biltrax_2.local
+var last_url1=base_url.concat('/admin')
 
 router.beforeEach((to, from, next) => {
     if(to.meta.requiresAuth && auth.isLoggedIn()) next()
     if(!to.meta.requiresAuth && auth.isLoggedIn()) next()
-    if(to.meta.requiresAuth && !auth.isLoggedIn()) next({path: '/'})
+    if(to.meta.requiresAuth && !auth.isLoggedIn()) {
+        var pathname=(window.location.pathname)  //      /admin/plugins/Biltrax/project-search
+        var path = (window.location.pathname).replace('/admin/', '/')     //      /plugins/Biltrax/project-search
+        if(path.length>2) {
+            sessions.set('last_url', path);   // plugins/Biltrax/project-search
+        }
+        next ({path: '/'})
+    }
     if(!to.meta.requiresAuth && !auth.isLoggedIn()) next()
+
 })
-
-
 import CKEditor from '@ckeditor/ckeditor5-vue';
-
 Vue.use(CKEditor);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
