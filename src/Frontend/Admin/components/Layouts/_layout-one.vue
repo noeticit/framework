@@ -29,7 +29,7 @@
 
                     <router-view></router-view>
 
-                    <base-layout-four-footer></base-layout-four-footer>
+                    <layout-four-footer></layout-four-footer>
                 </div>
             </div>
         </div>
@@ -53,6 +53,7 @@
     import {KTMenu} from 'NitsTheme/framework/components/foundation/menu/menu';
     import {KTToggle} from 'NitsTheme/framework/components/foundation/toggle/toggle';
     import {KTScrolltop} from 'NitsTheme/framework/components/foundation/scrolltop/scrolltop';
+    import LayoutFourFooter from 'ProjectComponents/admin/components/layout-four-footer.vue';
 
     export default {
         name: "layout-one",
@@ -61,6 +62,9 @@
                 title: '',
                 pageData: []
             }
+        },
+        components: {
+            LayoutFourFooter
         },
         mounted() {
             var KTLayout = function() {
