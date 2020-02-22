@@ -24,7 +24,7 @@
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper " id="kt_wrapper">
 
-                    <base-layout-four-header></base-layout-four-header>
+                    <layout-four-header></layout-four-header>
 <!--                    <base-header></base-header>-->
 
                     <router-view></router-view>
@@ -54,6 +54,7 @@
     import {KTToggle} from 'NitsTheme/framework/components/foundation/toggle/toggle';
     import {KTScrolltop} from 'NitsTheme/framework/components/foundation/scrolltop/scrolltop';
     import LayoutFourFooter from 'ProjectComponents/admin/components/layout-four-footer.vue';
+    import LayoutFourHeader from 'ProjectComponents/admin/components/layout-four-header.vue';
 
     export default {
         name: "layout-one",
@@ -64,7 +65,7 @@
             }
         },
         components: {
-            LayoutFourFooter
+            LayoutFourFooter,LayoutFourHeader
         },
         mounted() {
             var KTLayout = function() {
