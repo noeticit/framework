@@ -1,16 +1,12 @@
 <template>
     <!-- begin:: Page -->
-    <div class="kt-grid kt-grid--ver kt-grid--root nits-login">
-        <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+    <div class="kt-grid kt-grid--ver kt-grid--root nits-login" >
+        <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login" >
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
                 <!--begin::Aside-->
                 <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside nits-login_aside">
-                    <div class="kt-grid__item">
-                        <a href="#" class="kt-login__logo">
-                            <img :src="nitseditor.app_logo" alt="logo here" height="100px" width="100px">
-                        </a>
-                    </div>
+
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
                         <div class="kt-grid__item kt-grid__item--middle">
                             <h3 class="kt-login__title">{{ nitseditor.login_title }}!</h3>
@@ -35,24 +31,29 @@
                 <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
 
                     <!--begin::Head-->
-                    <div class="kt-login__head" v-if="loginIn">
-                        <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
-                        <a href="#" class="kt-link kt-login__signup-link" @click="SignUpShow">Sign Up!</a>
+<!--                    <div class="kt-login__head" v-if="loginIn">-->
+<!--                        <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;-->
+<!--                        <a href="#" class="kt-link kt-login__signup-link" @click="SignUpShow">Sign Up!</a>-->
+<!--                    </div>-->
+                    <div class="kt-grid__item" >
+                        <a href="#" class="kt-login__logo" >
+                            <img src="/nits-assets/images/bg/BiltraxDIA.png" alt="logo here" height="90px" width="360px" style="margin-top: 50px; margin-left: 30%">
+                        </a>
                     </div>
 
                     <!--end::Head-->
 
                     <!--begin::Body-->
-                    <div class="kt-login__body" v-if="loginIn">
+                    <div class="kt-login__body" style="height:460px" v-if="loginIn">
 
                         <!--begin::Signin-->
-                        <div class="kt-login__form">
-                            <div class="kt-login__title">
-                                <h3>Sign In</h3>
+                        <div class="kt-login__form" style="margin-bottom: 40px">
+                            <div class="kt-login__title" style="margin-bottom: -23px">
+                                <h3 style="font-size: 1.75rem">Subscriber Sign In</h3>
                             </div>
 
                             <!--begin::Form-->
-                            <form class="kt-form" action="" novalidate="novalidate">
+                            <form class="kt-form" action="" novalidate="novalidate" >
                                 <div class="form-group">
                                     <input class="form-control" dusk="login-email" v-model="email" type="text" placeholder="Email" name="email" autocomplete="off">
                                 </div>
@@ -65,10 +66,44 @@
 
                                 <!--begin::Action-->
                                 <div class="kt-login__actions">
-                                    <a href="#" class="kt-link kt-login__link-forgot">
-                                        Forgot Password ?
-                                    </a>
+
+                                        <a href="#" class="kt-link kt-login__link-forgot" @click="forgotPasswordShow">
+                                             Forgot Password ?
+                                         </a>
+
                                     <button id="kt_login_signin_submit" dusk="login-submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="login()">Sign In</button>
+                                </div>
+
+                                <!--end::Action-->
+                            </form>
+
+                            <!--end::Form-->
+                        </div>
+
+                        <!--end::Signin-->
+                    </div>
+                    <div class="kt-login__body" v-if="forgotPassword">
+
+                        <!--begin::Signin-->
+                        <div class="kt-login__form">
+                            <div class="kt-login__title">
+                                <h3>Enter Email for Password Link</h3>
+                            </div>
+
+                            <!--begin::Form-->
+                            <form class="kt-form" action="" novalidate="novalidate">
+                                <div class="form-group">
+                                    <input class="form-control" dusk="login-email" v-model="email" type="text" placeholder="Email" name="email" autocomplete="off">
+                                </div>
+                                <div class="form-group" v-if="error">
+                                    <span class="text-center text-danger">{{ error }}</span>
+                                </div>
+
+                                <!--begin::Action-->
+                                <div class="kt-login__actions">
+                                    <button id="kt_login_back_cancel" class="btn btn-secondary btn-elevate kt-login__btn-secondary"  @click.prevent="BacktoLogin()">Back</button>
+
+                                    <button id="kt_login_signin_submit" dusk="login-submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="submit()" >Submit</button>
                                 </div>
 
                                 <!--end::Action-->
@@ -131,8 +166,6 @@
                         <!--end::Signin-->
                     </div>
 
-
-                    <!--end::Body-->
                 </div>
 
                 <!--end::Content-->
@@ -155,6 +188,7 @@
                 loading: false,
                 loginIn: true,
                 SignUpIn: false,
+                forgotPassword:false,
                 nitseditor: JSON.parse(nitseditor)
             }
         },
@@ -162,7 +196,9 @@
             this.$auth.logout();
         },
         created() {
+            // window.location.reload();
 
+            // console.log(this.nitseditor)
         },
         methods: {
             login() {
@@ -183,14 +219,43 @@
                 })
 
             },
+            submit() {
+                if(this.email.split('@').length === 2) {
+                    const payload = {
+                        email: this.email,
+                    }
+                    axios.post('/laravel-api/forget-password', payload).then(response => {
+                        if (response.status === 200) {
+                            this.error = response.data.data;
+                            // console.log(this.result)
+                        }
+                    }).catch((error) => {
+                        if (error.response.status === 422) {
 
+                            this.error = "Please Enter valid Email ID.";
+                            // console.log(this.error)
+                        }
+                    });
+                }
+                else if(this.email.split('@').length != 2) {
+                    this.error = "Email ID in Invalid Format.";
+                }
+            },
             SignUpShow(){
                 this.loginIn = false
                 this.SignUpIn = true
             },
+            forgotPasswordShow(){
+                this.loginIn = false
+                this.SignUpIn = false
+                // this.forgotPassword = true
+                this.$router.push({name: 'ForgotPassword'});
+            },
+
             BacktoLogin(){
                 this.loginIn = true
                 this.SignUpIn = false
+
             },
 
             Register(){
@@ -203,6 +268,6 @@
 <style lang="css" scoped>
     @import "../../theme/css/login.css";
     .nits-login_aside {
-        background-image: url("/nits-assets/images/bg/bg-4.jpg");
+        background-image: url("/nits-assets/images/bg/bg-7.jpg");
     }
 </style>

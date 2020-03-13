@@ -20,6 +20,14 @@ export const router = new VueRouter({
                 }
             },
             {
+                path: '/forgot-password',
+                component: Vue.component('ForgotPassword', () => import('./components/Pages/ForgotPassword.vue')),
+                name: 'ForgotPassword',
+                meta: {
+                    requiresAuth: false
+                }
+            },
+            {
                 path: '/dashboard',
                 component: Vue.component('dashboard', () => import('ProjectComponents/admin/components/Dashboard.vue')),
                 name: 'Dashboard',
