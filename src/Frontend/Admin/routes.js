@@ -61,5 +61,5 @@ export const router = new VueRouter({
             },
 
         ],
-    base: '/admin/',
+    base: '/bx/',
 });

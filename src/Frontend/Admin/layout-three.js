@@ -44,7 +44,7 @@ router.beforeEach((to, from, next) => {
     if(!to.meta.requiresAuth && auth.isLoggedIn()) next()
     if(to.meta.requiresAuth && !auth.isLoggedIn()) {
         var pathname=(window.location.pathname)  //      /admin/plugins/Biltrax/project-search
-        var path = (window.location.pathname).replace('/admin/', '/')     //      /plugins/Biltrax/project-search
+        var path = (window.location.pathname).replace('/bx/', '/')     //      /plugins/Biltrax/project-search
         if(path.length>2) {
             sessions.set('last_url', path);   // plugins/Biltrax/project-search
         }
