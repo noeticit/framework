@@ -35,10 +35,10 @@
                 <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
 
                     <!--begin::Head-->
-                    <div class="kt-login__head" v-if="loginIn">
-                        <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
-                        <a href="#" class="kt-link kt-login__signup-link" @click="SignUpShow">Sign Up!</a>
-                    </div>
+<!--                    <div class="kt-login__head" v-if="loginIn">-->
+<!--                        <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;-->
+<!--                        <a href="#" class="kt-link kt-login__signup-link" @click="SignUpShow">Sign Up!</a>-->
+<!--                    </div>-->
 
                     <!--end::Head-->
 
@@ -63,7 +63,7 @@
 
                                 <!--begin::Action-->
                                 <div class="kt-login__actions">
-                                    <button id="kt_login_back_cancel" class="btn btn-secondary btn-elevate kt-login__btn-secondary"  @click.prevent="BacktoLogin()">Login</button>
+                                    <button id="kt_login_back_cancel" class="btn btn-secondary btn-elevate kt-login__btn-secondary"  @click.prevent="BacktoLogin()">Back To Login</button>
 
                                     <button id="kt_login_signin_submit" dusk="login-submit" class="btn btn-primary btn-elevate kt-login__btn-primary" v-bind:class="{ 'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light': loading }" @click.prevent="submit()" >Submit</button>
                                 </div>
