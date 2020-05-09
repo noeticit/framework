@@ -61,6 +61,7 @@
             series.sequencedInterpolation = true;
             series.dataFields.valueY = "value";
             series.dataFields.categoryX = "label";
+            series.dataFields.id = "id";
             series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
             series.columns.template.strokeWidth = 0;
 
@@ -89,7 +90,8 @@
                 {
                     const clickedData = {
                         var_name: this.chartData.key,
-                        data: ev.target.dataItem.categoryX
+                        data: ev.target.dataItem.categoryX,
+                        id: ev.target.dataItem.id
                     }
                     eventBus.$emit(this.call_event, clickedData);
                 }

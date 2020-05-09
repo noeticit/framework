@@ -53,6 +53,7 @@
             let series = chart.series.push(new am4charts.PieSeries());
             series.dataFields.value = "value";
             series.dataFields.category = "label";
+            series.dataFields.id = "id";
 
             if(typeof this.chartData.hideTickLabels !== 'undefined' &&  this.chartData.hideTickLabels) {
                 series.ticks.template.disabled = true;
@@ -72,11 +73,13 @@
 
             //For click events
             this.events = series.slices.template.events.on("hit", function(ev) {
+                console.log(this.chartData)
                 if(typeof this.chartData.key !== 'undefined')
                 {
                     const clickedData = {
                         var_name: this.chartData.key,
-                        data: ev.target.dataItem.category
+                        data: ev.target.dataItem.category,
+                        id:ev.target.dataItem.id
                     }
                     eventBus.$emit(this.call_event, clickedData);
                 }

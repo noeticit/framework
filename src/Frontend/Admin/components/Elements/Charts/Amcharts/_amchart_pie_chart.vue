@@ -50,6 +50,7 @@
             let pieSeries = chart.series.push(new am4charts.PieSeries());
             pieSeries.dataFields.value = "value";
             pieSeries.dataFields.category = "label";
+            pieSeries.dataFields.id = "id";
             pieSeries.slices.template.stroke = am4core.color("#fff");
             pieSeries.slices.template.strokeWidth = 2;
             pieSeries.slices.template.strokeOpacity = 1;
@@ -73,7 +74,9 @@
                 {
                     const clickedData = {
                         var_name: this.chartData.key,
-                        data: ev.target.dataItem.category
+                        data: ev.target.dataItem.category,
+                        id: ev.target.dataItem.id,
+
                     }
                     eventBus.$emit(this.call_event, clickedData);
                 }
