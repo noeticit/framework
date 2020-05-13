@@ -40,14 +40,20 @@ var base_url= window.location.origin;  // http://biltrax_2.local
 var last_url1=base_url.concat('/admin')
 
 router.beforeEach((to, from, next) => {
-    if(to.meta.requiresAuth && auth.isLoggedIn()) next()
+    if(to.meta.requiresAuth && auth.isLoggedIn()) { console.log(window.location.origin);next()}
     if(!to.meta.requiresAuth && auth.isLoggedIn()) next()
     if(to.meta.requiresAuth && !auth.isLoggedIn()) {
-        var pathname=(window.location.pathname)  //      /admin/plugins/Biltrax/project-search
-        var path = (window.location.pathname).replace('/bx/', '/')     //      /plugins/Biltrax/project-search
+        console.log(window.location.pathname)
+        var pathname = (window.location.pathname)  //      /admin/plugins/Biltrax/project-search
+        if (pathname === '/bx') {
+            var path = (window.location.pathname).replace('/bx', '')     //      /plugins/Biltrax/project-search
+        } else{
+            var path = (window.location.pathname).replace('/bx/', '/')     //      /plugins/Biltrax/project-search
+    }
         if(path.length>2) {
             sessions.set('last_url', path);   // plugins/Biltrax/project-search
         }
+
         next ({path: '/'})
     }
     if(!to.meta.requiresAuth && !auth.isLoggedIn()) next()

@@ -28,7 +28,10 @@
             LoginComponent
         },
         beforeCreate() {
-            this.$auth.logout();
+            if(this.$auth.isLoggedIn)
+                this.$router.push("/dashboard");
+            else
+                this.$auth.logout();
         },
         created() {
             // window.location.reload();
