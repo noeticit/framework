@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>NitsEditor: A product of Noetic IT Services Pvt. Ltd.</title>
+        <title>Biltrax Construction Data Research Insight & Technologies Private Limited</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
         <link rel="icon" type="image/png" sizes="16x16" href="/logo/BX_Without_Background.png">
