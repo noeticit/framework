@@ -32,7 +32,7 @@ window.axios.interceptors.response.use(
     (error) => {
         // Un-authorised
         if (error.response.status === 401) {
-            window.localStorage.removeItem('authUser');
+            window.localStorage.removeItem('nits-session-key');
             window.location = "/bx";
         }
         return Promise.reject(error)
