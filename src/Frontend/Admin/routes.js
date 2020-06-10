@@ -37,8 +37,8 @@ export const router = new VueRouter({
             },
             {
                 path: '/dashboard-biltrax-analytics',
-                component: Vue.component('dashboard2', () => import('./components/Pages/Dashboard2.vue')),
-                name: 'dashboard2',
+                component: Vue.component('dashboard2', () => import('ProjectComponents/admin/components/DashboardAnalytics.vue')),
+                name: 'dashboard-analytics',
                 meta: {
                     requiresAuth: true
                 }

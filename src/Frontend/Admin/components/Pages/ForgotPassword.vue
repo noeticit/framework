@@ -6,11 +6,11 @@
 
                 <!--begin::Aside-->
                 <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside nits-login_aside">
-                    <div class="kt-grid__item">
-                        <a href="#" class="kt-login__logo">
-                            <img :src="nitseditor.app_logo" alt="logo here" height="100px" width="100px">
-                        </a>
-                    </div>
+<!--                    <div class="kt-grid__item">-->
+<!--                        <a href="#" class="kt-login__logo">-->
+<!--                            <img :src="nitseditor.app_logo" alt="logo here" height="100px" width="100px">-->
+<!--                        </a>-->
+<!--                    </div>-->
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
                         <div class="kt-grid__item kt-grid__item--middle">
                             <h3 class="kt-login__title">{{ nitseditor.login_title }}!</h3>
@@ -145,7 +145,10 @@
 
 <style lang="css" scoped>
     @import "../../theme/css/login.css";
+    /*.nits-login_aside {*/
+    /*    background-image: url("/nits-assets/images/bg/bg-4.jpg");*/
+    /*}*/
     .nits-login_aside {
-        background-image: url("/nits-assets/images/bg/bg-4.jpg");
+        background-image: url("/nits-assets/images/bg/bg-7.jpg");
     }
 </style>

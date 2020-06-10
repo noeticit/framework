@@ -10,17 +10,19 @@
 
     export default {
         name: "amchart_multiple_value_axes",
-        props: ['chartData'],
+        props: {
+            chartData: Object,
+        },
         data() {
             return {
                 chart: ''
             }
         },
         mounted() {
-            if(this.chartData) {
-                //Loading themes
-                if(this.chartData.theme)
-                {
+
+            //Loading themes
+            if(this.chartData.theme)
+            {
                     am4core.useTheme(am4themes_animated);
                     switch (this.chartData.theme) {
                         case 'dataviz':
@@ -34,27 +36,58 @@
                 }
 
                 //Creating charts
-                this.chart = am4core.create(this.$refs.amchart_multiple_value_axes, am4charts.XYChart);
+            let chart = am4core.create(this.$refs.amchart_multiple_value_axes, am4charts.XYChart);
+            chart.data = this.chartData.data;
 
-                this.chart.data = this.chartData.data;
 
-                // Create axes
-                let dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
-                dateAxis.baseInterval = {
-                    "timeUnit": "minute",
-                    "count": 1
-                };
-                dateAxis.tooltipDateFormat = "HH:mm, d MMMM";
+                // Create category axis
+                var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+                categoryAxis.dataFields.category = "year";
+                categoryAxis.renderer.opposite = true;
 
-                this.chartData.label.forEach((a) => {
-                    this.createAxisAndSeries(a.field, a.name, a.opposite, a.bullet);
-                })
+                // Create value axis
+                var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+                valueAxis.renderer.inversed = true;
+                valueAxis.title.text = "Population Growth Rate (per cent)";
+                valueAxis.renderer.minLabelPosition = 0.01;
+
+                // Create series
+                var series1 = chart.series.push(new am4charts.LineSeries());
+                series1.dataFields.valueY = "india";
+                series1.dataFields.categoryX = "year";
+                series1.name = "India";
+                series1.strokeWidth = 3;
+                series1.bullets.push(new am4charts.CircleBullet());
+                series1.tooltipText = "Place taken by {name} in {categoryX}: {valueY}";
+                series1.legendSettings.valueText = "{valueY}";
+                // series1.visible  = false;
+
+                var series2 = chart.series.push(new am4charts.LineSeries());
+                series2.dataFields.valueY = "maharashtra";
+                series2.dataFields.categoryX = "year";
+                series2.name = 'Maharashtra';
+                series2.strokeWidth = 3;
+                series2.bullets.push(new am4charts.CircleBullet());
+                series2.tooltipText = "Place taken by {name} in {categoryX}: {valueY}";
+                series2.legendSettings.valueText = "{valueY}";
+
+                // var series3 = chart.series.push(new am4charts.LineSeries());
+                // series3.dataFields.valueY = "uk";
+                // series3.dataFields.categoryX = "year";
+                // series3.name = 'United Kingdom';
+                // series3.strokeWidth = 3;
+                // series3.bullets.push(new am4charts.CircleBullet());
+                // series3.tooltipText = "Place taken by {name} in {categoryX}: {valueY}";
+                // series3.legendSettings.valueText = "{valueY}";
+
+                // Add chart cursor
+                chart.cursor = new am4charts.XYCursor();
+                chart.cursor.behavior = "zoomY";
 
                 // Add legend
-                this.chart.legend = new am4charts.Legend();
+                chart.legend = new am4charts.Legend();
 
-                // Add cursor
-                this.chart.cursor = new am4charts.XYCursor();
+                this.chart = chart;
 
                 //Un-loading theme
                 if(this.chartData.theme)
@@ -70,74 +103,8 @@
 
                     }
                 }
-            }
-
         },
-        methods: {
-            createAxisAndSeries(field, name, opposite, bullet) {
-                let valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis());
-                if(this.chart.yAxes.indexOf(valueAxis) != 0){
-                    valueAxis.syncWithAxis = this.chart.yAxes.getIndex(0);
-                }
 
-                let series = this.chart.series.push(new am4charts.LineSeries());
-                series.dataFields.valueY = field;
-                series.dataFields.dateX = "value";
-                series.strokeWidth = 2;
-                series.yAxis = valueAxis;
-                series.name = name;
-                series.tooltipText = "{name}: [bold]{valueY}[/]";
-                series.tensionX = 0.8;
-                series.showOnInit = true;
-
-                let interfaceColors = new am4core.InterfaceColorSet();
-
-                let bullets;
-                let triangles;
-                let rectangles;
-
-                switch(bullet) {
-                    case "triangle":
-                        bullets = series.bullets.push(new am4charts.Bullet());
-                        bullets.width = 12;
-                        bullets.height = 12;
-                        bullets.horizontalCenter = "middle";
-                        bullets.verticalCenter = "middle";
-
-                        triangles = bullets.createChild(am4core.Triangle);
-                        triangles.stroke = interfaceColors.getFor("background");
-                        triangles.strokeWidth = 2;
-                        triangles.direction = "top";
-                        triangles.width = 12;
-                        triangles.height = 12;
-                        break;
-                    case "rectangle":
-                        let bullets = series.bullets.push(new am4charts.Bullet());
-                        bullets.width = 10;
-                        bullets.height = 10;
-                        bullets.horizontalCenter = "middle";
-                        bullets.verticalCenter = "middle";
-
-                        rectangles = bullets.createChild(am4core.Rectangle);
-                        rectangles.stroke = interfaceColors.getFor("background");
-                        rectangles.strokeWidth = 2;
-                        rectangles.width = 10;
-                        rectangles.height = 10;
-                        break;
-                    default:
-                        bullets = series.bullets.push(new am4charts.CircleBullet());
-                        bullets.circle.stroke = interfaceColors.getFor("background");
-                        bullets.circle.strokeWidth = 2;
-                        break;
-                }
-
-                valueAxis.renderer.line.strokeOpacity = 1;
-                valueAxis.renderer.line.strokeWidth = 2;
-                valueAxis.renderer.line.stroke = series.stroke;
-                valueAxis.renderer.labels.template.fill = series.stroke;
-                valueAxis.renderer.opposite = opposite;
-            }
-        },
         beforeDestroy() {
             if (this.chart) {
                 this.chart.dispose();
