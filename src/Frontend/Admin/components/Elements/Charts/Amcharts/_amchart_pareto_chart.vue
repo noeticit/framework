@@ -68,11 +68,13 @@
             categoryAxis.renderer.grid.template.location = 0;
             categoryAxis.renderer.minGridDistance = 60;
             categoryAxis.tooltip.disabled = true;
+            categoryAxis.title.text = "Year";
 
             let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.renderer.minWidth = 50;
             valueAxis.min = 0;
             valueAxis.cursorTooltipEnabled = false;
+
 
             // Create series
             let series = chart.series.push(new am4charts.ColumnSeries());
