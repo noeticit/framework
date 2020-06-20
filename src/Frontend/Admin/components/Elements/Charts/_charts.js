@@ -10,6 +10,7 @@ Vue.component('amchart-column-chart', () => import('./Amcharts/_amchart_column_c
 Vue.component('amchart-3d-stacked-column-chart', () => import('./Amcharts/_amchart_3d_stacked_column_chart'))
 Vue.component('amchart-real-time-sorting-chart', () => import('./Amcharts/_amchart_real_time_sorting_chart'))
 Vue.component('amchart-clustered-chart', () => import('./Amcharts/_amchart_clustered_chart.vue'))
+Vue.component('amchart-stacked-clustered-chart', () => import('./Amcharts/_amchart_stacked_clustered_chart.vue'))
 Vue.component('amchart-stacked-column-chart', () => import('./Amcharts/_amchart_stacked_column_chart.vue'))
 Vue.component('amchart-reversed-chart', () => import('./Amcharts/_amchart_reversed_chart.vue'))
 Vue.component('amchart-pareto-chart', () => import('./Amcharts/_amchart_pareto_chart.vue'))

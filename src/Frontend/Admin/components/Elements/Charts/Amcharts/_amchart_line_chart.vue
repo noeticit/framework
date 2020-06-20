@@ -48,6 +48,9 @@
             let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
             dateAxis.renderer.grid.template.location = 0;
             dateAxis.renderer.minGridDistance = 30;
+            dateAxis.title.text = "Years ";
+            // dateAxis.renderer.inversed = true;
+            dateAxis.renderer.grid.template.disabled = true;
 
             // Create value axis
             let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -62,14 +65,24 @@
             // lineSeries.columns.template.tooltipText = "{dateX}: [bold]{valueY}[-]";
             // lineSeries.columns.template.fillOpacity = .8;
 
-            // Add simple bullet
-            let bullet = lineSeries.bullets.push(new am4charts.Bullet());
-            let image = bullet.createChild(am4core.Image);
-            image.href = "https://www.amcharts.com/lib/images/star.svg";
-            image.width = 10;
-            image.height = 10;
-            image.horizontalCenter = "middle";
-            image.verticalCenter = "middle";
+            // Add simple bullet circle
+            let circleBullet = lineSeries.bullets.push(new am4charts.CircleBullet());
+            circleBullet.circle.stroke = am4core.color("#fff");
+            circleBullet.circle.strokeWidth = 1;
+            circleBullet.tooltipText = "Value: [bold]{value}[/]";
+
+            let labelBullet = lineSeries.bullets.push(new am4charts.LabelBullet());
+            labelBullet.label.text = "{value}";
+            labelBullet.label.dx = -15;
+            labelBullet.label.dy = -15;
+
+            // let bullet = lineSeries.bullets.push(new am4charts.Bullet());
+            // let image = bullet.createChild(am4core.Image);
+            // image.href = "https://www.amcharts.com/lib/images/star.svg";
+            // image.width = 10;
+            // image.height = 10;
+            // image.horizontalCenter = "middle";
+            // image.verticalCenter = "middle";
 
             this.chart = chart;
 
