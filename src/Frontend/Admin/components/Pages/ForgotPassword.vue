@@ -6,11 +6,11 @@
 
                 <!--begin::Aside-->
                 <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside nits-login_aside">
-<!--                    <div class="kt-grid__item">-->
-<!--                        <a href="#" class="kt-login__logo">-->
-<!--                            <img :src="nitseditor.app_logo" alt="logo here" height="100px" width="100px">-->
-<!--                        </a>-->
-<!--                    </div>-->
+                    <!--                    <div class="kt-grid__item">-->
+                    <!--                        <a href="#" class="kt-login__logo">-->
+                    <!--                            <img :src="nitseditor.app_logo" alt="logo here" height="100px" width="100px">-->
+                    <!--                        </a>-->
+                    <!--                    </div>-->
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
                         <div class="kt-grid__item kt-grid__item--middle">
                             <h3 class="kt-login__title">{{ nitseditor.login_title }}!</h3>
@@ -35,22 +35,29 @@
                 <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
 
                     <!--begin::Head-->
-<!--                    <div class="kt-login__head" v-if="loginIn">-->
-<!--                        <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;-->
-<!--                        <a href="#" class="kt-link kt-login__signup-link" @click="SignUpShow">Sign Up!</a>-->
-<!--                    </div>-->
+                    <!--                    <div class="kt-login__head" v-if="loginIn">-->
+                    <!--                        <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;-->
+                    <!--                        <a href="#" class="kt-link kt-login__signup-link" @click="SignUpShow">Sign Up!</a>-->
+                    <!--                    </div>-->
 
                     <!--end::Head-->
 
                     <!--begin::Body-->
 
-                    <div class="kt-login__body" >
 
+                    <div class="kt-grid__item" >
+                        <a href="#" class="kt-login__logo" >
+                            <img src="/nits-assets/images/bg/BiltraxDIA.png" alt="logo here" height="90px" width="360px" style="margin-top: 50px; margin-left: 30%">
+                        </a>
+                    </div>
+
+                    <div class="kt-login__body" style="height:460px">
                         <!--begin::Signin-->
-                        <div class="kt-login__form">
-                            <div class="kt-login__title">
-                                <h3>Enter Email for Password Link</h3>
+                        <div class="kt-login__form" style="margin-bottom: 40px">
+                            <div class="kt-login__title" style="margin-bottom: -23px">
+                                <h3 style="font-size: 1.75rem">Enter Email for Password Link</h3>
                             </div>
+
 
                             <!--begin::Form-->
                             <form class="kt-form" action="" novalidate="novalidate">
@@ -75,6 +82,7 @@
                         </div>
 
                         <!--end::Signin-->
+                        <!--                    </div>-->
                     </div>
 
                 </div>
@@ -107,7 +115,7 @@
             this.$auth.logout();
         },
         created() {
-                // console.log(this.nitseditor)
+            // console.log(this.nitseditor)
         },
         methods: {
 
@@ -145,10 +153,13 @@
 
 <style lang="css" scoped>
     @import "../../theme/css/login.css";
-    /*.nits-login_aside {*/
-    /*    background-image: url("/nits-assets/images/bg/bg-4.jpg");*/
-    /*}*/
     .nits-login_aside {
         background-image: url("/nits-assets/images/bg/bg-7.jpg");
     }
+    /*.kt-form{*/
+    /*    margin: 2rem auto !important;*/
+    /*}*/
+    /*.kt-login__title{*/
+    /*    margin-bottom: unset !important;*/
+    /*}*/
 </style>
