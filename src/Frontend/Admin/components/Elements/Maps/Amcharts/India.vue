@@ -7,6 +7,7 @@
     import * as am4maps from "@amcharts/amcharts4/maps";
     import am4themes_animated from "@amcharts/amcharts4/themes/animated";
     import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz.js";
+    import am4themes_spiritedaway from "@amcharts/amcharts4/themes/spiritedaway";
 
     export default {
         name: "amcharts-india",
@@ -27,15 +28,18 @@
                     case 'dataviz':
                         am4core.useTheme(am4themes_dataviz);
                         break;
+                    case 'spiritedaway':
+                        am4core.useTheme(am4themes_spiritedaway);
+                        break;
                     case '':
                         break;
                     default:
-
                 }
             }
 
             //Creating charts
-            var title = "India Map"
+            // var title = "India Map"
+            var title = ""
             // Create map instance
             this.chart = am4core.create(this.$refs.armchart_maps_india, am4maps.MapChart);
 

@@ -73,8 +73,8 @@
 
             let labelBullet = lineSeries.bullets.push(new am4charts.LabelBullet());
             labelBullet.label.text = "{value}";
-            labelBullet.label.dx = -15;
-            labelBullet.label.dy = -15;
+            labelBullet.label.dx = -17;
+            labelBullet.label.dy = 6;
 
             // let bullet = lineSeries.bullets.push(new am4charts.Bullet());
             // let image = bullet.createChild(am4core.Image);

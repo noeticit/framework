@@ -52,6 +52,7 @@
             categoryAxis.renderer.labels.template.rotation = 270;
             categoryAxis.tooltip.disabled = true;
             categoryAxis.renderer.minHeight = 110;
+            categoryAxis.title.text = "Years ";
 
             let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.renderer.minWidth = 50;
