@@ -59,16 +59,24 @@
                     </div>
 
                     <!-- begin:: Footer -->
-                    <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" style="position: fixed; bottom: 0; width: 100%">
-                        <div class="kt-footer__copyright" v-html="nitseditor.copyright">
+<!--                    <div class="kt-footer kt-grid__item kt-grid kt-grid&#45;&#45;desktop kt-grid&#45;&#45;ver-desktop" style="position: fixed; bottom: 0; width: 100%">-->
+<!--                        <div class="kt-footer__copyright" v-html="nitseditor.copyright">-->
 
-                        </div>
-                        <div class="kt-footer__menu">
-                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">About</a>
-                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
-                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
-                        </div>
+<!--                        </div>-->
+<!--                        <div class="kt-footer__menu">-->
+<!--                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">About</a>-->
+<!--                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">Team</a>-->
+<!--                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <!-- begin:: Footer -->
+                    <!--                    <div class="kt-footer kt-grid__item kt-grid kt-grid&#45;&#45;desktop kt-grid&#45;&#45;ver-desktop" style="position: fixed; bottom: 0; width: 100%">-->
+                    <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop " style="position: fixed; bottom: 0; margin: auto; width: 100%">
+                        <base-footer></base-footer>
                     </div>
+
+                    <!-- end:: Footer -->
 
                     <!-- end:: Footer -->
                 </div>
