@@ -5,11 +5,11 @@
 
         <!-- begin:: Header Mobile -->
         <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
-<!--            <div class="kt-header-mobile__logo">-->
-<!--                <router-link to="/dashboard">-->
-<!--                    <img alt="Logo" :src="nitseditor.app_logo" />-->
-<!--                </router-link>-->
-<!--            </div>-->
+            <div class="kt-header-mobile__logo">
+                <router-link to="/dashboard">
+                    <img alt="Logo" :src="nitseditor.app_logo" />
+                </router-link>
+            </div>
             <div class="kt-header-mobile__toolbar">
                 <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
                 <button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button>
@@ -34,7 +34,7 @@
 
                     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
-<!--                        <base-layout-three-subheader></base-layout-three-subheader>-->
+                        <!--                        <base-layout-three-subheader></base-layout-three-subheader>-->
 
                         <!-- begin:: Content -->
 
@@ -42,14 +42,14 @@
                         <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding: 10px;">
 
                             <!--Begin::Dashboard 6-->
-<!--                            <div v-if="$can($route.name, 'view')">-->
-                                <router-view></router-view>
-<!--                            </div>-->
-<!--                           <div v-else>-->
-<!--                               <div class="text-center">-->
-<!--                                   <strong>Don't have permission to view this section</strong>-->
-<!--                               </div>-->
-<!--                           </div>-->
+                            <!--                            <div v-if="$can($route.name, 'view')">-->
+                            <router-view></router-view>
+                            <!--                            </div>-->
+                            <!--                           <div v-else>-->
+                            <!--                               <div class="text-center">-->
+                            <!--                                   <strong>Don't have permission to view this section</strong>-->
+                            <!--                               </div>-->
+                            <!--                           </div>-->
                             <!--End::Dashboard 6-->
                         </div>
 
@@ -59,24 +59,10 @@
                     </div>
 
                     <!-- begin:: Footer -->
-<!--                    <div class="kt-footer kt-grid__item kt-grid kt-grid&#45;&#45;desktop kt-grid&#45;&#45;ver-desktop" style="position: fixed; bottom: 0; width: 100%">-->
-<!--                        <div class="kt-footer__copyright" v-html="nitseditor.copyright">-->
-
-<!--                        </div>-->
-<!--                        <div class="kt-footer__menu">-->
-<!--                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">About</a>-->
-<!--                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">Team</a>-->
-<!--                            <a href="http://nitseditor.com" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-                    <!-- begin:: Footer -->
                     <!--                    <div class="kt-footer kt-grid__item kt-grid kt-grid&#45;&#45;desktop kt-grid&#45;&#45;ver-desktop" style="position: fixed; bottom: 0; width: 100%">-->
-                    <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop " style="position: fixed; bottom: 0; margin: auto; width: 100%">
-                        <base-footer></base-footer>
-                    </div>
 
-                    <!-- end:: Footer -->
+                    <!--                    <base-footer></base-footer>-->
+                    <base-footer></base-footer>
 
                     <!-- end:: Footer -->
                 </div>
@@ -96,6 +82,8 @@
 </template>
 
 <script>
+
+    import BaseFooter from "ProjectComponents/admin/layouts/base_footer";
     require('perfect-scrollbar');
     import {KTUtil} from 'NitsTheme/framework/lib/util';
     import {KTHeader} from 'NitsTheme/framework/components/foundation/header/header';
@@ -105,7 +93,8 @@
     import {KTScrolltop} from 'NitsTheme/framework/components/foundation/scrolltop/scrolltop';
 
     export default {
-        name: "layout-two",
+        name: "layout-three",
+        components: {BaseFooter},
         data() {
             return {
                 title: '',
@@ -114,8 +103,9 @@
             }
         },
         created() {
-            console.log(this.$ability.rules);
-            console.log(this.$route.name);
+            // console.log(this.$ability.rules);
+            // console.log(this.$route.name);
+            console.log('from footer layout three')
 
             if(this.$can(this.$route.name, 'view'))
                 console.log('happening');
