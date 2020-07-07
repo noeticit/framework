@@ -292,17 +292,22 @@
             //         this.currentMidx = idx;c
             //     }
             // }
-                getInfoWindowContent: function (marker) {
-                    return (`<div class="card" style="width: 100%;">
-                        <div class="card-content">
+            getInfoWindowContent: function (marker) {
+                return (`<div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                              <img src="${marker.logo}" width="150px" height="60px" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content" style="width: 150px">
                             <div class="media">
                                 <div class="media-content">
-                                    <a target="_blank" href="#" class="title is-4">${marker.name}</a><br/>
+                                    <a target="_blank"  href="${marker.slug}" class="title is-4">${marker.name}</a><br/>
                                 </div>
                             </div>
                         </div>
                     </div>`);
-                },
+            },
 
         }
     }
