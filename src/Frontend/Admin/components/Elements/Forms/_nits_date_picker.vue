@@ -55,6 +55,8 @@
                 };
             }();
 
+            jQuery.noConflict();
+
             jQuery(document).ready(function() {
                 KTBootstrapDatepicker.init();
             });
