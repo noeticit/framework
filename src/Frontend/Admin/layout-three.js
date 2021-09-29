@@ -4,6 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import {userMixins} from "../../../../../../resources/admin/Mixins/UserActivityMixins";
+import {LoggedInUserMixins} from "../../../../../../resources/admin/Mixins/LoggedInUserMixins";
+
 require('./bootstrap');
 
 import VueRouter from 'vue-router';
@@ -15,6 +18,9 @@ import { abilitiesPlugin } from '@casl/vue';
 import ability from './models/_ability';
 import VModal from 'vue-js-modal';
 import session from 'NitsModels/_session';
+import VuePlaceAutocomplete from 'vue-place-autocomplete';
+
+
 
 
 const auth = new authorization();
@@ -23,9 +29,11 @@ window.Vue = require('vue');
 
 const sessions = new session(process.env.MIX_STORAGE_PERSIST, process.env.MIX_INACTIVITY_SESSION);
 sessions.start();
-
+// Vue.component('vue-recaptcha',VueRecaptcha)
 Vue.use(VModal);
 Vue.use(VueRouter);
+
+Vue.use(VuePlaceAutocomplete);
 
 Vue.use(abilitiesPlugin, ability);
 Vue.prototype.$auth = auth;
@@ -72,5 +80,6 @@ const layoutTwo = new Vue({
     el: '#layout-three',
     router: router,
     store,
-    render:h=>h(adminLayout)
+    render:h=>h(adminLayout),
+    mixins: [LoggedInUserMixins],
 });

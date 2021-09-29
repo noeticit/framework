@@ -3,6 +3,7 @@
 
     <GmapMap
         :center="{lat: 24.326176, lng: 78.187721}"
+        id="map"
         :zoom="5"
         map-type-id="terrain"
         style="height: 600px"
@@ -25,6 +26,15 @@
                 @click="toggleInfoWindow(m,index)"
             />
 <!--        </gmap-cluster>-->
+
+        <GmapCircle
+            v-for="(pin, index) in MapData.data"
+            :key="index"
+            :center="pin.position"
+            :radius="1000"
+            :visible="true"
+            :options="{fillColor:'red',fillOpacity:1.0}"
+        ></GmapCircle>
 
     </GmapMap>
 </template>
@@ -309,7 +319,8 @@
                     </div>`);
             },
 
-        }
+        },
+
     }
 </script>
 

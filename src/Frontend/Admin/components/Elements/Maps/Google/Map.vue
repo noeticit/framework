@@ -7,6 +7,12 @@
         map-type-id="terrain"
         style="height: 600px"
     >
+
+        <GmapMarker v-if="position"
+            :position="position"
+            :draggable="true"
+        />
+<!---->
         <gmap-info-window
             :options="infoOptions"
             :position="infoWindowPos"
@@ -24,6 +30,15 @@
                 @click="toggleInfoWindow(m,index)"
             />
         </gmap-cluster>
+
+        <GmapCircle
+            v-if="position"
+            :center="position"
+            :radius="1000*Number(searchByRange)"
+            :visible="true"
+            :options="{fillColor:'#5d78ff',fillOpacity:0.1}"
+        ></GmapCircle>
+
 
     </GmapMap>
 </template>
@@ -62,9 +77,18 @@
 
     export default {
         name: "google-map",
-        props: ['MapData'],
+        props: ['MapData', 'selectedFields', 'zoomLvl'],
         data() {
             return {
+                url_blue_icon:{
+                    url:'/images/markerBlue.png',
+                    height:'20',
+                    width:'20'
+                },
+
+                searchByRange:'',
+                locationSearch:[],
+                position:{},
                 infoWindowPos: null,
                 infoWinOpen: false,
                 infoContent: '',
@@ -88,7 +112,18 @@
                         fontFamily: "comic sans ms",
                         textSize: 10,
                         textColor: "black",
-                        url: '/images/marker.png',
+                        url:'/images/marker.png',
+                    }
+
+                ],
+                clusterStyle1:[
+                    {
+                        width: 55,
+                        height:55,
+                        // fontFamily: "comic sans ms",
+                        // textSize: 10,
+                        // textColor: "black",
+                        url:'/images/markerBlue.png',
                     }
 
                 ],
@@ -308,6 +343,17 @@
                     </div>`);
                 },
 
+        },
+        created() {
+            // console.log(this.selectedFields)
+            this.searchByRange=this.selectedFields && this.selectedFields.search_by_range ? this.selectedFields.search_by_range :'';
+            this.position=this.selectedFields && this.selectedFields.location_search ?
+                {
+                    lat: parseFloat(this.selectedFields.location_search.latitude),
+                    lng: parseFloat(this.selectedFields.location_search.longitude)
+                }
+            :{};
+            console.log(this.position)
         }
     }
 </script>

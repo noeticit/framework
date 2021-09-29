@@ -98,7 +98,7 @@
     import {login} from 'ProjectComponents/admin/_model'
 
     export default {
-        name: "login",
+        name: "ForgotPassword",
         data() {
             return {
                 email: '',

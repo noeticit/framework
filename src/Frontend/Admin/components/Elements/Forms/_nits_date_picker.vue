@@ -11,7 +11,8 @@
             value: String,
             hint: String,
             error: String,
-            identity: String
+            identity: String,
+            disabled: Boolean
         },
         mounted() {
             const self = this;
@@ -69,7 +70,7 @@
                 createElement('div', {class: 'input-group date'}, [
                     createElement('input', {
                         class: 'form-control'+ (this.error ? ' is-invalid ' : ''),
-                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: this.identity},
+                        attrs: {type: 'text', placeholder: this.placeholder, value: this.value, id: this.identity, disabled:this.disabled ?this.disabled:false},
                         on: {
                             change: (event) => {
                                 this.$emit('change', event.target.value)

@@ -63,7 +63,8 @@
                             end_date: picker.endDate.format('DD-MM-YYYY')
                         }
                         self.$emit('input', JSON.stringify(dates));
-                    }).on('cancel.daterangepicker', function(ev, picker) {
+                    })
+                        .on('cancel.daterangepicker', function(ev, picker) {
                         $(this).val('');
                         self.$emit('input', '');
                     });

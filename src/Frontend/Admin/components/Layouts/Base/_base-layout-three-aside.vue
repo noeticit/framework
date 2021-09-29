@@ -1,12 +1,12 @@
 <template>
-    <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+    <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside" style="height: 100vh;">
 
         <!-- begin:: Aside -->
-        <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+        <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand" >
             <div class="kt-aside__brand-logo">
                 <router-link to="/dashboard">
-<!--                    <img alt="Logo" :src="nitseditor.app_logo" height="50px" />-->
-<!--                    <img alt="Logo" src="/nits-assets/media/logos/logo-light.png" />-->
+                    <!--                    <img alt="Logo" :src="nitseditor.app_logo" height="50px" />-->
+                    <!--                    <img alt="Logo" src="/nits-assets/media/logos/logo-light.png" />-->
                 </router-link>
             </div>
             <div class="kt-aside__brand-tools">
@@ -33,8 +33,8 @@
 
         <!-- begin:: Aside Menu -->
         <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-            <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
-                <ul class="kt-menu__nav ">
+            <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500" >
+                <ul style="height: 643px;padding-bottom: 30px" class="kt-menu__nav scrolling-touch">
                     <li v-for="item in menu" :class=" !item.link ? 'kt-menu__item  kt-menu__item--submenu' : 'kt-menu__item'" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                         <router-link v-if="item.link" :to="item.link" class="kt-menu__link ">
                             <i :class="'kt-menu__link-icon ' + item.icon"></i>
@@ -602,6 +602,31 @@
 
     .kt-menu__link-text {
         color: #a2a3b7;
+    }
+    .scrolling-touch{
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+    /* width */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #1e1e2d;
+        border-radius: 16px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 16px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 
 </style>
